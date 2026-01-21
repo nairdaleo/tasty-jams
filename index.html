@@ -1,309 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fart Soundboard - Support</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
 
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .app-icon {
+        width: 120px;
+        height: 120px;
+        border-radius: 26px;
+        margin: 0 auto 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: block;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .tagline {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 40px 30px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+      }
+
+      .faq-question {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 1.1em;
+      }
+
+      .faq-answer {
+        color: #666;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        width: 100%;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .footer {
+        background: #f8f9fa;
+        padding: 30px;
+        text-align: center;
+        color: #666;
+      }
+
+      .success-message {
+        background: #d4edda;
+        color: #155724;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      @media (max-width: 600px) {
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 26px;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: block;
+          padding: 30px 20px;
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .tagline {
-            font-size: 1.1em;
-            opacity: 0.9;
+          font-size: 2em;
         }
 
         .content {
-            padding: 40px 30px;
+          padding: 30px 20px;
         }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .faq-question {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-        }
-
-        .faq-answer {
-            color: #666;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .footer {
-            background: #f8f9fa;
-            padding: 30px;
-            text-align: center;
-            color: #666;
-        }
-
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .header {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23f59e0b'/%3E%3Ctext x='60' y='80' font-size='60' text-anchor='middle' fill='white'%3E💩%3C/text%3E%3C/svg%3E" alt="Fart Soundboard Icon" class="app-icon">
-            <h1>Fart Soundboard</h1>
-            <p class="tagline">Support & Contact</p>
+      <div class="header">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23f59e0b'/%3E%3Ctext x='60' y='80' font-size='60' text-anchor='middle' fill='white'%3E💩%3C/text%3E%3C/svg%3E"
+          alt="Fart Soundboard Icon"
+          class="app-icon"
+        />
+        <h1>Fart Soundboard</h1>
+        <p class="tagline">Support & Contact</p>
+      </div>
+
+      <div class="content">
+        <div class="section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">How do I use the soundboard?</div>
+            <div class="faq-answer">
+              Simply tap any button to play that sound effect. You can play
+              multiple sounds at once for maximum hilarity!
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Can I adjust the volume?</div>
+            <div class="faq-answer">
+              Yes! Use your device's volume buttons to adjust the sound level.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              The app isn't working properly. What should I do?
+            </div>
+            <div class="faq-answer">
+              Try restarting the app. If issues persist, please contact us using
+              the form below with details about the problem.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Will there be more sounds added?</div>
+            <div class="faq-answer">
+              We're always working on adding new sounds! Submit your suggestions
+              using the contact form below.
+            </div>
+          </div>
         </div>
 
-        <div class="content">
-            <div class="section">
-                <h2>Frequently Asked Questions</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I use the soundboard?</div>
-                    <div class="faq-answer">Simply tap any button to play that sound effect. You can play multiple sounds at once for maximum hilarity!</div>
-                </div>
+        <div class="section">
+          <h2>Contact Us</h2>
+          <p style="margin-bottom: 20px; color: #666">
+            Have a question, suggestion, or found a bug? Let us know!
+          </p>
 
-                <div class="faq-item">
-                    <div class="faq-question">Can I adjust the volume?</div>
-                    <div class="faq-answer">Yes! Use your device's volume buttons to adjust the sound level.</div>
-                </div>
+          <div id="successMessage" class="success-message">
+            Thank you for your message! We'll get back to you soon.
+          </div>
+          <div id="errorMessage" class="error-message">
+            Oops! Something went wrong. Please try again or email us directly.
+          </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">The app isn't working properly. What should I do?</div>
-                    <div class="faq-answer">Try restarting the app. If issues persist, please contact us using the form below with details about the problem.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Will there be more sounds added?</div>
-                    <div class="faq-answer">We're always working on adding new sounds! Submit your suggestions using the contact form below.</div>
-                </div>
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/maqqlpre"
+            method="POST"
+          >
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required />
             </div>
 
-            <div class="section">
-                <h2>Contact Us</h2>
-                <p style="margin-bottom: 20px; color: #666;">Have a question, suggestion, or found a bug? Let us know!</p>
-                
-                <div id="successMessage" class="success-message">
-                    Thank you for your message! We'll get back to you soon.
-                </div>
-                <div id="errorMessage" class="error-message">
-                    Oops! Something went wrong. Please try again or email us directly.
-                </div>
-
-                <form id="contactForm" action="https://formspree.io/f/maqqlpre" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <input type="text" id="subject" name="subject" required placeholder="e.g., Bug Report, Feature Request, Question">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
-                    </div>
-
-                    <button type="submit" id="submitBtn">Send Message</button>
-                </form>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
             </div>
-        </div>
 
-        <div class="footer">
-            <p><strong>Tasty Jamz</strong></p>
-            <p style="margin-top: 10px;">© 2026 Tasty Jamz. All rights reserved.</p>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                placeholder="e.g., Bug Report, Feature Request, Question"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Tell us what's on your mind..."
+              ></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">Send Message</button>
+          </form>
         </div>
+      </div>
+
+      <div class="footer">
+        <p><strong>Tasty Jamz</strong></p>
+        <p style="margin-top: 10px">© 2026 Tasty Jamz. All rights reserved.</p>
+        <p style="margin-top: 10px">
+          <a href="privacy_policy_page.html">Privacy Policy</a>
+        </p>
+      </div>
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-            
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            const formData = new FormData(e.target);
-            
-            try {
-                const response = await fetch('https://formspree.io/f/maqqlpre', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    successMsg.style.display = 'block';
-                    document.getElementById('contactForm').reset();
-                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                } else {
-                    throw new Error('Failed to submit form');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                errorMsg.style.display = 'block';
-                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submitBtn");
+          const successMsg = document.getElementById("successMessage");
+          const errorMsg = document.getElementById("errorMessage");
+
+          successMsg.style.display = "none";
+          errorMsg.style.display = "none";
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+
+          const formData = new FormData(e.target);
+
+          try {
+            const response = await fetch("https://formspree.io/f/maqqlpre", {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json",
+              },
+            });
+
+            if (response.ok) {
+              successMsg.style.display = "block";
+              document.getElementById("contactForm").reset();
+              successMsg.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+              });
+            } else {
+              throw new Error("Failed to submit form");
             }
+          } catch (error) {
+            console.error("Error:", error);
+            errorMsg.style.display = "block";
+            errorMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Message";
+          }
         });
     </script>
-</body>
+  </body>
 </html>
