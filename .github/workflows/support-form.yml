@@ -16,16 +16,7 @@ jobs:
           script: |
             const payload = context.payload.client_payload;
             
-            const issueBody = `**From:** ${payload.name}
-**Email:** ${payload.email}
-
----
-
-**Message:**
-${payload.message}
-
----
-*This issue was automatically created from the support form.*`;
+            const issueBody = `**From:** ${payload.name}\n**Email:** ${payload.email}\n\n---\n\n**Message:**\n${payload.message}\n\n---\n*This issue was automatically created from the support form.*`;
             
             await github.rest.issues.create({
               owner: context.repo.owner,
