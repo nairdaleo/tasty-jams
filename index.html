@@ -264,11 +264,6 @@
     </div>
 
     <script>
-        // CONFIGURATION - Replace these values with your actual GitHub details
-        const GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME';
-        const GITHUB_REPO = 'YOUR_REPO_NAME';
-        const GITHUB_TOKEN = 'YOUR_GITHUB_PERSONAL_ACCESS_TOKEN';
-
         document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -276,11 +271,9 @@
             const successMsg = document.getElementById('successMessage');
             const errorMsg = document.getElementById('errorMessage');
             
-            // Hide previous messages
             successMsg.style.display = 'none';
             errorMsg.style.display = 'none';
             
-            // Disable submit button
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
@@ -291,34 +284,27 @@
                 message: document.getElementById('message').value
             };
             
-            // Create GitHub issue
-            const issueBody = `**From:** ${formData.name} (${formData.email})
-
-**Message:**
-${formData.message}`;
-            
             try {
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/issues`, {
+                // This triggers the GitHub Action via repository_dispatch
+                const response = await fetch('https://api.github.com/repos/nairdaleo/tasty-jams/dispatches', {
                     method: 'POST',
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json',
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        title: `[Support] ${formData.subject}`,
-                        body: issueBody,
-                        labels: ['support']
+                        event_type: 'support_form_submission',
+                        client_payload: formData
                     })
                 });
                 
-                if (response.ok) {
+                // Note: GitHub API returns 204 No Content on success
+                if (response.status === 204 || response.ok) {
                     successMsg.style.display = 'block';
                     document.getElementById('contactForm').reset();
-                    
-                    // Scroll to success message
                     successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
-                    throw new Error('Failed to create issue');
+                    throw new Error('Failed to submit form');
                 }
             } catch (error) {
                 console.error('Error:', error);
