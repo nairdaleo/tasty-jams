@@ -14,17 +14,17 @@
       --accent: #a78bfa; --font-display: 'Playfair Display', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, sans-serif;
     }
+    :root.light {
+      --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
+      --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
+      --accent: #7c3aed;
+    }
     @media (prefers-color-scheme: light) {
       :root:not(.dark) {
         --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
         --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
         --accent: #7c3aed;
       }
-    }
-    :root.light {
-      --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
-      --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
-      --accent: #7c3aed;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -101,5 +101,9 @@
     </div>
   </footer>
 </div>
+<script>
+  function applyTheme(t){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(t)}
+  const s=localStorage.getItem('tj-theme');if(s==='light')applyTheme('light');else if(s==='dark')applyTheme('dark');
+</script>
 </body>
 </html>

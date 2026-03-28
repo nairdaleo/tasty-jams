@@ -19,8 +19,41 @@
       --text-dim: rgba(255,255,255,0.25);
       --accent: #a78bfa;
       --accent-solid: #7c3aed;
+      --toggle-bg: rgba(255,255,255,0.08);
+      --toggle-hover: rgba(255,255,255,0.14);
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, sans-serif;
+    }
+    :root.light {
+      --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --surface-hover: rgba(0,0,0,0.05);
+      --border: rgba(0,0,0,0.08); --text: #1a1225; --text-muted: rgba(26,18,37,0.55);
+      --text-dim: rgba(26,18,37,0.35); --accent: #7c3aed; --accent-solid: #6d28d9;
+      --toggle-bg: rgba(0,0,0,0.06); --toggle-hover: rgba(0,0,0,0.1);
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) {
+        --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --surface-hover: rgba(0,0,0,0.05);
+        --border: rgba(0,0,0,0.08); --text: #1a1225; --text-muted: rgba(26,18,37,0.55);
+        --text-dim: rgba(26,18,37,0.35); --accent: #7c3aed; --accent-solid: #6d28d9;
+        --toggle-bg: rgba(0,0,0,0.06); --toggle-hover: rgba(0,0,0,0.1);
+      }
+    }
+    .theme-toggle {
+      position: fixed; top: 20px; right: 20px; z-index: 10;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--toggle-bg); border: 1px solid var(--border);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .theme-toggle:hover { background: var(--toggle-hover); transform: scale(1.08); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { position: absolute; transition: opacity 0.3s, transform 0.3s; }
+    .theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+    .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+    :root.light .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+    :root.light .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+      :root:not(.dark) .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -28,6 +61,7 @@
       font-family: var(--font-body);
       background: var(--bg); color: var(--text);
       min-height: 100vh; -webkit-font-smoothing: antialiased;
+      transition: background 0.4s, color 0.3s;
     }
     .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
@@ -141,6 +175,10 @@
   </style>
 </head>
 <body>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <span class="icon-moon">🌙</span>
+  <span class="icon-sun">☀️</span>
+</button>
 <div class="container">
   <nav>
     <a href="../">Tasty Jams</a><span class="sep">/</span><a href="./">Spark</a>
@@ -234,6 +272,12 @@
     } catch { document.getElementById('msgErr').style.display = 'block'; }
     finally { btn.disabled = false; btn.textContent = 'Send message'; }
   });
+</script>
+<script>
+  function getPreferredTheme(){const s=localStorage.getItem('tj-theme');if(s)return s;return window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'}
+  function applyTheme(t){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(t)}
+  function toggleTheme(){const c=document.documentElement.classList.contains('light')?'light':'dark';const n=c==='light'?'dark':'light';applyTheme(n);localStorage.setItem('tj-theme',n)}
+  const i=getPreferredTheme();if(i==='light')applyTheme('light');
 </script>
 </body>
 </html>

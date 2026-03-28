@@ -3,88 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spark – Privacy Policy</title>
+  <title>Spark – Privacy Policy · Tasty Jams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a0318; color: #fff; min-height: 100vh; padding: 40px 20px;
+    :root {
+      --bg: #06010f; --surface: rgba(255,255,255,0.04); --border: rgba(255,255,255,0.08);
+      --text: #f0eef5; --text-muted: rgba(255,255,255,0.45); --text-dim: rgba(255,255,255,0.25);
+      --accent: #a78bfa; --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
     }
-    .container { max-width: 700px; margin: 0 auto; }
-    nav { margin-bottom: 48px; }
-    nav a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9em; }
-    nav a:hover { color: #a78bfa; }
-    nav span { color: rgba(255,255,255,0.2); margin: 0 8px; }
-    h1 { font-size: 2em; font-weight: 800; margin-bottom: 8px; }
-    .updated { color: rgba(255,255,255,0.35); font-size: 0.85em; margin-bottom: 48px; }
-    h2 { font-size: 1em; font-weight: 700; color: #a78bfa;
-         text-transform: uppercase; letter-spacing: 0.08em;
-         margin: 36px 0 12px; }
-    p { color: rgba(255,255,255,0.65); line-height: 1.8; font-size: 0.95em; margin-bottom: 12px; }
-    ul { color: rgba(255,255,255,0.65); line-height: 1.8; font-size: 0.95em;
-         padding-left: 20px; margin-bottom: 12px; }
+    :root.light {
+      --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
+      --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
+      --accent: #7c3aed;
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) {
+        --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
+        --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
+        --accent: #7c3aed;
+      }
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body); background: var(--bg); color: var(--text);
+      min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.4s, color 0.3s;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    nav { padding: 28px 0; font-size: 0.88rem; }
+    nav a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+    nav .sep { color: rgba(255,255,255,0.12); margin: 0 10px; }
+    h1 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .updated { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; }
+    h2 { font-size: 1.05rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; color: var(--accent); }
+    p, ul { font-size: 0.94rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 16px; }
+    ul { padding-left: 20px; }
     li { margin-bottom: 6px; }
-    a { color: #a78bfa; }
-    footer { margin-top: 80px; padding-top: 24px;
-             border-top: 1px solid rgba(255,255,255,0.08);
-             color: rgba(255,255,255,0.25); font-size: 0.85em; }
-    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
-    footer a:hover { color: #a78bfa; }
+    a { color: var(--accent); }
+    footer {
+      padding: 56px 0 40px; margin-top: 40px; border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 20px; }
+    @media (max-width: 480px) { footer { flex-direction: column; text-align: center; } }
   </style>
 </head>
 <body>
 <div class="container">
   <nav>
-    <a href="../../">Tasty Jams</a><span>/</span>
-    <a href="../">Spark</a><span>/</span>
-    <span style="color:rgba(255,255,255,0.6)">Privacy Policy</span>
+    <a href="../">Tasty Jams</a><span class="sep">/</span><a href="./">Spark</a><span class="sep">/</span>Privacy
   </nav>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: March 2026</p>
+  <p class="updated">Last updated: March 28, 2026</p>
 
   <h2>Overview</h2>
-  <p>Spark: ADHD Habit Tracker ("Spark", "we", "us") is developed and operated by Tasty Jams (Adrian Leon), a sole proprietorship based in British Columbia, Canada. We are committed to protecting your privacy. This policy explains what data Spark collects, how it is used, and your rights.</p>
+  <p>Spark: ADHD Habit Tracker ("the App") is developed by Tasty Jams ("we", "us"), a sole proprietorship based in British Columbia, Canada. We are committed to protecting your privacy.</p>
 
   <h2>Data we collect</h2>
-  <p>Spark is designed with privacy first. All habit data — including your habits, completions, streaks, and reminders — is stored <strong>locally on your device only</strong>. We do not collect, transmit, or store your personal habit data on any server.</p>
-  <p>The only data we collect is through Apple's standard App Store infrastructure:</p>
+  <p>All habit data — habits, completions, streaks, and reminders — is stored <strong>locally on your device only</strong>. We do not collect, transmit, or store your personal habit data on any server.</p>
+  <p>The only data we collect is through Apple's standard infrastructure:</p>
   <ul>
-    <li><strong>Purchase and subscription data</strong> — handled entirely by Apple. We receive anonymised purchase confirmation but never your payment details.</li>
-    <li><strong>Crash reports</strong> — if you opt in to share diagnostics with Apple, anonymised crash data may be shared with us via App Store Connect. This contains no personally identifiable information.</li>
-    <li><strong>Support contact</strong> — if you contact us via the support form, we collect the name, email, and message you provide. This is used solely to respond to your inquiry.</li>
+    <li>Purchase and subscription data — handled entirely by Apple. We receive anonymised purchase confirmation but never your payment details.</li>
+    <li>Crash reports — if you opt in to share diagnostics with Apple, anonymised crash data may be shared with us via App Store Connect.</li>
+    <li>Support contact — if you contact us via the support form, we collect the name, email, and message you provide solely to respond to your inquiry.</li>
   </ul>
 
-  <h2>Data we do NOT collect</h2>
+  <h2>What we don't collect</h2>
   <ul>
-    <li>We do not track your habits, completions, or streaks remotely</li>
-    <li>We do not use advertising SDKs or analytics trackers</li>
-    <li>We do not sell your data to any third party</li>
-    <li>We do not access your contacts, camera, photos, or location</li>
-    <li>We do not build profiles or use data for advertising</li>
+    <li>No remote tracking of habits, completions, or streaks</li>
+    <li>No advertising SDKs or analytics trackers</li>
+    <li>No sale of data to third parties</li>
+    <li>No access to contacts, camera, photos, or location</li>
+    <li>No user profiling or advertising data</li>
   </ul>
 
   <h2>Notifications</h2>
-  <p>If you enable reminders, Spark schedules local notifications on your device. No data is sent to any server to deliver these notifications — they are handled entirely by iOS.</p>
+  <p>Reminders are scheduled as local notifications on your device. No data is sent to any server — they are handled entirely by iOS.</p>
 
   <h2>Subscriptions</h2>
-  <p>Spark Pro subscriptions are processed by Apple. We never see or store your payment information. Subscription management, cancellation, and refunds are handled through your Apple ID settings.</p>
+  <p>Spark Pro subscriptions are processed by Apple. We never see or store your payment information. Management, cancellation, and refunds are handled through your Apple ID settings.</p>
 
-  <h2>Apple Watch & Widgets</h2>
+  <h2>Apple Watch &amp; widgets</h2>
   <p>Habit data shared with the Apple Watch app and home screen widget is transferred via iOS App Groups — a secure local communication mechanism on your device. No internet connection is used.</p>
 
   <h2>Children's privacy</h2>
-  <p>Spark is not directed at children under 13 and we do not knowingly collect personal information from children.</p>
+  <p>Spark does not knowingly collect personal information from children under 13. Since no personal data is collected from any user, the App is safe for users of all ages.</p>
 
   <h2>Changes to this policy</h2>
-  <p>We may update this privacy policy from time to time. Changes will be posted at this URL with an updated date. Continued use of Spark after changes constitutes acceptance of the updated policy.</p>
+  <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date.</p>
 
   <h2>Contact</h2>
-  <p>For privacy questions or data requests, contact us at <a href="mailto:support@tastyjams.com">support@tastyjams.com</a> or via the <a href="../">Spark support page</a>.</p>
+  <p>For privacy questions or data requests, contact us at <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.</p>
 
   <footer>
-    <p>© 2026 Tasty Jams · <a href="../">Spark Support</a> · <a href="../../">All apps</a></p>
+    <span>© 2026 Tasty Jams</span>
+    <div class="footer-links">
+      <a href="./">Spark Support</a>
+      <a href="../">All Apps</a>
+      <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>
+    </div>
   </footer>
 </div>
+<script>
+  function applyTheme(t){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(t)}
+  const s=localStorage.getItem('tj-theme');if(s==='light')applyTheme('light');else if(s==='dark')applyTheme('dark');
+</script>
 </body>
 </html>
