@@ -161,6 +161,7 @@
     .card:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-2px); }
     .card:hover::before { opacity: 1; }
     .card-icon { font-size: 3rem; margin-bottom: 16px; position: relative; z-index: 1; }
+    .card-icon img { width: 72px; height: 72px; border-radius: 16px; }
     .card-name {
       font-family: var(--font-display);
       font-size: 1.5rem; font-weight: 700;
@@ -240,7 +241,7 @@
     <section class="apps">
       <a class="card" href="spark/">
         <span class="badge">New</span>
-        <div class="card-icon">⚡️</div>
+        <div class="card-icon"><img src="assets/spark-icon.png" alt="Spark icon" /></div>
         <div class="card-name">Spark</div>
         <p class="card-desc">ADHD habit tracker with forgiving streaks. Missed a day? It dips — it doesn't reset. Dopamine animations, smart reminders, and zero shame.</p>
         <div class="card-links">
@@ -249,14 +250,14 @@
         </div>
       </a>
 
-      <a class="card" href="#">
+      <a class="card" href="tally/">
         <span class="badge coming">Coming Soon</span>
-        <div class="card-icon">🔢</div>
+        <div class="card-icon"><img src="assets/tally-icon.png" alt="Tally icon" /></div>
         <div class="card-name">Tally</div>
         <p class="card-desc">Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist.</p>
         <div class="card-links">
-          <span class="pill" style="opacity:0.5;pointer-events:none">Support</span>
-          <span class="pill" style="opacity:0.5;pointer-events:none">Privacy</span>
+          <span class="pill" onclick="event.stopPropagation(); window.location='tally/'">Support</span>
+          <span class="pill" onclick="event.stopPropagation(); window.location='tally/privacy.html'">Privacy</span>
         </div>
       </a>
 
