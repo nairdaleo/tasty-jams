@@ -196,6 +196,7 @@
       position: relative; z-index: 1;
     }
     .badge.coming { background: rgba(52,211,153,0.1); color: #34d399; border-color: rgba(52,211,153,0.2); }
+    .badge.archived { background: rgba(255,255,255,0.06); color: var(--text-dim); border-color: var(--border); }
 
     footer {
       max-width: 960px; margin: 0 auto;
@@ -262,9 +263,10 @@
       </div>
 
       <div class="card" onclick="window.location='fart-soundboard/'" role="link">
+        <span class="badge archived">Archived</span>
         <div class="card-icon">💨</div>
         <div class="card-name">Fart Soundboard</div>
-        <p class="card-desc">The classic. Maximum hilarity, zero shame. Sometimes the simplest apps bring the most joy.</p>
+        <p class="card-desc">The classic. Maximum hilarity, zero shame. TestFlight only — not on the App Store.</p>
         <div class="card-links">
           <a class="pill" href="fart-soundboard/" onclick="event.stopPropagation()">Support</a>
           <a class="pill" href="fart-soundboard/privacy.html" onclick="event.stopPropagation()">Privacy</a>
