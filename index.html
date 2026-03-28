@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
+    /* Dark palette (default) */
     :root {
       --bg: #06010f;
       --surface: rgba(255,255,255,0.04);
@@ -19,10 +20,53 @@
       --text-muted: rgba(255,255,255,0.4);
       --text-dim: rgba(255,255,255,0.25);
       --accent: #a78bfa;
+      --accent-dark: #7c3aed;
       --accent-glow: rgba(167,139,250,0.12);
+      --glow-color: rgba(124,58,237,0.08);
+      --toggle-bg: rgba(255,255,255,0.08);
+      --toggle-hover: rgba(255,255,255,0.14);
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, sans-serif;
     }
+
+    /* Light palette */
+    :root.light {
+      --bg: #f8f6fc;
+      --surface: rgba(0,0,0,0.025);
+      --surface-hover: rgba(0,0,0,0.05);
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(124,58,237,0.3);
+      --text: #1a1225;
+      --text-muted: rgba(26,18,37,0.55);
+      --text-dim: rgba(26,18,37,0.35);
+      --accent: #7c3aed;
+      --accent-dark: #6d28d9;
+      --accent-glow: rgba(124,58,237,0.06);
+      --glow-color: rgba(124,58,237,0.04);
+      --toggle-bg: rgba(0,0,0,0.06);
+      --toggle-hover: rgba(0,0,0,0.1);
+    }
+
+    /* System preference — auto light mode */
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) {
+        --bg: #f8f6fc;
+        --surface: rgba(0,0,0,0.025);
+        --surface-hover: rgba(0,0,0,0.05);
+        --border: rgba(0,0,0,0.08);
+        --border-hover: rgba(124,58,237,0.3);
+        --text: #1a1225;
+        --text-muted: rgba(26,18,37,0.55);
+        --text-dim: rgba(26,18,37,0.35);
+        --accent: #7c3aed;
+        --accent-dark: #6d28d9;
+        --accent-glow: rgba(124,58,237,0.06);
+        --glow-color: rgba(124,58,237,0.04);
+        --toggle-bg: rgba(0,0,0,0.06);
+        --toggle-hover: rgba(0,0,0,0.1);
+      }
+    }
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -30,17 +74,38 @@
       background: var(--bg); color: var(--text);
       min-height: 100vh; overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.4s, color 0.3s;
     }
 
-    /* Ambient glow behind content */
     .glow {
       position: fixed; top: -40%; left: 50%; transform: translateX(-50%);
       width: 800px; height: 800px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
       pointer-events: none; z-index: 0;
+      transition: background 0.4s;
     }
 
     .page { position: relative; z-index: 1; }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 20px; right: 20px; z-index: 10;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--toggle-bg); border: 1px solid var(--border);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .theme-toggle:hover { background: var(--toggle-hover); border-color: var(--border-hover); transform: scale(1.08); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { position: absolute; transition: opacity 0.3s, transform 0.3s; }
+    .theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+    .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+    :root.light .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+    :root.light .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+      :root:not(.dark) .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    }
 
     /* Header */
     header {
@@ -65,7 +130,6 @@
       font-weight: 400; letter-spacing: 0.01em;
     }
 
-    /* Divider */
     .divider {
       width: 48px; height: 2px; margin: 56px auto;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
@@ -75,8 +139,8 @@
     /* Apps grid */
     .apps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; max-width: 760px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 960px;
       margin: 0 auto; padding: 0 24px;
       animation: fadeUp 0.8s ease 0.15s both;
     }
@@ -96,10 +160,7 @@
     }
     .card:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-2px); }
     .card:hover::before { opacity: 1; }
-    .card-icon {
-      font-size: 3rem; margin-bottom: 16px;
-      position: relative; z-index: 1;
-    }
+    .card-icon { font-size: 3rem; margin-bottom: 16px; position: relative; z-index: 1; }
     .card-name {
       font-family: var(--font-display);
       font-size: 1.5rem; font-weight: 700;
@@ -121,10 +182,10 @@
       color: var(--accent); text-decoration: none;
       border: 1px solid rgba(167,139,250,0.2);
       transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
     }
     .pill:hover { background: rgba(167,139,250,0.2); border-color: rgba(167,139,250,0.4); }
 
-    /* Featured badge */
     .badge {
       display: inline-block; font-size: 0.65rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em;
@@ -133,10 +194,10 @@
       border: 1px solid rgba(167,139,250,0.2);
       position: relative; z-index: 1;
     }
+    .badge.coming { background: rgba(52,211,153,0.1); color: #34d399; border-color: rgba(52,211,153,0.2); }
 
-    /* Footer */
     footer {
-      max-width: 760px; margin: 0 auto;
+      max-width: 960px; margin: 0 auto;
       padding: 80px 24px 48px;
       display: flex; justify-content: space-between;
       align-items: center; flex-wrap: wrap; gap: 12px;
@@ -147,13 +208,11 @@
     footer a:hover { color: var(--accent); }
     .footer-links { display: flex; gap: 20px; }
 
-    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile polish */
     @media (max-width: 480px) {
       header { padding-top: 56px; }
       .apps { gap: 14px; }
@@ -164,6 +223,12 @@
 </head>
 <body>
   <div class="glow" aria-hidden="true"></div>
+
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+    <span class="icon-moon">🌙</span>
+    <span class="icon-sun">☀️</span>
+  </button>
+
   <div class="page">
     <header>
       <h1 class="brand">Tasty <em>Jams</em></h1>
@@ -181,6 +246,17 @@
         <div class="card-links">
           <span class="pill" onclick="event.stopPropagation(); window.location='spark/'">Support</span>
           <span class="pill" onclick="event.stopPropagation(); window.location='spark/privacy.html'">Privacy</span>
+        </div>
+      </a>
+
+      <a class="card" href="#">
+        <span class="badge coming">Coming Soon</span>
+        <div class="card-icon">🔢</div>
+        <div class="card-name">Tally</div>
+        <p class="card-desc">Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist.</p>
+        <div class="card-links">
+          <span class="pill" style="opacity:0.5;pointer-events:none">Support</span>
+          <span class="pill" style="opacity:0.5;pointer-events:none">Privacy</span>
         </div>
       </a>
 
@@ -203,5 +279,26 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('tj-theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function applyTheme(theme) {
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+    }
+    function toggleTheme() {
+      const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem('tj-theme', next);
+    }
+    // Apply on load — runs before paint since script is at bottom
+    const initial = getPreferredTheme();
+    if (initial === 'light') applyTheme('light');
+  </script>
 </body>
 </html>
