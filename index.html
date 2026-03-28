@@ -148,7 +148,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 24px; padding: 32px;
-      text-decoration: none; color: inherit;
+      text-decoration: none; color: inherit; cursor: pointer;
       display: flex; flex-direction: column;
       transition: background 0.3s, border-color 0.3s, transform 0.3s;
       position: relative; overflow: hidden;
@@ -239,37 +239,37 @@
     <div class="divider"></div>
 
     <section class="apps">
-      <a class="card" href="spark/">
+      <div class="card" onclick="window.location='spark/'" role="link">
         <span class="badge">New</span>
         <div class="card-icon"><img src="assets/spark-icon.png" alt="Spark icon" /></div>
         <div class="card-name">Spark</div>
         <p class="card-desc">ADHD habit tracker with forgiving streaks. Missed a day? It dips — it doesn't reset. Dopamine animations, smart reminders, and zero shame.</p>
         <div class="card-links">
-          <span class="pill" onclick="event.stopPropagation(); window.location='spark/'">Support</span>
-          <span class="pill" onclick="event.stopPropagation(); window.location='spark/privacy.html'">Privacy</span>
+          <a class="pill" href="spark/" onclick="event.stopPropagation()">Support</a>
+          <a class="pill" href="spark/privacy.html" onclick="event.stopPropagation()">Privacy</a>
         </div>
-      </a>
+      </div>
 
-      <a class="card" href="tally/">
+      <div class="card" onclick="window.location='tally/'" role="link">
         <span class="badge coming">Coming Soon</span>
         <div class="card-icon"><img src="assets/tally-icon.png" alt="Tally icon" /></div>
         <div class="card-name">Tally</div>
         <p class="card-desc">Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist.</p>
         <div class="card-links">
-          <span class="pill" onclick="event.stopPropagation(); window.location='tally/'">Support</span>
-          <span class="pill" onclick="event.stopPropagation(); window.location='tally/privacy.html'">Privacy</span>
+          <a class="pill" href="tally/" onclick="event.stopPropagation()">Support</a>
+          <a class="pill" href="tally/privacy.html" onclick="event.stopPropagation()">Privacy</a>
         </div>
-      </a>
+      </div>
 
-      <a class="card" href="fart-soundboard/">
+      <div class="card" onclick="window.location='fart-soundboard/'" role="link">
         <div class="card-icon">💨</div>
         <div class="card-name">Fart Soundboard</div>
         <p class="card-desc">The classic. Maximum hilarity, zero shame. Sometimes the simplest apps bring the most joy.</p>
         <div class="card-links">
-          <span class="pill" onclick="event.stopPropagation(); window.location='fart-soundboard/'">Support</span>
-          <span class="pill" onclick="event.stopPropagation(); window.location='fart-soundboard/privacy.html'">Privacy</span>
+          <a class="pill" href="fart-soundboard/" onclick="event.stopPropagation()">Support</a>
+          <a class="pill" href="fart-soundboard/privacy.html" onclick="event.stopPropagation()">Privacy</a>
         </div>
-      </a>
+      </div>
     </section>
 
     <footer>
