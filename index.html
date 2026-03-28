@@ -3,67 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tasty Jams – Apps</title>
+  <title>Tasty Jams – Thoughtful Apps</title>
+  <meta name="description" content="Small, focused apps built with care. From Tasty Jams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #06010f;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(167,139,250,0.35);
+      --text: #f0eef5;
+      --text-muted: rgba(255,255,255,0.4);
+      --text-dim: rgba(255,255,255,0.25);
+      --accent: #a78bfa;
+      --accent-glow: rgba(167,139,250,0.12);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a0318; color: #fff; min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; padding: 60px 20px;
+      font-family: var(--font-body);
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    .logo { font-size: 2em; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
-    .logo span { color: #a78bfa; }
-    .subtitle { color: rgba(255,255,255,0.45); font-size: 0.95em; margin-bottom: 60px; }
-    .apps { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 700px; }
-    .app-card {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px; padding: 28px; width: 300px; text-decoration: none;
-      color: inherit; transition: background 0.2s, border-color 0.2s;
+
+    /* Ambient glow behind content */
+    .glow {
+      position: fixed; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
     }
-    .app-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(167,139,250,0.4); }
-    .app-icon { font-size: 3em; margin-bottom: 14px; }
-    .app-name { font-size: 1.3em; font-weight: 700; margin-bottom: 6px; }
-    .app-desc { color: rgba(255,255,255,0.5); font-size: 0.9em; line-height: 1.5; margin-bottom: 16px; }
-    .app-links { display: flex; gap: 10px; }
-    .app-link {
-      font-size: 0.8em; padding: 5px 12px; border-radius: 20px;
-      background: rgba(167,139,250,0.15); color: #a78bfa;
-      text-decoration: none; border: 1px solid rgba(167,139,250,0.3);
+
+    .page { position: relative; z-index: 1; }
+
+    /* Header */
+    header {
+      padding: 80px 24px 0;
+      text-align: center;
+      animation: fadeUp 0.8s ease both;
     }
-    .app-link:hover { background: rgba(167,139,250,0.3); }
-    footer { margin-top: 80px; color: rgba(255,255,255,0.25); font-size: 0.85em; text-align: center; }
-    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
-    footer a:hover { color: rgba(255,255,255,0.6); }
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.1; margin-bottom: 12px;
+    }
+    .brand em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), #c4b5fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tagline {
+      font-size: 1.05rem; color: var(--text-muted);
+      font-weight: 400; letter-spacing: 0.01em;
+    }
+
+    /* Divider */
+    .divider {
+      width: 48px; height: 2px; margin: 56px auto;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2px; opacity: 0.5;
+    }
+
+    /* Apps grid */
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; max-width: 760px;
+      margin: 0 auto; padding: 0 24px;
+      animation: fadeUp 0.8s ease 0.15s both;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px; padding: 32px;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 20%, var(--accent-glow), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .card:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      font-size: 3rem; margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 8px; position: relative; z-index: 1;
+    }
+    .card-desc {
+      color: var(--text-muted); font-size: 0.92rem;
+      line-height: 1.65; margin-bottom: 20px; flex: 1;
+      position: relative; z-index: 1;
+    }
+    .card-links {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .pill {
+      font-size: 0.78rem; font-weight: 500;
+      padding: 6px 14px; border-radius: 100px;
+      background: rgba(167,139,250,0.1);
+      color: var(--accent); text-decoration: none;
+      border: 1px solid rgba(167,139,250,0.2);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pill:hover { background: rgba(167,139,250,0.2); border-color: rgba(167,139,250,0.4); }
+
+    /* Featured badge */
+    .badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 3px 10px; border-radius: 100px; margin-bottom: 16px;
+      background: rgba(167,139,250,0.12); color: var(--accent);
+      border: 1px solid rgba(167,139,250,0.2);
+      position: relative; z-index: 1;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 760px; margin: 0 auto;
+      padding: 80px 24px 48px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+      font-size: 0.82rem; color: var(--text-dim);
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 20px; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile polish */
+    @media (max-width: 480px) {
+      header { padding-top: 56px; }
+      .apps { gap: 14px; }
+      .card { padding: 24px; }
+      footer { flex-direction: column; text-align: center; gap: 8px; }
+    }
   </style>
 </head>
 <body>
-  <div class="logo">Tasty <span>Jams</span></div>
-  <p class="subtitle">Simple apps made with care</p>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="page">
+    <header>
+      <h1 class="brand">Tasty <em>Jams</em></h1>
+      <p class="tagline">Thoughtful apps, built with care</p>
+    </header>
 
-  <div class="apps">
-    <a class="app-card" href="spark/">
-      <div class="app-icon">⚡️</div>
-      <div class="app-name">Spark</div>
-      <p class="app-desc">ADHD habit tracker. Build routines without the shame spiral. Forgiving streaks, dopamine animations, and smart reminders.</p>
-      <div class="app-links">
-        <a class="app-link" href="spark/">Support</a>
-        <a class="app-link" href="spark/privacy.html">Privacy</a>
-      </div>
-    </a>
+    <div class="divider"></div>
 
-    <a class="app-card" href="fart-soundboard/">
-      <div class="app-icon">💨</div>
-      <div class="app-name">Fart Soundboard</div>
-      <p class="app-desc">The classic. Maximum hilarity, zero shame.</p>
-      <div class="app-links">
-        <a class="app-link" href="fart-soundboard/">Support</a>
-        <a class="app-link" href="fart-soundboard/privacy.html">Privacy</a>
+    <section class="apps">
+      <a class="card" href="spark/">
+        <span class="badge">New</span>
+        <div class="card-icon">⚡️</div>
+        <div class="card-name">Spark</div>
+        <p class="card-desc">ADHD habit tracker with forgiving streaks. Missed a day? It dips — it doesn't reset. Dopamine animations, smart reminders, and zero shame.</p>
+        <div class="card-links">
+          <span class="pill" onclick="event.stopPropagation(); window.location='spark/'">Support</span>
+          <span class="pill" onclick="event.stopPropagation(); window.location='spark/privacy.html'">Privacy</span>
+        </div>
+      </a>
+
+      <a class="card" href="fart-soundboard/">
+        <div class="card-icon">💨</div>
+        <div class="card-name">Fart Soundboard</div>
+        <p class="card-desc">The classic. Maximum hilarity, zero shame. Sometimes the simplest apps bring the most joy.</p>
+        <div class="card-links">
+          <span class="pill" onclick="event.stopPropagation(); window.location='fart-soundboard/'">Support</span>
+          <span class="pill" onclick="event.stopPropagation(); window.location='fart-soundboard/privacy.html'">Privacy</span>
+        </div>
+      </a>
+    </section>
+
+    <footer>
+      <span>© 2026 Tasty Jams</span>
+      <div class="footer-links">
+        <a href="mailto:support@tastyjam.ca">Contact</a>
+        <a href="spark/privacy.html">Privacy</a>
       </div>
-    </a>
+    </footer>
   </div>
-
-  <footer>
-    <p>© 2026 Tasty Jams · <a href="mailto:support@tastyjams.com">support@tastyjams.com</a></p>
-  </footer>
 </body>
 </html>

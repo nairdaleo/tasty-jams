@@ -3,76 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spark – Support</title>
+  <title>Spark – Support · Tasty Jams</title>
+  <meta name="description" content="Get help with Spark, the ADHD habit tracker with forgiving streaks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #06010f;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.08);
+      --text: #f0eef5;
+      --text-muted: rgba(255,255,255,0.45);
+      --text-dim: rgba(255,255,255,0.25);
+      --accent: #a78bfa;
+      --accent-solid: #7c3aed;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a0318; color: #fff; min-height: 100vh; padding: 40px 20px;
+      font-family: var(--font-body);
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 700px; margin: 0 auto; }
-    nav { margin-bottom: 48px; }
-    nav a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9em; }
-    nav a:hover { color: #a78bfa; }
-    nav span { color: rgba(255,255,255,0.2); margin: 0 8px; }
-    .header { margin-bottom: 48px; }
-    .icon { font-size: 4em; margin-bottom: 16px; }
-    h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
-    .tagline { color: rgba(255,255,255,0.5); font-size: 1em; }
-    .section { margin-bottom: 48px; }
-    h2 { font-size: 1.1em; font-weight: 700; color: #a78bfa;
-         text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      padding: 28px 0; font-size: 0.88rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    nav a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+    nav .sep { color: rgba(255,255,255,0.12); margin: 0 10px; }
+
+    /* Header */
+    .header {
+      padding: 24px 0 56px;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .header-icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800; margin-bottom: 8px;
+    }
+    .header .tagline {
+      font-size: 1.05rem; color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 56px; animation: fadeUp 0.7s ease 0.2s both; }
+    .section-title {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 20px;
+    }
+
+    /* FAQ */
     .faq-item {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 20px; margin-bottom: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px; margin-bottom: 10px;
+      transition: border-color 0.2s;
     }
-    .faq-q { font-weight: 600; margin-bottom: 8px; }
-    .faq-a { color: rgba(255,255,255,0.55); line-height: 1.6; font-size: 0.95em; }
+    .faq-item:hover { border-color: rgba(167,139,250,0.2); }
+    .faq-q { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: var(--text-muted); line-height: 1.7; font-size: 0.9rem; }
+
+    /* Form */
     .form-group { margin-bottom: 16px; }
-    label { display: block; margin-bottom: 6px; font-size: 0.9em; color: rgba(255,255,255,0.6); }
-    input, textarea, select {
-      width: 100%; padding: 12px 14px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px; color: #fff; font-size: 0.95em; font-family: inherit;
+    label {
+      display: block; margin-bottom: 6px;
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--text-muted);
     }
-    input:focus, textarea:focus { outline: none; border-color: #a78bfa; }
+    input, textarea, select {
+      width: 100%; padding: 13px 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; color: var(--text);
+      font-size: 0.92rem; font-family: var(--font-body);
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--accent);
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
     textarea { min-height: 140px; resize: vertical; }
+    select { cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a78bfa' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+    }
+    select option { background: #1a0d2e; color: var(--text); }
     button {
-      background: #7c3aed; color: #fff; border: none;
-      padding: 14px 32px; border-radius: 12px; font-size: 1em;
-      font-weight: 600; cursor: pointer; width: 100%; transition: background 0.2s;
+      background: var(--accent-solid); color: #fff; border: none;
+      padding: 14px 32px; border-radius: 12px; font-size: 0.95rem;
+      font-weight: 600; font-family: var(--font-body);
+      cursor: pointer; width: 100%;
+      transition: background 0.2s, transform 0.1s;
     }
     button:hover { background: #6d28d9; }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
-    .msg { padding: 14px; border-radius: 10px; margin-bottom: 16px; display: none; font-size: 0.9em; }
-    .msg-ok { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
-    .msg-err { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-    footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
-             color: rgba(255,255,255,0.25); font-size: 0.85em; display: flex;
-             justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
-    footer a:hover { color: #a78bfa; }
+    button:active { transform: scale(0.99); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .msg {
+      padding: 14px 18px; border-radius: 12px;
+      margin-bottom: 16px; display: none;
+      font-size: 0.88rem; font-weight: 500;
+    }
+    .msg-ok { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.2); }
+    .msg-err { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+
+    /* Footer */
+    footer {
+      padding: 56px 0 40px; margin-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: var(--text-dim);
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      animation: fadeUp 0.7s ease 0.3s both;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 20px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 18px; }
+      footer { flex-direction: column; text-align: center; gap: 8px; }
+    }
   </style>
 </head>
 <body>
 <div class="container">
-  <nav><a href="../">Tasty Jams</a><span>/</span><a href="./">Spark</a></nav>
+  <nav>
+    <a href="../">Tasty Jams</a><span class="sep">/</span><a href="./">Spark</a>
+  </nav>
 
   <div class="header">
-    <div class="icon">⚡️</div>
+    <div class="header-icon">⚡️</div>
     <h1>Spark</h1>
     <p class="tagline">ADHD Habit Tracker — Build routines without the shame spiral</p>
   </div>
 
   <div class="section">
-    <h2>Frequently asked questions</h2>
+    <h2 class="section-title">Frequently Asked Questions</h2>
     <div class="faq-item">
       <div class="faq-q">What is Spark Pro?</div>
-      <div class="faq-a">Spark Pro unlocks unlimited habits, detailed stats & insights, home screen widgets, Apple Watch complications, Siri shortcuts, and custom app icons. Free users can track up to 3 habits forever.</div>
+      <div class="faq-a">Spark Pro unlocks unlimited habits, detailed stats &amp; insights, home screen widgets, Siri shortcuts, PDF/CSV export, and custom app icons. Free users can track up to 3 habits forever.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How do forgiving streaks work?</div>
-      <div class="faq-a">Missing a day dips your streak health — it never resets to zero. Come back the next day and it starts recovering. We believe momentum matters more than perfection.</div>
+      <div class="faq-a">Missing a day dips your streak health — it never resets to zero. Come back the next day and it starts recovering. Momentum matters more than perfection.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How do I restore my Pro subscription?</div>
@@ -80,22 +168,22 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">How do I cancel my subscription?</div>
-      <div class="faq-a">Open Settings → Apple ID → Subscriptions → Spark. You can cancel anytime. Your Pro access continues until the end of the current billing period.</div>
+      <div class="faq-a">Open Settings → Apple ID → Subscriptions → Spark. You can cancel anytime. Pro access continues until the end of your current billing period.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Is my data backed up?</div>
-      <div class="faq-a">Habit data is stored locally on your device. We recommend keeping iCloud device backup enabled in your iOS settings to protect your data.</div>
+      <div class="faq-a">Habit data is stored locally on your device. Keep iCloud device backup enabled in your iOS settings to protect your data.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">The app is crashing. What should I do?</div>
-      <div class="faq-a">Try force-quitting and reopening the app. If the issue persists, check for an update in the App Store. Still having trouble? Contact us below with your device model and iOS version.</div>
+      <div class="faq-a">Force-quit and reopen the app. If the issue persists, check for an update in the App Store. Still stuck? Contact us below with your device model and iOS version.</div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Contact support</h2>
+    <h2 class="section-title">Contact Support</h2>
     <div id="msgOk" class="msg msg-ok">Message sent — we'll get back to you within 48 hours.</div>
-    <div id="msgErr" class="msg msg-err">Something went wrong. Please email us directly at support@tastyjams.com</div>
+    <div id="msgErr" class="msg msg-err">Something went wrong. Please email us directly at support@tastyjam.ca</div>
     <form id="form" action="https://formspree.io/f/maqqlpre" method="POST">
       <input type="hidden" name="app" value="Spark" />
       <div class="form-group">
@@ -125,11 +213,11 @@
 
   <footer>
     <span>© 2026 Tasty Jams</span>
-    <span>
-      <a href="privacy.html">Privacy Policy</a> ·
-      <a href="../">All apps</a> ·
-      <a href="mailto:support@tastyjams.com">support@tastyjams.com</a>
-    </span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="../">All Apps</a>
+      <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>
+    </div>
   </footer>
 </div>
 <script>
