@@ -93,16 +93,16 @@ function injectNav() {
   const page = el.dataset.page;
 
   const apps = {
-    spark:             { name: 'Spark',           path: '/spark/' },
-    tally:             { name: 'Tally',           path: '/tally/' },
+    spark: { name: 'Spark', path: '/spark/' },
+    tally: { name: 'Tally', path: '/tally/' },
     'fart-soundboard': { name: 'Fart Soundboard', path: '/fart-soundboard/' }
   };
   const pageLabels = { support: null, privacy: 'Privacy', terms: 'Terms' };
 
   // Legal links available for this app
   const legalLinks = {
-    spark:             [{ href: '/spark/privacy.html', text: 'Privacy' }],
-    tally:             [{ href: '/tally/privacy.html', text: 'Privacy' }, { href: '/tally/terms.html', text: 'Terms' }],
+    spark: [{ href: '/spark/privacy.html', text: 'Privacy' }, { href: '/spark/terms.html', text: 'Terms' }],
+    tally: [{ href: '/tally/privacy.html', text: 'Privacy' }, { href: '/tally/terms.html', text: 'Terms' }],
     'fart-soundboard': [{ href: '/fart-soundboard/privacy.html', text: 'Privacy' }]
   };
 
