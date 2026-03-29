@@ -1,112 +1,237 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fart Soundboard – Privacy Policy · Tasty Jams</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #06010f; --surface: rgba(255,255,255,0.04); --border: rgba(255,255,255,0.08);
-      --text: #f0eef5; --text-muted: rgba(255,255,255,0.45); --text-dim: rgba(255,255,255,0.25);
-      --accent: #a78bfa; --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'DM Sans', -apple-system, sans-serif;
-    }
-    :root.light {
-      --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
-      --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
-      --accent: #7c3aed;
-    }
-    @media (prefers-color-scheme: light) {
-      :root:not(.dark) {
-        --bg: #f8f6fc; --surface: rgba(0,0,0,0.025); --border: rgba(0,0,0,0.08);
-        --text: #1a1225; --text-muted: rgba(26,18,37,0.55); --text-dim: rgba(26,18,37,0.35);
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32.png"
+    />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fart Soundboard – Privacy Policy · Tasty Jam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #06010f;
+        --surface: rgba(255, 255, 255, 0.04);
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #f0eef5;
+        --text-muted: rgba(255, 255, 255, 0.45);
+        --text-dim: rgba(255, 255, 255, 0.25);
+        --accent: #a78bfa;
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-body: "DM Sans", -apple-system, sans-serif;
+      }
+      :root.light {
+        --bg: #f8f6fc;
+        --surface: rgba(0, 0, 0, 0.025);
+        --border: rgba(0, 0, 0, 0.08);
+        --text: #1a1225;
+        --text-muted: rgba(26, 18, 37, 0.55);
+        --text-dim: rgba(26, 18, 37, 0.35);
         --accent: #7c3aed;
       }
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-body); background: var(--bg); color: var(--text);
-      min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.4s, color 0.3s;
-    }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    nav { padding: 28px 0; font-size: 0.88rem; }
-    nav a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    nav a:hover { color: var(--accent); }
-    nav .sep { color: rgba(255,255,255,0.12); margin: 0 10px; }
-    h1 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    .updated { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; }
-    h2 { font-size: 1.05rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; color: var(--accent); }
-    p, ul { font-size: 0.94rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 16px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 6px; }
-    a { color: var(--accent); }
-    footer {
-      padding: 56px 0 40px; margin-top: 40px; border-top: 1px solid var(--border);
-      font-size: 0.82rem; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    }
-    footer a { color: var(--text-dim); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
-    .footer-links { display: flex; gap: 20px; }
-    @media (max-width: 480px) { footer { flex-direction: column; text-align: center; } }
-  </style>
-</head>
-<body>
-<div class="container">
-  <nav>
-    <a href="../">Tasty Jams</a><span class="sep">/</span><a href="./">Fart Soundboard</a><span class="sep">/</span>Privacy
-  </nav>
+      @media (prefers-color-scheme: light) {
+        :root:not(.dark) {
+          --bg: #f8f6fc;
+          --surface: rgba(0, 0, 0, 0.025);
+          --border: rgba(0, 0, 0, 0.08);
+          --text: #1a1225;
+          --text-muted: rgba(26, 18, 37, 0.55);
+          --text-dim: rgba(26, 18, 37, 0.35);
+          --accent: #7c3aed;
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        transition:
+          background 0.4s,
+          color 0.3s;
+      }
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      nav {
+        padding: 28px 0;
+        font-size: 0.88rem;
+      }
+      nav a {
+        color: var(--text-dim);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      nav a:hover {
+        color: var(--accent);
+      }
+      nav .sep {
+        color: rgba(255, 255, 255, 0.12);
+        margin: 0 10px;
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .updated {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 40px;
+      }
+      h2 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-top: 36px;
+        margin-bottom: 12px;
+        color: var(--accent);
+      }
+      p,
+      ul {
+        font-size: 0.94rem;
+        line-height: 1.75;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 6px;
+      }
+      a {
+        color: var(--accent);
+      }
+      footer {
+        padding: 56px 0 40px;
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer a {
+        color: var(--text-dim);
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: var(--accent);
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+      }
+      @media (max-width: 480px) {
+        footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a href="../">Tasty Jam</a><span class="sep">/</span
+        ><a href="./">Fart Soundboard</a><span class="sep">/</span>Privacy
+      </nav>
 
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: March 28, 2026</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: March 28, 2026</p>
 
-  <h2>Overview</h2>
-  <p>Fart Soundboard ("the App") is developed by Tasty Jams ("we", "us"). This policy explains what data the App collects and how it is used.</p>
+      <h2>Overview</h2>
+      <p>
+        Fart Soundboard ("the App") is developed by Tasty Jam ("we", "us"). This
+        policy explains what data the App collects and how it is used.
+      </p>
 
-  <h2>Data collection</h2>
-  <p>Fart Soundboard does <strong>not</strong> collect, transmit, or store any personal data. The app runs entirely on your device with no network communication.</p>
+      <h2>Data collection</h2>
+      <p>
+        Fart Soundboard does <strong>not</strong> collect, transmit, or store
+        any personal data. The app runs entirely on your device with no network
+        communication.
+      </p>
 
-  <h2>What we don't collect</h2>
-  <ul>
-    <li>No personal information (name, email, phone number)</li>
-    <li>No usage analytics or tracking</li>
-    <li>No advertising identifiers</li>
-    <li>No location data</li>
-    <li>No microphone or camera access</li>
-  </ul>
+      <h2>What we don't collect</h2>
+      <ul>
+        <li>No personal information (name, email, phone number)</li>
+        <li>No usage analytics or tracking</li>
+        <li>No advertising identifiers</li>
+        <li>No location data</li>
+        <li>No microphone or camera access</li>
+      </ul>
 
-  <h2>Third-party services</h2>
-  <p>The App does not integrate any third-party analytics, advertising, or tracking services.</p>
+      <h2>Third-party services</h2>
+      <p>
+        The App does not integrate any third-party analytics, advertising, or
+        tracking services.
+      </p>
 
-  <h2>Distribution</h2>
-  <p>Fart Soundboard is distributed exclusively via Apple TestFlight. It is not available on the public App Store. TestFlight distribution is governed by Apple's TestFlight terms and privacy policy.</p>
+      <h2>Distribution</h2>
+      <p>
+        Fart Soundboard is distributed exclusively via Apple TestFlight. It is
+        not available on the public App Store. TestFlight distribution is
+        governed by Apple's TestFlight terms and privacy policy.
+      </p>
 
-  <h2>Children's privacy</h2>
-  <p>The App does not collect personal information from any user, including children under 13. It is safe for users of all ages.</p>
+      <h2>Children's privacy</h2>
+      <p>
+        The App does not collect personal information from any user, including
+        children under 13. It is safe for users of all ages.
+      </p>
 
-  <h2>Changes to this policy</h2>
-  <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date.</p>
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this privacy policy from time to time. Changes will be
+        posted on this page with an updated "Last updated" date.
+      </p>
 
-  <h2>Contact</h2>
-  <p>If you have questions about this privacy policy, contact us at <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.</p>
+      <h2>Contact</h2>
+      <p>
+        If you have questions about this privacy policy, contact us at
+        <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.
+      </p>
 
-  <footer>
-    <span>© 2026 Tasty Jams</span>
-    <div class="footer-links">
-      <a href="./">Fart Soundboard Support</a>
-      <a href="../">All Apps</a>
-      <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>
+      <footer>
+        <span>© 2026 Tasty Jam</span>
+        <div class="footer-links">
+          <a href="./">Fart Soundboard Support</a>
+          <a href="../">All Apps</a>
+          <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>
+        </div>
+      </footer>
     </div>
-  </footer>
-</div>
-<script>
-  function applyTheme(t){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(t)}
-  const s=localStorage.getItem('tj-theme');if(s==='light')applyTheme('light');else if(s==='dark')applyTheme('dark');
-</script>
-</body>
+    <script>
+      function applyTheme(t) {
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(t);
+      }
+      const s = localStorage.getItem("tj-theme");
+      if (s === "light") applyTheme("light");
+      else if (s === "dark") applyTheme("dark");
+    </script>
+  </body>
 </html>
