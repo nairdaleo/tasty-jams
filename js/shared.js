@@ -81,9 +81,55 @@ function initContactForm(formId, endpoint) {
   });
 }
 
+// --- Nav ---
+// Builds breadcrumb + legal links from data attributes.
+// Usage: <nav id="tj-nav" data-app="spark" data-page="support"></nav>
+// data-app: spark | tally | fart-soundboard (omit for landing page)
+// data-page: support | privacy | terms (omit for landing page)
+function injectNav() {
+  const el = document.getElementById('tj-nav');
+  if (!el) return;
+  const app = el.dataset.app;
+  const page = el.dataset.page;
+
+  const apps = {
+    spark:             { name: 'Spark',           path: '/spark/' },
+    tally:             { name: 'Tally',           path: '/tally/' },
+    'fart-soundboard': { name: 'Fart Soundboard', path: '/fart-soundboard/' }
+  };
+  const pageLabels = { support: null, privacy: 'Privacy', terms: 'Terms' };
+
+  // Legal links available for this app
+  const legalLinks = {
+    spark:             [{ href: '/spark/privacy.html', text: 'Privacy' }],
+    tally:             [{ href: '/tally/privacy.html', text: 'Privacy' }, { href: '/tally/terms.html', text: 'Terms' }],
+    'fart-soundboard': [{ href: '/fart-soundboard/privacy.html', text: 'Privacy' }]
+  };
+
+  let crumbs = '<a href="/">Tasty Jams</a>';
+  if (app && apps[app]) {
+    crumbs += `<span class="sep">/</span><a href="${apps[app].path}">${apps[app].name}</a>`;
+    const label = pageLabels[page];
+    if (label) crumbs += `<span class="sep">/</span>${label}`;
+  }
+
+  // Legal pill links (skip the current page)
+  let pills = '';
+  if (app && legalLinks[app]) {
+    const currentPath = window.location.pathname;
+    const links = legalLinks[app].filter(l => !currentPath.endsWith(l.href.split('/').pop()));
+    if (links.length) {
+      pills = '<span class="nav-legal">' + links.map(l => `<a class="pill" href="${l.href}">${l.text}</a>`).join('') + '</span>';
+    }
+  }
+
+  el.innerHTML = `<div class="nav-crumbs">${crumbs}</div>${pills}`;
+}
+
 // --- Auto-init on DOMContentLoaded ---
 document.addEventListener('DOMContentLoaded', () => {
   injectThemeToggle();
+  injectNav();
   injectFooter();
   // Auto-init contact form if present
   const form = document.getElementById('contact-form');
