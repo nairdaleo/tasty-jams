@@ -1,522 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../assets/favicon-32.png"
-    />
-    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" href="../favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fart Soundboard – Support · Tasty Jam</title>
-    <meta
-      name="description"
-      content="Support page for Fart Soundboard by Tasty Jam."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #06010f;
-        --surface: rgba(255, 255, 255, 0.04);
-        --border: rgba(255, 255, 255, 0.08);
-        --text: #f0eef5;
-        --text-muted: rgba(255, 255, 255, 0.45);
-        --text-dim: rgba(255, 255, 255, 0.25);
-        --accent: #a78bfa;
-        --accent-solid: #7c3aed;
-        --toggle-bg: rgba(255, 255, 255, 0.08);
-        --toggle-hover: rgba(255, 255, 255, 0.14);
-        --font-display: "Playfair Display", Georgia, serif;
-        --font-body: "DM Sans", -apple-system, sans-serif;
-      }
-      :root.light {
-        --bg: #f8f6fc;
-        --surface: rgba(0, 0, 0, 0.025);
-        --border: rgba(0, 0, 0, 0.08);
-        --text: #1a1225;
-        --text-muted: rgba(26, 18, 37, 0.55);
-        --text-dim: rgba(26, 18, 37, 0.35);
-        --accent: #7c3aed;
-        --accent-solid: #6d28d9;
-        --toggle-bg: rgba(0, 0, 0, 0.06);
-        --toggle-hover: rgba(0, 0, 0, 0.1);
-      }
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark) {
-          --bg: #f8f6fc;
-          --surface: rgba(0, 0, 0, 0.025);
-          --border: rgba(0, 0, 0, 0.08);
-          --text: #1a1225;
-          --text-muted: rgba(26, 18, 37, 0.55);
-          --text-dim: rgba(26, 18, 37, 0.35);
-          --accent: #7c3aed;
-          --accent-solid: #6d28d9;
-          --toggle-bg: rgba(0, 0, 0, 0.06);
-          --toggle-hover: rgba(0, 0, 0, 0.1);
-        }
-      }
-      .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 10;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: var(--toggle-bg);
-        border: 1px solid var(--border);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-        transition:
-          background 0.2s,
-          border-color 0.2s,
-          transform 0.2s;
-      }
-      .theme-toggle:hover {
-        background: var(--toggle-hover);
-        transform: scale(1.08);
-      }
-      .theme-toggle .icon-sun,
-      .theme-toggle .icon-moon {
-        position: absolute;
-        transition:
-          opacity 0.3s,
-          transform 0.3s;
-      }
-      .theme-toggle .icon-sun {
-        opacity: 0;
-        transform: rotate(-90deg) scale(0.5);
-      }
-      .theme-toggle .icon-moon {
-        opacity: 1;
-        transform: rotate(0) scale(1);
-      }
-      :root.light .theme-toggle .icon-sun {
-        opacity: 1;
-        transform: rotate(0) scale(1);
-      }
-      :root.light .theme-toggle .icon-moon {
-        opacity: 0;
-        transform: rotate(90deg) scale(0.5);
-      }
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark) .theme-toggle .icon-sun {
-          opacity: 1;
-          transform: rotate(0) scale(1);
-        }
-        :root:not(.dark) .theme-toggle .icon-moon {
-          opacity: 0;
-          transform: rotate(90deg) scale(0.5);
-        }
-      }
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: var(--font-body);
-        background: var(--bg);
-        color: var(--text);
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
-        transition:
-          background 0.4s,
-          color 0.3s;
-      }
-      .container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-      nav {
-        padding: 28px 0;
-        font-size: 0.88rem;
-        animation: fadeUp 0.6s ease both;
-      }
-      nav a {
-        color: var(--text-dim);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      nav a:hover {
-        color: var(--accent);
-      }
-      nav .sep {
-        color: rgba(255, 255, 255, 0.12);
-        margin: 0 10px;
-      }
-      .header {
-        padding: 24px 0 56px;
-        animation: fadeUp 0.7s ease 0.1s both;
-      }
-      .header-icon {
-        font-size: 3.5rem;
-        margin-bottom: 16px;
-      }
-      .header h1 {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 5vw, 2.8rem);
-        font-weight: 800;
-        margin-bottom: 8px;
-      }
-      .header .tagline {
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        font-weight: 400;
-      }
-      .badge {
-        display: inline-block;
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        padding: 3px 10px;
-        border-radius: 100px;
-        margin-bottom: 12px;
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text-dim);
-        border: 1px solid var(--border);
-      }
-      .section {
-        margin-bottom: 56px;
-        animation: fadeUp 0.7s ease 0.2s both;
-      }
-      .section-title {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        margin-bottom: 20px;
-      }
-      .faq-item {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 22px 24px;
-        margin-bottom: 10px;
-        transition: border-color 0.2s;
-      }
-      .faq-item:hover {
-        border-color: rgba(167, 139, 250, 0.2);
-      }
-      .faq-q {
-        font-weight: 700;
-        font-size: 0.95rem;
-        margin-bottom: 8px;
-      }
-      .faq-a {
-        color: var(--text-muted);
-        line-height: 1.7;
-        font-size: 0.9rem;
-      }
-      .form-group {
-        margin-bottom: 16px;
-      }
-      label {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text-muted);
-      }
-      input,
-      textarea,
-      select {
-        width: 100%;
-        padding: 13px 16px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        color: var(--text);
-        font-size: 0.92rem;
-        font-family: var(--font-body);
-        transition: border-color 0.2s;
-      }
-      input:focus,
-      textarea:focus,
-      select:focus {
-        outline: none;
-        border-color: var(--accent);
-      }
-      input::placeholder,
-      textarea::placeholder {
-        color: rgba(255, 255, 255, 0.2);
-      }
-      textarea {
-        min-height: 140px;
-        resize: vertical;
-      }
-      select {
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a78bfa' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 16px center;
-      }
-      select option {
-        background: #1a0d2e;
-        color: var(--text);
-      }
-      button {
-        background: var(--accent-solid);
-        color: #fff;
-        border: none;
-        padding: 14px 32px;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        font-family: var(--font-body);
-        cursor: pointer;
-        width: 100%;
-        transition:
-          background 0.2s,
-          transform 0.1s;
-      }
-      button:hover {
-        background: #6d28d9;
-      }
-      button:active {
-        transform: scale(0.99);
-      }
-      button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-      .msg {
-        padding: 14px 18px;
-        border-radius: 12px;
-        margin-bottom: 16px;
-        display: none;
-        font-size: 0.88rem;
-        font-weight: 500;
-      }
-      .msg-ok {
-        background: rgba(52, 211, 153, 0.1);
-        color: #34d399;
-        border: 1px solid rgba(52, 211, 153, 0.2);
-      }
-      .msg-err {
-        background: rgba(239, 68, 68, 0.1);
-        color: #f87171;
-        border: 1px solid rgba(239, 68, 68, 0.2);
-      }
-      footer {
-        padding: 56px 0 40px;
-        margin-top: 24px;
-        border-top: 1px solid var(--border);
-        font-size: 0.82rem;
-        color: var(--text-dim);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
-        animation: fadeUp 0.7s ease 0.3s both;
-      }
-      footer a {
-        color: var(--text-dim);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      footer a:hover {
-        color: var(--accent);
-      }
-      .footer-links {
-        display: flex;
-        gap: 20px;
-      }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @media (max-width: 480px) {
-        .container {
-          padding: 0 18px;
-        }
-        footer {
-          flex-direction: column;
-          text-align: center;
-          gap: 8px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <button
-      class="theme-toggle"
-      onclick="toggleTheme()"
-      aria-label="Toggle light/dark mode"
-    >
-      <span class="icon-moon">🌙</span>
-      <span class="icon-sun">☀️</span>
-    </button>
-    <div class="container">
-      <nav>
-        <a href="../">Tasty Jam</a><span class="sep">/</span
-        ><a href="./">Fart Soundboard</a>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fart Soundboard – Support · Tasty Jams</title>
+  <meta name="description" content="Support page for Fart Soundboard by Tasty Jams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/shared.css" />
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="/">Tasty Jams</a><span class="sep">/</span><a href="/fart-soundboard/">Fart Soundboard</a>
+  </nav>
 
-      <div class="header">
-        <span class="badge">Archived — TestFlight Only</span>
-        <div class="header-icon">💨</div>
-        <h1>Fart Soundboard</h1>
-        <p class="tagline">The classic. Maximum hilarity, zero shame.</p>
-      </div>
+  <div class="header">
+    <span class="badge archived">Archived — TestFlight Only</span>
+    <div class="header-icon">💨</div>
+    <h1>Fart Soundboard</h1>
+    <p class="tagline">The classic. Maximum hilarity, zero shame.</p>
+  </div>
 
-      <div class="section">
-        <h2 class="section-title">About This App</h2>
-        <div class="faq-item">
-          <div class="faq-q">
-            Is Fart Soundboard available on the App Store?
-          </div>
-          <div class="faq-a">
-            Fart Soundboard is no longer available on the App Store. It's
-            distributed exclusively via TestFlight to friends and family. If
-            you'd like access, reach out to us below.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How do I get TestFlight access?</div>
-          <div class="faq-a">
-            Contact us using the form below with your Apple ID email, and we'll
-            send you an invite via TestFlight.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Will the app continue to receive updates?</div>
-          <div class="faq-a">
-            The app is in maintenance mode. We'll fix critical bugs but aren't
-            planning new features.
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">Contact</h2>
-        <div id="msgOk" class="msg msg-ok">
-          Message sent — we'll get back to you within 48 hours.
-        </div>
-        <div id="msgErr" class="msg msg-err">
-          Something went wrong. Please email us directly at support@tastyjam.ca
-        </div>
-        <form id="form" action="https://formspree.io/f/maqqlpre" method="POST">
-          <input type="hidden" name="app" value="Fart Soundboard" />
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="Your name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-            />
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <select id="subject" name="subject">
-              <option>TestFlight access request</option>
-              <option>Bug report</option>
-              <option>General question</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              placeholder="Describe your issue or question..."
-            ></textarea>
-          </div>
-          <button type="submit" id="btn">Send message</button>
-        </form>
-      </div>
-
-      <footer>
-        <span>© 2026 Tasty Jam</span>
-        <div class="footer-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="../">All Apps</a>
-          <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>
-        </div>
-      </footer>
+  <div class="section">
+    <h2 class="section-title">About This App</h2>
+    <div class="faq-item">
+      <div class="faq-q">Is Fart Soundboard available on the App Store?</div>
+      <div class="faq-a">Fart Soundboard is no longer available on the App Store. It's distributed exclusively via TestFlight to friends and family. If you'd like access, reach out to us below.</div>
     </div>
-    <script>
-      document.getElementById("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById("btn");
-        btn.disabled = true;
-        btn.textContent = "Sending…";
-        try {
-          const r = await fetch("https://formspree.io/f/maqqlpre", {
-            method: "POST",
-            body: new FormData(e.target),
-            headers: { Accept: "application/json" },
-          });
-          if (r.ok) {
-            document.getElementById("msgOk").style.display = "block";
-            e.target.reset();
-          } else throw new Error();
-        } catch {
-          document.getElementById("msgErr").style.display = "block";
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "Send message";
-        }
-      });
-    </script>
-    <script>
-      function getPreferredTheme() {
-        const s = localStorage.getItem("tj-theme");
-        if (s) return s;
-        return window.matchMedia("(prefers-color-scheme:light)").matches
-          ? "light"
-          : "dark";
-      }
-      function applyTheme(t) {
-        document.documentElement.classList.remove("light", "dark");
-        document.documentElement.classList.add(t);
-      }
-      function toggleTheme() {
-        const c = document.documentElement.classList.contains("light")
-          ? "light"
-          : "dark";
-        const n = c === "light" ? "dark" : "light";
-        applyTheme(n);
-        localStorage.setItem("tj-theme", n);
-      }
-      const i = getPreferredTheme();
-      if (i === "light") applyTheme("light");
-    </script>
-  </body>
+    <div class="faq-item">
+      <div class="faq-q">How do I get TestFlight access?</div>
+      <div class="faq-a">Contact us using the form below with your Apple ID email, and we'll send you an invite via TestFlight.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the app continue to receive updates?</div>
+      <div class="faq-a">The app is in maintenance mode. We'll fix critical bugs but aren't planning new features.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Contact</h2>
+    <div id="msgOk" class="msg msg-ok">Message sent — we'll get back to you within 48 hours.</div>
+    <div id="msgErr" class="msg msg-err">Something went wrong. Please email us directly at support@tastyjam.ca</div>
+    <form id="contact-form" method="POST">
+      <input type="hidden" name="app" value="Fart Soundboard" />
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject">
+          <option>TestFlight access request</option>
+          <option>Bug report</option>
+          <option>General question</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required placeholder="Describe your issue or question..."></textarea>
+      </div>
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+
+  <div id="tj-footer"></div>
+</div>
+<script src="/js/shared.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectFooter({ links: [
+      { href: '/fart-soundboard/privacy.html', text: 'Privacy Policy' },
+      { href: '/', text: 'All Apps' },
+      { href: 'mailto:support@tastyjam.ca', text: 'support@tastyjam.ca' }
+    ]});
+  });
+</script>
+</body>
 </html>
