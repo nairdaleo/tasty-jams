@@ -1,144 +1,292 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tasty Jams – Thoughtful Apps</title>
-  <meta name="description" content="Small, focused apps built with care. From Tasty Jams." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/shared.css" />
-  <style>
-    /* === Landing page specifics === */
-    .glow {
-      position: fixed; top: -40%; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 800px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
-      pointer-events: none; z-index: 0;
-    }
-    .page { position: relative; z-index: 1; }
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32.png"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasty Jam – Thoughtful Apps</title>
+    <meta
+      name="description"
+      content="Small, focused apps built with care. From Tasty Jam."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/shared.css" />
+    <style>
+      /* === Landing page specifics === */
+      .glow {
+        position: fixed;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .page {
+        position: relative;
+        z-index: 1;
+      }
 
-    header { padding: 80px 24px 0; text-align: center; animation: fadeUp 0.8s ease both; }
-    .brand {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 3.6rem);
-      font-weight: 800; letter-spacing: -1px;
-      line-height: 1.1; margin-bottom: 12px;
-    }
-    .brand em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--accent), #c4b5fd);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .tagline { font-size: 1.05rem; color: var(--text-muted); font-weight: 400; }
+      header {
+        padding: 80px 24px 0;
+        text-align: center;
+        animation: fadeUp 0.8s ease both;
+      }
+      .brand {
+        font-family: var(--font-display);
+        font-size: clamp(2.4rem, 6vw, 3.6rem);
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .brand em {
+        font-style: normal;
+        background: linear-gradient(135deg, var(--accent), #c4b5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .tagline {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
 
-    .divider {
-      width: 48px; height: 2px; margin: 56px auto;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      border-radius: 2px; opacity: 0.5;
-    }
+      .divider {
+        width: 48px;
+        height: 2px;
+        margin: 56px auto;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+        border-radius: 2px;
+        opacity: 0.5;
+      }
 
-    .apps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 960px; margin: 0 auto; padding: 0 24px;
-      animation: fadeUp 0.8s ease 0.15s both;
-    }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 24px; padding: 32px; cursor: pointer;
-      text-decoration: none; color: inherit;
-      display: flex; flex-direction: column;
-      transition: background 0.3s, border-color 0.3s, transform 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .card::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.08), transparent 60%);
-      opacity: 0; transition: opacity 0.4s;
-    }
-    .card:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-2px); }
-    .card:hover::before { opacity: 1; }
-    .card-icon { font-size: 3rem; margin-bottom: 16px; position: relative; z-index: 1; }
-    .card-icon img { width: 72px; height: 72px; border-radius: 16px; }
-    .card-name {
-      font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
-      margin-bottom: 8px; position: relative; z-index: 1;
-    }
-    .card-desc {
-      color: var(--text-muted); font-size: 0.92rem; line-height: 1.65;
-      margin-bottom: 20px; flex: 1; position: relative; z-index: 1;
-    }
-    .card-links { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
+      .apps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        animation: fadeUp 0.8s ease 0.15s both;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 32px;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        transition:
+          background 0.3s,
+          border-color 0.3s,
+          transform 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(167, 139, 250, 0.08),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card:hover {
+        background: var(--surface-hover);
+        border-color: var(--border-hover);
+        transform: translateY(-2px);
+      }
+      .card:hover::before {
+        opacity: 1;
+      }
+      .card-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+      }
+      .card-icon img {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+      }
+      .card-name {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+      }
+      .card-desc {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin-bottom: 20px;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+      .card-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
 
-    .site-footer { max-width: 960px; padding: 80px 24px 48px; animation: fadeUp 0.8s ease 0.3s both; }
+      .site-footer {
+        max-width: 960px;
+        padding: 80px 24px 48px;
+        animation: fadeUp 0.8s ease 0.3s both;
+      }
 
-    @media (max-width: 480px) {
-      header { padding-top: 56px; }
-      .apps { gap: 14px; }
-      .card { padding: 24px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="page">
-    <header>
-      <h1 class="brand">Tasty <em>Jams</em></h1>
-      <p class="tagline">Thoughtful apps, built with care</p>
-    </header>
+      @media (max-width: 480px) {
+        header {
+          padding-top: 56px;
+        }
+        .apps {
+          gap: 14px;
+        }
+        .card {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="page">
+      <header>
+        <h1 class="brand">Tasty <em>Jam</em></h1>
+        <p class="tagline">Thoughtful apps, built with care</p>
+      </header>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <section class="apps">
-      <div class="card" onclick="window.location='/spark/'" role="link">
-        <span class="badge">New</span>
-        <div class="card-icon"><img src="/assets/spark-icon.png" alt="Spark icon" /></div>
-        <div class="card-name">Spark</div>
-        <p class="card-desc">ADHD habit tracker with forgiving streaks. Missed a day? It dips — it doesn't reset. Dopamine animations, smart reminders, and zero shame.</p>
-        <div class="card-links">
-          <a class="pill" href="/spark/" onclick="event.stopPropagation()">Support</a>
-          <a class="pill" href="/spark/privacy.html" onclick="event.stopPropagation()">Privacy</a>
+      <section class="apps">
+        <div class="card" onclick="window.location = '/spark/'" role="link">
+          <span class="badge">New</span>
+          <div class="card-icon">
+            <img src="/assets/spark-icon.png" alt="Spark icon" />
+          </div>
+          <div class="card-name">Spark</div>
+          <p class="card-desc">
+            ADHD habit tracker with forgiving streaks. Missed a day? It dips —
+            it doesn't reset. Dopamine animations, smart reminders, and zero
+            shame.
+          </p>
+          <div class="card-links">
+            <a class="pill" href="/spark/" onclick="event.stopPropagation()"
+              >Support</a
+            >
+            <a
+              class="pill"
+              href="/spark/privacy.html"
+              onclick="event.stopPropagation()"
+              >Privacy</a
+            >
+          </div>
         </div>
-      </div>
 
-      <div class="card" onclick="window.location='/tally/'" role="link">
-        <span class="badge coming">Coming Soon</span>
-        <div class="card-icon"><img src="/assets/tally-icon.png" alt="Tally icon" /></div>
-        <div class="card-name">Tally</div>
-        <p class="card-desc">Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist.</p>
-        <div class="card-links">
-          <a class="pill" href="/tally/" onclick="event.stopPropagation()">Support</a>
-          <a class="pill" href="/tally/privacy.html" onclick="event.stopPropagation()">Privacy</a>
+        <div class="card" onclick="window.location = '/klick/'" role="link">
+          <span class="badge coming">Coming Soon</span>
+          <div class="card-icon">
+            <img src="/assets/klick-icon.png" alt="Klick icon" />
+          </div>
+          <div class="card-name">Klick</div>
+          <p class="card-desc">
+            Multi-counter with Apple Watch complication. Count anything — reps,
+            drinks, inventory, score. Tap to increment, swipe to reset. Lives on
+            your wrist.
+          </p>
+          <div class="card-links">
+            <a class="pill" href="/klick/" onclick="event.stopPropagation()"
+              >Support</a
+            >
+            <a
+              class="pill"
+              href="/klick/privacy.html"
+              onclick="event.stopPropagation()"
+              >Privacy</a
+            >
+          </div>
         </div>
-      </div>
 
-      <div class="card" onclick="window.location='/fart-soundboard/'" role="link">
-        <span class="badge archived">Archived</span>
-        <div class="card-icon">💨</div>
-        <div class="card-name">Fart Soundboard</div>
-        <p class="card-desc">The classic. Maximum hilarity, zero shame. TestFlight only — not on the App Store.</p>
-        <div class="card-links">
-          <a class="pill" href="/fart-soundboard/" onclick="event.stopPropagation()">Support</a>
-          <a class="pill" href="/fart-soundboard/privacy.html" onclick="event.stopPropagation()">Privacy</a>
+        <div
+          class="card"
+          onclick="window.location = '/fart-soundboard/'"
+          role="link"
+        >
+          <span class="badge archived">Archived</span>
+          <div class="card-icon">💨</div>
+          <div class="card-name">Fart Soundboard</div>
+          <p class="card-desc">
+            The classic. Maximum hilarity, zero shame. TestFlight only — not on
+            the App Store.
+          </p>
+          <div class="card-links">
+            <a
+              class="pill"
+              href="/fart-soundboard/"
+              onclick="event.stopPropagation()"
+              >Support</a
+            >
+            <a
+              class="pill"
+              href="/fart-soundboard/privacy.html"
+              onclick="event.stopPropagation()"
+              >Privacy</a
+            >
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div id="tj-footer"></div>
-  </div>
-<script src="/js/shared.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    injectFooter({ links: [
-      { href: 'mailto:support@tastyjam.ca', text: 'Contact' },
-      { href: '/spark/privacy.html', text: 'Privacy' }
-    ]});
-  });
-</script>
-</body>
+      <div id="tj-footer"></div>
+    </div>
+    <script src="/js/shared.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        injectFooter({
+          links: [
+            { href: "mailto:support@tastyjam.ca", text: "Contact" },
+            { href: "/spark/privacy.html", text: "Privacy" },
+          ],
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -1,4 +1,4 @@
-/* === Tasty Jams — Shared JS ===
+/* === Tasty Jam — Shared JS ===
    Theme system, dynamic footer, and contact form handler.
    In C++ terms: the shared runtime library linked by every page. */
 
@@ -45,7 +45,7 @@ function injectFooter(opts = {}) {
   ];
   const linksHtml = links.map(l => `<a href="${l.href}">${l.text}</a>`).join('');
   el.className = 'site-footer';
-  el.innerHTML = `<span>© ${new Date().getFullYear()} Tasty Jams</span><div class="footer-links">${linksHtml}</div>`;
+  el.innerHTML = `<span>© ${new Date().getFullYear()} Tasty Jam</span><div class="footer-links">${linksHtml}</div>`;
 }
 
 // --- Contact form ---
@@ -84,7 +84,7 @@ function initContactForm(formId, endpoint) {
 // --- Nav ---
 // Builds breadcrumb + legal links from data attributes.
 // Usage: <nav id="tj-nav" data-app="spark" data-page="support"></nav>
-// data-app: spark | tally | fart-soundboard (omit for landing page)
+// data-app: spark | klick | fart-soundboard (omit for landing page)
 // data-page: support | privacy | terms (omit for landing page)
 function injectNav() {
   const el = document.getElementById('tj-nav');
@@ -94,7 +94,7 @@ function injectNav() {
 
   const apps = {
     spark: { name: 'Spark', path: '/spark/' },
-    tally: { name: 'Tally', path: '/tally/' },
+    klick: { name: 'Klick', path: '/klick/' },
     'fart-soundboard': { name: 'Fart Soundboard', path: '/fart-soundboard/' }
   };
   const pageLabels = { support: null, privacy: 'Privacy', terms: 'Terms' };
@@ -102,11 +102,11 @@ function injectNav() {
   // Legal links available for this app
   const legalLinks = {
     spark: [{ href: '/spark/privacy.html', text: 'Privacy' }, { href: '/spark/terms.html', text: 'Terms' }],
-    tally: [{ href: '/tally/privacy.html', text: 'Privacy' }, { href: '/tally/terms.html', text: 'Terms' }],
+    klick: [{ href: '/klick/privacy.html', text: 'Privacy' }, { href: '/klick/terms.html', text: 'Terms' }],
     'fart-soundboard': [{ href: '/fart-soundboard/privacy.html', text: 'Privacy' }]
   };
 
-  let crumbs = '<a href="/">Tasty Jams</a>';
+  let crumbs = '<a href="/">Tasty Jam</a>';
   if (app && apps[app]) {
     crumbs += `<span class="sep">/</span><a href="${apps[app].path}">${apps[app].name}</a>`;
     const label = pageLabels[page];
