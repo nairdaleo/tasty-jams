@@ -85,7 +85,7 @@
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {año} Tasty Jam"
+    "copyright": "© {year} Tasty Jam"
   },
   "theme": {
     "toggle": "Activar/desactivar el modo claro/oscuro"

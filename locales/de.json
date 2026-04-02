@@ -85,7 +85,7 @@
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {Jahr} Tasty Jam"
+    "copyright": "© {year} Tasty Jam"
   },
   "theme": {
     "toggle": "Zwischen Hell- und Dunkelmodus umschalten"

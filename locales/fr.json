@@ -85,7 +85,7 @@
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {année} Tasty Jam"
+    "copyright": "© {year} Tasty Jam"
   },
   "theme": {
     "toggle": "Basculer entre le mode clair et le mode sombre"
