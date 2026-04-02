@@ -1,10 +1,10 @@
 {
   "common": {
     "tastyJam": "Tasty Jam",
-    "support": "Support",
+    "support": "Assistance",
     "privacy": "Confidentialité",
     "privacyPolicy": "Politique de confidentialité",
-    "terms": "Conditions",
+    "terms": "Conditions générales",
     "allApps": "Toutes les applications",
     "contact": "Contact",
     "email": "support@tastyjam.ca"
@@ -12,83 +12,83 @@
   "homepage": {
     "brand": "Tasty Jam",
     "taglines": [
-      "Des applications réfléchies, faites avec soin",
-      "Des applications si bonnes qu'on peut les déguster",
-      "Des applications amusantes à utiliser",
-      "Des applications qui s'étalent bien",
+      "Des applications bien pensées, conçues avec soin",
+      "Des applications si bonnes qu'on pourrait presque les goûter",
+      "Des applications agréables à utiliser",
+      "Les applications qui ont du succès",
       "Des applications qui fonctionnent vraiment",
-      "La productivité rencontre la personnalité",
-      "De petites applications, de grandes vibrations",
-      "Pas de ballast, juste du bon goût",
-      "Des applications vaut la peine d'ouvrir",
-      "Ennuyeux ? On ne connaît pas",
-      "On ne fait pas du médiocre",
-      "Des applications qui comprennent",
-      "Addictif et utile",
-      "La raison pour laquelle vous consultez votre téléphone",
-      "Minimaliste et délicieux",
-      "Des applications avec une âme",
-      "Arrêtez de défiler, commencez à utiliser",
+      "Quand la productivité rencontre la personnalité",
+      "Des applications compactes, une ambiance géniale",
+      "Pas de ballonnements, juste un bon goût",
+      "Des applications qui valent le coup d'être téléchargées",
+      "Ennuyeuse ? Je n'ai jamais entendu parler d'elle",
+      "Nous ne faisons pas dans la médiocrité",
+      "Des applications qui ont tout compris",
+      "Incroyablement utile",
+      "La raison pour laquelle tu consultes ton téléphone",
+      "D'un minimalisme ravissant",
+      "Des applications qui ont une âme",
+      "Arrêtez de faire défiler, commencez à l'utiliser",
       "Vos nouveaux outils préférés"
     ]
   },
   "spark": {
     "badge": "Nouveau",
     "name": "Spark",
-    "description": "Suivi d'habitudes ADHD avec des séries indulgentes. Vous avez oublié un jour ? Ça baisse — ça ne réinitialise pas. Animations de dopamine, rappels intelligents et zéro culpabilité.",
-    "tagline": "Suivi d'habitudes pour TDAH — Construisez des routines sans la spirale de la honte",
+    "description": "Une application de suivi des habitudes pour le TDAH avec des séries de jours manqués tolérées. Vous avez manqué un jour ? Le compteur baisse, mais il ne remet pas à zéro. Des animations liées à la dopamine, des rappels intelligents et aucune culpabilité.",
+    "tagline": "Suivi des habitudes pour le TDAH — Mettez en place des routines sans tomber dans la spirale de la honte",
     "faq": {
-      "title": "Questions fréquemment posées",
-      "q1": "Qu'est-ce que Spark Pro?",
-      "a1": "Spark Pro déverrouille un nombre illimité d'habitudes, des statistiques détaillées et des insights, des widgets d'écran d'accueil, des raccourcis Siri, l'export PDF/CSV et des icônes d'application personnalisées. Les utilisateurs gratuits peuvent suivre jusqu'à 3 habitudes pour toujours.",
-      "q2": "Comment fonctionnent les séries indulgentes?",
-      "a2": "Manquer un jour baisse la santé de votre série — elle ne réinitialise jamais à zéro. Revenez le lendemain et elle commence à récupérer. L'élan compte plus que la perfection.",
-      "q3": "Comment puis-je restaurer mon abonnement Pro?",
-      "a3": "Ouvrez Spark → appuyez sur l'icône d'engrenage → Restaurer les achats. Votre abonnement est lié à votre identifiant Apple et fonctionne sur tous vos appareils.",
-      "q4": "Comment puis-je annuler mon abonnement?",
-      "a4": "Ouvrez Paramètres → Identifiant Apple → Abonnements → Spark. Vous pouvez annuler à tout moment. L'accès Pro continue jusqu'à la fin de votre période de facturation actuelle.",
-      "q5": "Mes données sont-elles sauvegardées?",
-      "a5": "Les données d'habitude sont stockées localement sur votre appareil. Gardez la sauvegarde automatique iCloud activée dans vos paramètres iOS pour protéger vos données.",
-      "q6": "L'application plante. Que dois-je faire?",
-      "a6": "Forcez la fermeture et rouvrez l'application. Si le problème persiste, vérifiez les mises à jour dans l'App Store. Toujours bloqué? Contactez-nous ci-dessous avec votre modèle d'appareil et votre version iOS."
+      "title": "Foire aux questions",
+      "q1": "Qu'est-ce que Spark Pro ?",
+      "a1": "Spark Pro vous donne accès à un nombre illimité d'habitudes, à des statistiques et des analyses détaillées, à des widgets pour l'écran d'accueil, à des raccourcis Siri, à l'exportation au format PDF/CSV et à des icônes d'application personnalisées. Les utilisateurs de la version gratuite peuvent suivre jusqu'à 3 habitudes de manière illimitée.",
+      "q2": "Comment fonctionnent les séries de pardons ?",
+      "a2": "Si vous manquez une journée, votre série s'en trouve affectée — mais elle ne repart jamais de zéro. Revenez le lendemain et elle recommencera à se reconstituer. L'élan compte plus que la perfection.",
+      "q3": "Comment puis-je réactiver mon abonnement Pro ?",
+      "a3": "Ouvrez Spark → appuyez sur l'icône en forme d'engrenage → Restaurer les achats. Votre abonnement est associé à votre identifiant Apple et fonctionne sur tous vos appareils.",
+      "q4": "Comment puis-je résilier mon abonnement ?",
+      "a4": "Ouvrez Réglages → Identifiant Apple → Abonnements → Spark. Vous pouvez résilier à tout moment. L'accès Pro reste valable jusqu'à la fin de votre période de facturation en cours.",
+      "q5": "Mes données sont-elles sauvegardées ?",
+      "a5": "Les données d'Habit sont stockées localement sur votre appareil. Veillez à ce que la sauvegarde de l'appareil sur iCloud reste activée dans les réglages iOS afin de protéger vos données.",
+      "q6": "L'application plante. Que dois-je faire ?",
+      "a6": "Forcez la fermeture de l'application, puis relancez-la. Si le problème persiste, vérifiez si une mise à jour est disponible dans l'App Store. Vous rencontrez toujours des difficultés ? Contactez-nous ci-dessous en indiquant le modèle de votre appareil et la version d'iOS."
     },
     "contactForm": {
-      "title": "Contacter le support",
+      "title": "Contacter le service d'assistance",
       "nameLabel": "Nom",
       "namePlaceholder": "Votre nom",
       "emailLabel": "E-mail",
-      "emailPlaceholder": "votre@email.com",
-      "subjectLabel": "Sujet",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Objet",
       "messageLabel": "Message",
       "messagePlaceholder": "Décrivez votre problème ou votre question...",
-      "submitBtn": "Envoyer le message",
+      "submitBtn": "Envoyer un message",
       "sendingBtn": "Envoi en cours…",
-      "bugReport": "Signalement d'un bogue",
+      "bugReport": "Signaler un bug",
       "subscriptionIssue": "Problème d'abonnement",
       "featureRequest": "Demande de fonctionnalité",
-      "generalQuestion": "Question générale",
-      "successMsg": "Message envoyé — nous vous recontacterons dans 48 heures.",
-      "errorMsg": "Une erreur s'est produite. Veuillez nous envoyer un e-mail directement à support@tastyjam.ca"
+      "generalQuestion": "Question d'ordre général",
+      "successMsg": "Votre message a bien été envoyé. Nous vous répondrons dans les 48 heures.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "klick": {
     "badge": "À venir",
     "name": "Klick",
-    "description": "Compteur multi-fonction avec complication Apple Watch. Comptez n'importe quoi — répétitions, boissons, inventaire, score. Tapez pour incrémenter, glissez pour réinitialiser. Vit sur votre poignet."
+    "description": "Compteur multifonction avec complication pour Apple Watch. Comptez tout ce que vous voulez : répétitions, boissons, stock, score. Appuyez pour incrémenter, balayez pour remettre à zéro. Toujours à votre poignet."
   },
   "fartSoundboard": {
     "badge": "Archivé",
     "name": "Fart Soundboard",
-    "description": "Le classique. Hilarité maximale, zéro culpabilité. TestFlight uniquement — pas sur l'App Store."
+    "description": "Un grand classique. Hilarité garantie, aucune gêne. Disponible uniquement sur TestFlight — pas sur l'App Store."
   },
   "nav": {
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {year} Tasty Jam"
+    "copyright": "© {année} Tasty Jam"
   },
   "theme": {
-    "toggle": "Basculer entre le mode clair et sombre"
+    "toggle": "Basculer entre le mode clair et le mode sombre"
   },
   "appStore": {
     "alt": "Télécharger sur l'App Store"

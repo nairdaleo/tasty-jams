@@ -1,10 +1,10 @@
 {
   "common": {
     "tastyJam": "Tasty Jam",
-    "support": "Soporte",
+    "support": "Asistencia",
     "privacy": "Privacidad",
     "privacyPolicy": "Política de privacidad",
-    "terms": "Términos",
+    "terms": "Condiciones",
     "allApps": "Todas las aplicaciones",
     "contact": "Contacto",
     "email": "support@tastyjam.ca"
@@ -12,83 +12,83 @@
   "homepage": {
     "brand": "Tasty Jam",
     "taglines": [
-      "Aplicaciones reflexivas, hechas con cuidado",
-      "Aplicaciones tan buenas que puedes saborear",
+      "Aplicaciones bien pensadas, creadas con esmero",
+      "Aplicaciones tan buenas que casi se pueden saborear",
       "Aplicaciones que son divertidas de usar",
-      "Aplicaciones que se difunden bien",
+      "Aplicaciones que tienen buena acogida",
       "Aplicaciones que realmente funcionan",
-      "La productividad se encuentra con la personalidad",
-      "Aplicaciones pequeñas, grandes vibraciones",
-      "Sin desorden, solo buen gusto",
-      "Aplicaciones que vale la pena abrir",
-      "¿Aburrido? Nunca hemos oído hablar",
-      "No hacemos mediocre",
-      "Aplicaciones que lo entienden",
+      "La productividad se une a la personalidad",
+      "Aplicaciones pequeñas, gran ambiente",
+      "Sin gases, solo buen sabor",
+      "Aplicaciones que vale la pena probar",
+      "¿Aburrida? Nunca he oído hablar de ella",
+      "No nos conformamos con lo mediocre",
+      "Aplicaciones que dan en el clavo",
       "Adictivamente útil",
-      "La razón por la que verificas tu teléfono",
-      "Minimalista encantador",
+      "La razón por la que miras el móvil",
+      "Deliciosamente minimalista",
       "Aplicaciones con alma",
-      "Deja de desplazarte, comienza a usar",
+      "Deja de desplazarte por la pantalla y empieza a usarlo",
       "Tus nuevas herramientas favoritas"
     ]
   },
   "spark": {
     "badge": "Nuevo",
     "name": "Spark",
-    "description": "Rastreador de hábitos para TDAH con rachas indulgentes. ¿Perdiste un día? Se reduce — no se reinicia. Animaciones de dopamina, recordatorios inteligentes y cero vergüenza.",
-    "tagline": "Rastreador de hábitos para TDAH — Construye rutinas sin la espiral de la vergüenza",
+    "description": "Aplicación para llevar un registro de hábitos relacionada con el TDAH con rachas flexibles. ¿Te has saltado un día? La racha baja, pero no se reinicia. Animaciones de dopamina, recordatorios inteligentes y sin complejos.",
+    "tagline": "Registro de hábitos para el TDAH: crea rutinas sin caer en la espiral de la vergüenza",
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": "¿Qué es Spark Pro?",
-      "a1": "Spark Pro desbloquea hábitos ilimitados, estadísticas e información detallada, widgets de pantalla de inicio, atajos de Siri, exportación PDF/CSV e iconos de aplicación personalizados. Los usuarios gratuitos pueden rastrear hasta 3 hábitos para siempre.",
-      "q2": "¿Cómo funcionan las rachas indulgentes?",
-      "a2": "Perder un día reduce tu salud de racha — nunca se reinicia a cero. Vuelve al día siguiente y comienza a recuperarse. El impulso importa más que la perfección.",
-      "q3": "¿Cómo restauro mi suscripción Pro?",
-      "a3": "Abre Spark → toca el icono del engranaje → Restaurar compras. Tu suscripción está vinculada a tu ID de Apple y funciona en todos tus dispositivos.",
-      "q4": "¿Cómo cancelo mi suscripción?",
-      "a4": "Abre Configuración → ID de Apple → Suscripciones → Spark. Puedes cancelar en cualquier momento. El acceso Pro continúa hasta el final de tu período de facturación actual.",
-      "q5": "¿Se hace copia de seguridad de mis datos?",
-      "a5": "Los datos de hábitos se almacenan localmente en tu dispositivo. Mantén la copia de seguridad automática de iCloud habilitada en la configuración de iOS para proteger tus datos.",
-      "q6": "La aplicación se congela. ¿Qué debo hacer?",
-      "a6": "Fuerza el cierre y reabre la aplicación. Si el problema persiste, busca actualizaciones en la App Store. ¿Aún así? Contactanos abajo con tu modelo de dispositivo y versión de iOS."
+      "a1": "Spark Pro ofrece acceso a un número ilimitado de hábitos, estadísticas e información detallada, widgets para la pantalla de inicio, atajos de Siri, exportación a PDF/CSV e iconos personalizados para la aplicación. Los usuarios de la versión gratuita pueden llevar un seguimiento de hasta 3 hábitos de forma indefinida.",
+      "q2": "¿Cómo funcionan las rachas de perdón?",
+      "a2": "Si te saltas un día, tu racha se ve afectada, pero nunca vuelve a empezar desde cero. Vuelve al día siguiente y empezará a recuperarse. El impulso es más importante que la perfección.",
+      "q3": "¿Cómo puedo reactivar mi suscripción Pro?",
+      "a3": "Abre Spark → pulsa el icono de la rueda dentada → Restaurar compras. Tu suscripción está vinculada a tu ID de Apple y funciona en todos tus dispositivos.",
+      "q4": "¿Cómo puedo cancelar mi suscripción?",
+      "a4": "Ve a Ajustes → ID de Apple → Suscripciones → Spark. Puedes cancelarla en cualquier momento. El acceso Pro seguirá activo hasta el final de tu periodo de facturación actual.",
+      "q5": "¿Se ha hecho una copia de seguridad de mis datos?",
+      "a5": "Los datos de Habit se almacenan localmente en tu dispositivo. Mantén activada la copia de seguridad del dispositivo en iCloud en los ajustes de iOS para proteger tus datos.",
+      "q6": "La aplicación se cuelga. ¿Qué debo hacer?",
+      "a6": "Cierra la aplicación a la fuerza y vuelve a abrirla. Si el problema persiste, comprueba si hay alguna actualización disponible en la App Store. ¿Sigues sin poder solucionarlo? Ponte en contacto con nosotros a través del siguiente formulario indicando el modelo de tu dispositivo y la versión de iOS."
     },
     "contactForm": {
-      "title": "Contactar soporte",
+      "title": "Contactar con el servicio de asistencia",
       "nameLabel": "Nombre",
       "namePlaceholder": "Tu nombre",
       "emailLabel": "Correo electrónico",
-      "emailPlaceholder": "tu@email.com",
+      "emailPlaceholder": "your@email.com",
       "subjectLabel": "Asunto",
       "messageLabel": "Mensaje",
       "messagePlaceholder": "Describe tu problema o pregunta...",
       "submitBtn": "Enviar mensaje",
       "sendingBtn": "Enviando…",
-      "bugReport": "Informe de error",
-      "subscriptionIssue": "Problema de suscripción",
-      "featureRequest": "Solicitud de característica",
+      "bugReport": "Notificación de error",
+      "subscriptionIssue": "Problema con la suscripción",
+      "featureRequest": "Solicitud de función",
       "generalQuestion": "Pregunta general",
-      "successMsg": "Mensaje enviado — nos comunicaremos contigo en 48 horas.",
-      "errorMsg": "Algo salió mal. Por favor envíanos un correo directo a support@tastyjam.ca"
+      "successMsg": "Mensaje enviado. Nos pondremos en contacto contigo en un plazo de 48 horas.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "klick": {
     "badge": "Próximamente",
     "name": "Klick",
-    "description": "Contador múltiple con complicación de Apple Watch. Cuenta cualquier cosa — repeticiones, bebidas, inventario, puntuación. Toca para incrementar, desliza para reiniciar. Vive en tu muñeca."
+    "description": "Contador múltiple con complicación para Apple Watch. Cuenta lo que quieras: repeticiones, bebidas, inventario, puntuación. Toca para aumentar el recuento y desliza para reiniciar. Siempre a tu alcance, en tu muñeca."
   },
   "fartSoundboard": {
     "badge": "Archivado",
     "name": "Fart Soundboard",
-    "description": "El clásico. Máxima hilaridad, cero vergüenza. Solo TestFlight — no en la App Store."
+    "description": "El clásico. Diversión a tope, sin complejos. Solo en TestFlight, no está disponible en la App Store."
   },
   "nav": {
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {year} Tasty Jam"
+    "copyright": "© {año} Tasty Jam"
   },
   "theme": {
-    "toggle": "Alternar modo claro/oscuro"
+    "toggle": "Activar/desactivar el modo claro/oscuro"
   },
   "appStore": {
     "alt": "Descargar en la App Store"

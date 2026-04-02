@@ -1,9 +1,9 @@
 {
   "common": {
     "tastyJam": "Tasty Jam",
-    "support": "Unterstützung",
+    "support": "Support",
     "privacy": "Datenschutz",
-    "privacyPolicy": "Datenschutzrichtlinie",
+    "privacyPolicy": "Datenschutzerklärung",
     "terms": "Bedingungen",
     "allApps": "Alle Apps",
     "contact": "Kontakt",
@@ -12,85 +12,85 @@
   "homepage": {
     "brand": "Tasty Jam",
     "taglines": [
-      "Durchdachte Apps, mit Sorgfalt gebaut",
-      "Apps so gut, dass man sie kosten kann",
+      "Durchdachte Apps, mit Sorgfalt entwickelt",
+      "Apps, die so gut sind, dass man sie schmecken kann",
       "Apps, die Spaß machen",
       "Apps, die sich gut verbreiten",
       "Apps, die wirklich funktionieren",
-      "Produktivität trifft Persönlichkeit",
-      "Kleine Apps, große Vibes",
-      "Kein Ballast, nur guter Geschmack",
+      "Leistung trifft auf Persönlichkeit",
+      "Kleine Apps, große Wirkung",
+      "Kein Völlegefühl, nur guter Geschmack",
       "Apps, die es wert sind, geöffnet zu werden",
-      "Langweilig? Haben wir noch nie gehört",
-      "Wir machen keine Mittelmäßigkeit",
-      "Apps, die verstehen",
+      "Langweilig? Von der hab ich noch nie gehört",
+      "Mit Mittelmäßigkeit geben wir uns nicht zufrieden",
+      "Apps, die es draufhaben",
       "Süchtig machend nützlich",
-      "Der Grund, warum du dein Handy überprüfst",
-      "Entzückend minimalistisch",
-      "Apps mit Seele",
-      "Hör auf zu scrollen, fang an zu nutzen",
+      "Der Grund, warum du auf dein Handy schaust",
+      "Wunderbar minimalistisch",
+      "Apps mit Herz",
+      "Hör auf zu scrollen, fang an, es zu nutzen",
       "Deine neuen Lieblingswerkzeuge"
     ]
   },
   "spark": {
     "badge": "Neu",
     "name": "Spark",
-    "description": "ADHS-Gewohnheitsverfolger mit nachsichtigen Streaks. Einen Tag vergessen? Es sinkt — es wird nicht zurückgesetzt. Dopamin-Animationen, intelligente Erinnerungen und null Scham.",
-    "tagline": "ADHS-Gewohnheitsverfolger — Routinen ohne Schamwendel aufbauen",
+    "description": "ADHS-Gewohnheits-Tracker mit nachsichtigen Serien. Einen Tag verpasst? Die Serie bricht ab – sie wird nicht zurückgesetzt. Dopamin-Animationen, intelligente Erinnerungen und absolut kein schlechtes Gewissen.",
+    "tagline": "ADHS-Gewohnheits-Tracker – Routinen aufbauen, ohne in eine Schamspirale zu geraten",
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": "Was ist Spark Pro?",
-      "a1": "Spark Pro schaltet unbegrenzte Gewohnheiten, detaillierte Statistiken und Einblicke, Startbildschirm-Widgets, Siri-Abkürzungen, PDF-/CSV-Export und benutzerdefinierte App-Symbole frei. Kostenlose Benutzer können für immer bis zu 3 Gewohnheiten verfolgen.",
-      "q2": "Wie funktionieren nachsichtige Streaks?",
-      "a2": "Einen Tag zu verpassen senkt deine Streak-Gesundheit — sie wird nie auf Null zurückgesetzt. Komm am nächsten Tag zurück und sie fangen an, sich zu erholen. Momentum ist wichtiger als Perfektion.",
-      "q3": "Wie stelle ich mein Pro-Abonnement wieder her?",
-      "a3": "Öffne Spark → tippe auf das Zahnradsymbol → Käufe wiederherstellen. Dein Abonnement ist an deine Apple-ID gebunden und funktioniert auf allen deinen Geräten.",
-      "q4": "Wie kündige ich mein Abonnement?",
-      "a4": "Öffne Einstellungen → Apple-ID → Abos → Spark. Du kannst jederzeit kündigen. Der Pro-Zugang bleibt bis zum Ende deines aktuellen Abrechnungszeitraums erhalten.",
-      "q5": "Werden meine Daten gesichert?",
-      "a5": "Gewohnheitsdaten werden lokal auf deinem Gerät gespeichert. Aktiviere die automatische iCloud-Sicherung in deinen iOS-Einstellungen, um deine Daten zu schützen.",
-      "q6": "Die App stürzt ab. Was sollte ich tun?",
-      "a6": "Erzwinge das Beenden und öffne die App erneut. Wenn das Problem weiterhin besteht, prüfe auf Updates im App Store. Noch nicht gelöst? Kontaktiere uns unten mit deinem Gerätemodell und deiner iOS-Version."
+      "a1": "Mit Spark Pro erhältst du Zugriff auf unbegrenzte Gewohnheiten, detaillierte Statistiken und Einblicke, Widgets für den Startbildschirm, Siri-Shortcuts, PDF-/CSV-Export sowie benutzerdefinierte App-Symbole. Kostenlose Nutzer können dauerhaft bis zu 3 Gewohnheiten verfolgen.",
+      "q2": "Wie funktionieren Vergebungsphasen?",
+      "a2": "Wenn du einen Tag auslässt, sinkt der Stand deiner Serie – er wird jedoch nie auf null zurückgesetzt. Komm am nächsten Tag wieder, und er beginnt sich wieder zu erholen. Der Schwung ist wichtiger als Perfektion.",
+      "q3": "Wie kann ich mein Pro-Abonnement wiederherstellen?",
+      "a3": "Öffne Spark → tippe auf das Zahnrad-Symbol → „Käufe wiederherstellen“. Dein Abonnement ist mit deiner Apple-ID verknüpft und funktioniert auf allen deinen Geräten.",
+      "q4": "Wie kann ich mein Abonnement kündigen?",
+      "a4": "Öffne „Einstellungen“ → „Apple ID“ → „Abonnements“ → „Spark“. Du kannst jederzeit kündigen. Der Pro-Zugang bleibt bis zum Ende deines aktuellen Abrechnungszeitraums bestehen.",
+      "q5": "Sind meine Daten gesichert?",
+      "a5": "Die Daten zu Ihren Gewohnheiten werden lokal auf Ihrem Gerät gespeichert. Lassen Sie die iCloud-Gerätesicherung in Ihren iOS-Einstellungen aktiviert, um Ihre Daten zu schützen.",
+      "q6": "Die App stürzt ab. Was soll ich tun?",
+      "a6": "Beenden Sie die App zwangsweise und starten Sie sie neu. Sollte das Problem weiterhin bestehen, suchen Sie im App Store nach einem Update. Hat sich das Problem noch nicht beheben lassen? Kontaktieren Sie uns unten und geben Sie Ihr Gerätemodell und Ihre iOS-Version an."
     },
     "contactForm": {
-      "title": "Kundenunterstützung kontaktieren",
+      "title": "Support kontaktieren",
       "nameLabel": "Name",
-      "namePlaceholder": "Dein Name",
+      "namePlaceholder": "Ihr Name",
       "emailLabel": "E-Mail",
-      "emailPlaceholder": "deine@email.com",
+      "emailPlaceholder": "your@email.com",
       "subjectLabel": "Betreff",
       "messageLabel": "Nachricht",
-      "messagePlaceholder": "Beschreibe dein Problem oder deine Frage...",
+      "messagePlaceholder": "Beschreiben Sie Ihr Problem oder Ihre Frage...",
       "submitBtn": "Nachricht senden",
       "sendingBtn": "Wird gesendet…",
-      "bugReport": "Fehlerbericht",
-      "subscriptionIssue": "Abonnementproblem",
-      "featureRequest": "Funktionsanfrage",
+      "bugReport": "Fehlermeldung",
+      "subscriptionIssue": "Problem mit dem Abonnement",
+      "featureRequest": "Funktionswunsch",
       "generalQuestion": "Allgemeine Frage",
-      "successMsg": "Nachricht gesendet — wir melden uns innerhalb von 48 Stunden.",
-      "errorMsg": "Etwas ist schiefgelaufen. Bitte sende uns eine E-Mail direkt an support@tastyjam.ca"
+      "successMsg": "Ihre Nachricht wurde gesendet – wir melden uns innerhalb von 48 Stunden bei Ihnen.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "klick": {
-    "badge": "Bald verfügbar",
+    "badge": "Demnächst",
     "name": "Klick",
-    "description": "Multi-Counter mit Apple Watch Komplikation. Zähle alles — Wiederholungen, Getränke, Bestand, Punktzahl. Antippen zum Erhöhen, Wischen zum Zurücksetzen. Lebt auf deinem Handgelenk."
+    "description": "Multizähler mit Apple Watch-Komplikation. Zähle alles – Wiederholungen, Getränke, Lagerbestände, Punkte. Tippen zum Erhöhen, wischen zum Zurücksetzen. Immer am Handgelenk dabei."
   },
   "fartSoundboard": {
     "badge": "Archiviert",
     "name": "Fart Soundboard",
-    "description": "Der Klassiker. Maximale Heiterkeit, null Scham. Nur TestFlight — nicht im App Store."
+    "description": "Ein Klassiker. Maximale Heiterkeit, null Scham. Nur bei TestFlight – nicht im App Store."
   },
   "nav": {
     "tastyJam": "Tasty Jam"
   },
   "footer": {
-    "copyright": "© {year} Tasty Jam"
+    "copyright": "© {Jahr} Tasty Jam"
   },
   "theme": {
-    "toggle": "Helles/dunkles Modus umschalten"
+    "toggle": "Zwischen Hell- und Dunkelmodus umschalten"
   },
   "appStore": {
-    "alt": "Im App Store laden"
+    "alt": "Im App Store herunterladen"
   }
 }
