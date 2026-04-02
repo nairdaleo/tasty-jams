@@ -231,25 +231,26 @@
       <div class="divider"></div>
 
       <section class="apps">
-        <div class="card" onclick="window.location = '/spark/'" role="link">
-          <span class="badge">New</span>
+        <div class="card" onclick="window.location = '/spark/'" role="link" data-app="spark">
+          <span class="badge" data-i18n="spark.badge">New</span>
           <div class="card-icon">
             <img src="/assets/spark-icon.png" alt="Spark icon" />
           </div>
-          <div class="card-name">Spark</div>
-          <p class="card-desc">
+          <div class="card-name" data-i18n="spark.name">Spark</div>
+          <p class="card-desc" data-i18n="spark.description">
             ADHD habit tracker with forgiving streaks. Missed a day? It dips —
             it doesn't reset. Dopamine animations, smart reminders, and zero
             shame.
           </p>
           <div class="card-links">
-            <a class="pill" href="/spark/" onclick="event.stopPropagation()"
+            <a class="pill" href="/spark/" onclick="event.stopPropagation()" data-i18n="common.support"
               >Support</a
             >
             <a
               class="pill"
               href="/spark/privacy.html"
               onclick="event.stopPropagation()"
+              data-i18n="common.privacy"
               >Privacy</a
             >
           </div>
@@ -269,25 +270,26 @@
           </div>
         </div>
 
-        <div class="card" onclick="window.location = '/klick/'" role="link">
-          <span class="badge coming">Coming Soon</span>
+        <div class="card" onclick="window.location = '/klick/'" role="link" data-app="klick">
+          <span class="badge coming" data-i18n="klick.badge">Coming Soon</span>
           <div class="card-icon">
             <img src="/assets/klick-icon.png" alt="Klick icon" />
           </div>
-          <div class="card-name">Klick</div>
-          <p class="card-desc">
+          <div class="card-name" data-i18n="klick.name">Klick</div>
+          <p class="card-desc" data-i18n="klick.description">
             Multi-counter with Apple Watch complication. Count anything — reps,
             drinks, inventory, score. Tap to increment, swipe to reset. Lives on
             your wrist.
           </p>
           <div class="card-links">
-            <a class="pill" href="/klick/" onclick="event.stopPropagation()"
+            <a class="pill" href="/klick/" onclick="event.stopPropagation()" data-i18n="common.support"
               >Support</a
             >
             <a
               class="pill"
               href="/klick/privacy.html"
               onclick="event.stopPropagation()"
+              data-i18n="common.privacy"
               >Privacy</a
             >
           </div>
@@ -297,11 +299,12 @@
           class="card"
           onclick="window.location = '/fart-soundboard/'"
           role="link"
+          data-app="fartSoundboard"
         >
-          <span class="badge archived">Archived</span>
+          <span class="badge archived" data-i18n="fartSoundboard.badge">Archived</span>
           <div class="card-icon">💨</div>
-          <div class="card-name">Fart Soundboard</div>
-          <p class="card-desc">
+          <div class="card-name" data-i18n="fartSoundboard.name">Fart Soundboard</div>
+          <p class="card-desc" data-i18n="fartSoundboard.description">
             The classic. Maximum hilarity, zero shame. TestFlight only — not on
             the App Store.
           </p>
@@ -310,12 +313,14 @@
               class="pill"
               href="/fart-soundboard/"
               onclick="event.stopPropagation()"
+              data-i18n="common.support"
               >Support</a
             >
             <a
               class="pill"
               href="/fart-soundboard/privacy.html"
               onclick="event.stopPropagation()"
+              data-i18n="common.privacy"
               >Privacy</a
             >
           </div>
@@ -326,6 +331,22 @@
     </div>
     <script src="/js/shared.js"></script>
     <script>
+      // Translate all elements with data-i18n attributes
+      function translatePage() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.textContent = t(key, el.textContent);
+        });
+      }
+
+      // Wait for i18n to load, then translate
+      const checkI18n = setInterval(() => {
+        if (window.tj && window.tj.i18n) {
+          clearInterval(checkI18n);
+          translatePage();
+        }
+      }, 50);
+
       document.addEventListener("DOMContentLoaded", () => {
         injectFooter({
           links: [
