@@ -194,12 +194,14 @@
         <h1 class="brand">Tasty <em>Jam</em></h1>
         <p class="tagline">Thoughtful apps, built with care</p>
         <script>
-          document.addEventListener('DOMContentLoaded', () => {
+          // Wait for i18n to load, then pick random tagline
+          function setRandomTagline() {
             if (window.tj && window.tj.i18n) {
-              const taglines =  window.tj.i18n.homepage.taglines;
+              const taglines = window.tj.i18n.homepage.taglines;
               const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
               document.querySelector(".tagline").textContent = randomTagline;
             } else {
+              // Fallback if i18n not loaded
               const taglines = [
                 "Thoughtful apps, built with care",
                 "Apps so good you can taste",
@@ -220,11 +222,24 @@
                 "Stop scrolling, start using",
                 "Your new favorite tools",
               ];
-              const randomTagline =
-                taglines[Math.floor(Math.random() * taglines.length)];
+              const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
               document.querySelector(".tagline").textContent = randomTagline;
             }
-          });
+          }
+
+          // Poll for i18n initialization
+          const taglinePoller = setInterval(() => {
+            if (window.tj && window.tj.i18n) {
+              clearInterval(taglinePoller);
+              setRandomTagline();
+            }
+          }, 50);
+
+          // Safety timeout - set tagline after 500ms regardless
+          setTimeout(() => {
+            clearInterval(taglinePoller);
+            setRandomTagline();
+          }, 500);
         </script>
       </header>
 
