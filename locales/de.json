@@ -1,0 +1,96 @@
+{
+  "common": {
+    "tastyJam": "Tasty Jam",
+    "support": "Unterstützung",
+    "privacy": "Datenschutz",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "terms": "Bedingungen",
+    "allApps": "Alle Apps",
+    "contact": "Kontakt",
+    "email": "support@tastyjam.ca"
+  },
+  "homepage": {
+    "brand": "Tasty Jam",
+    "taglines": [
+      "Durchdachte Apps, mit Sorgfalt gebaut",
+      "Apps so gut, dass man sie kosten kann",
+      "Apps, die Spaß machen",
+      "Apps, die sich gut verbreiten",
+      "Apps, die wirklich funktionieren",
+      "Produktivität trifft Persönlichkeit",
+      "Kleine Apps, große Vibes",
+      "Kein Ballast, nur guter Geschmack",
+      "Apps, die es wert sind, geöffnet zu werden",
+      "Langweilig? Haben wir noch nie gehört",
+      "Wir machen keine Mittelmäßigkeit",
+      "Apps, die verstehen",
+      "Süchtig machend nützlich",
+      "Der Grund, warum du dein Handy überprüfst",
+      "Entzückend minimalistisch",
+      "Apps mit Seele",
+      "Hör auf zu scrollen, fang an zu nutzen",
+      "Deine neuen Lieblingswerkzeuge"
+    ]
+  },
+  "spark": {
+    "badge": "Neu",
+    "name": "Spark",
+    "description": "ADHS-Gewohnheitsverfolger mit nachsichtigen Streaks. Einen Tag vergessen? Es sinkt — es wird nicht zurückgesetzt. Dopamin-Animationen, intelligente Erinnerungen und null Scham.",
+    "tagline": "ADHS-Gewohnheitsverfolger — Routinen ohne Schamwendel aufbauen",
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Was ist Spark Pro?",
+      "a1": "Spark Pro schaltet unbegrenzte Gewohnheiten, detaillierte Statistiken und Einblicke, Startbildschirm-Widgets, Siri-Abkürzungen, PDF-/CSV-Export und benutzerdefinierte App-Symbole frei. Kostenlose Benutzer können für immer bis zu 3 Gewohnheiten verfolgen.",
+      "q2": "Wie funktionieren nachsichtige Streaks?",
+      "a2": "Einen Tag zu verpassen senkt deine Streak-Gesundheit — sie wird nie auf Null zurückgesetzt. Komm am nächsten Tag zurück und sie fangen an, sich zu erholen. Momentum ist wichtiger als Perfektion.",
+      "q3": "Wie stelle ich mein Pro-Abonnement wieder her?",
+      "a3": "Öffne Spark → tippe auf das Zahnradsymbol → Käufe wiederherstellen. Dein Abonnement ist an deine Apple-ID gebunden und funktioniert auf allen deinen Geräten.",
+      "q4": "Wie kündige ich mein Abonnement?",
+      "a4": "Öffne Einstellungen → Apple-ID → Abos → Spark. Du kannst jederzeit kündigen. Der Pro-Zugang bleibt bis zum Ende deines aktuellen Abrechnungszeitraums erhalten.",
+      "q5": "Werden meine Daten gesichert?",
+      "a5": "Gewohnheitsdaten werden lokal auf deinem Gerät gespeichert. Aktiviere die automatische iCloud-Sicherung in deinen iOS-Einstellungen, um deine Daten zu schützen.",
+      "q6": "Die App stürzt ab. Was sollte ich tun?",
+      "a6": "Erzwinge das Beenden und öffne die App erneut. Wenn das Problem weiterhin besteht, prüfe auf Updates im App Store. Noch nicht gelöst? Kontaktiere uns unten mit deinem Gerätemodell und deiner iOS-Version."
+    },
+    "contactForm": {
+      "title": "Kundenunterstützung kontaktieren",
+      "nameLabel": "Name",
+      "namePlaceholder": "Dein Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "deine@email.com",
+      "subjectLabel": "Betreff",
+      "messageLabel": "Nachricht",
+      "messagePlaceholder": "Beschreibe dein Problem oder deine Frage...",
+      "submitBtn": "Nachricht senden",
+      "sendingBtn": "Wird gesendet…",
+      "bugReport": "Fehlerbericht",
+      "subscriptionIssue": "Abonnementproblem",
+      "featureRequest": "Funktionsanfrage",
+      "generalQuestion": "Allgemeine Frage",
+      "successMsg": "Nachricht gesendet — wir melden uns innerhalb von 48 Stunden.",
+      "errorMsg": "Etwas ist schiefgelaufen. Bitte sende uns eine E-Mail direkt an support@tastyjam.ca"
+    }
+  },
+  "klick": {
+    "badge": "Bald verfügbar",
+    "name": "Klick",
+    "description": "Multi-Counter mit Apple Watch Komplikation. Zähle alles — Wiederholungen, Getränke, Bestand, Punktzahl. Antippen zum Erhöhen, Wischen zum Zurücksetzen. Lebt auf deinem Handgelenk."
+  },
+  "fartSoundboard": {
+    "badge": "Archiviert",
+    "name": "Fart Soundboard",
+    "description": "Der Klassiker. Maximale Heiterkeit, null Scham. Nur TestFlight — nicht im App Store."
+  },
+  "nav": {
+    "tastyJam": "Tasty Jam"
+  },
+  "footer": {
+    "copyright": "© {year} Tasty Jam"
+  },
+  "theme": {
+    "toggle": "Helles/dunkles Modus umschalten"
+  },
+  "appStore": {
+    "alt": "Im App Store laden"
+  }
+}

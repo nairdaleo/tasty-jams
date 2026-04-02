@@ -194,29 +194,37 @@
         <h1 class="brand">Tasty <em>Jam</em></h1>
         <p class="tagline">Thoughtful apps, built with care</p>
         <script>
-          const taglines = [
-            "Thoughtful apps, built with care",
-            "Apps so good you can taste",
-            "Apps that are fun to use",
-            "Apps that spread well",
-            "Apps that actually work",
-            "Productivity meets personality",
-            "Small apps, big vibes",
-            "No bloat, just good taste",
-            "Apps worth opening",
-            "Boring? Never heard of her",
-            "We don't do mediocre",
-            "Apps that get it",
-            "Addictively useful",
-            "The reason you check your phone",
-            "Delightfully minimalist",
-            "Apps with soul",
-            "Stop scrolling, start using",
-            "Your new favorite tools",
-          ];
-          const randomTagline =
-            taglines[Math.floor(Math.random() * taglines.length)];
-          document.querySelector(".tagline").textContent = randomTagline;
+          document.addEventListener('DOMContentLoaded', () => {
+            if (window.tj && window.tj.i18n) {
+              const taglines =  window.tj.i18n.homepage.taglines;
+              const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
+              document.querySelector(".tagline").textContent = randomTagline;
+            } else {
+              const taglines = [
+                "Thoughtful apps, built with care",
+                "Apps so good you can taste",
+                "Apps that are fun to use",
+                "Apps that spread well",
+                "Apps that actually work",
+                "Productivity meets personality",
+                "Small apps, big vibes",
+                "No bloat, just good taste",
+                "Apps worth opening",
+                "Boring? Never heard of her",
+                "We don't do mediocre",
+                "Apps that get it",
+                "Addictively useful",
+                "The reason you check your phone",
+                "Delightfully minimalist",
+                "Apps with soul",
+                "Stop scrolling, start using",
+                "Your new favorite tools",
+              ];
+              const randomTagline =
+                taglines[Math.floor(Math.random() * taglines.length)];
+              document.querySelector(".tagline").textContent = randomTagline;
+            }
+          });
         </script>
       </header>
 
@@ -321,8 +329,8 @@
       document.addEventListener("DOMContentLoaded", () => {
         injectFooter({
           links: [
-            { href: "mailto:support@tastyjam.ca", text: "Contact" },
-            { href: "/spark/privacy.html", text: "Privacy" },
+            { href: "mailto:support@tastyjam.ca", text: window.tj ? t('common.contact', 'Contact') : 'Contact' },
+            { href: "/spark/privacy.html", text: window.tj ? t('common.privacy', 'Privacy') : 'Privacy' },
           ],
         });
       });
