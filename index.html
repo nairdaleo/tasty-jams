@@ -274,23 +274,22 @@
               >Privacy</a
             >
           </div>
-          <div style="margin-top: 16px">
-            <a
-              href="https://apps.apple.com/app/spark-adhd-habit-tracker/id6760031434"
-              onclick="event.stopPropagation(); return true;"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/assets/app-store-badge-black.svg"
-                alt="Download on the App Store"
-                style="height: 40px"
-              />
-            </a>
-          </div>
         </div>
+        <a
+          href="https://apps.apple.com/app/spark-adhd-habit-tracker/id6760031434"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="app-store-badge-link"
+          data-app="spark"
+        >
+          <img
+            src="/assets/app-store-badges/en.svg"
+            alt="Download on the App Store"
+            style="height: 40px; display: block; margin-top: 16px"
+          />
+        </a>
         <script>
-          document.querySelector('[data-app="spark"]').addEventListener('click', (e) => {
+          document.querySelector('[data-app="spark"].card').addEventListener('click', (e) => {
             if (e.target.closest('a')) return;
             window.location = '/spark/';
           });
@@ -368,12 +367,24 @@
     </div>
     <script src="/js/shared.js"></script>
     <script>
+      // Update App Store badge language
+      function updateBadgeLanguage() {
+        const lang = localStorage.getItem('lang') || 'en';
+        document.querySelectorAll('.app-store-badge-link img').forEach(img => {
+          img.src = `/assets/app-store-badges/${lang}.svg`;
+        });
+      }
+
+      // Update on language change
+      window.addEventListener('languageChanged', updateBadgeLanguage);
+
       // Translate all elements with data-i18n attributes
       function translatePage() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           el.textContent = t(key, el.textContent);
         });
+        updateBadgeLanguage();
       }
 
       // Wait for i18n to load, then translate

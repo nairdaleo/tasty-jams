@@ -19,11 +19,14 @@
           "endsPattern": "Press Ctrl\\+C to stop"
         }
       },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
         "reveal": "always",
-        "panel": "new"
+        "panel": "dedicated"
       }
     }
   ]
 }
-

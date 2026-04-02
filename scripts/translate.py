@@ -20,8 +20,9 @@ from typing import Any
 # Configuration
 API_KEY = "93d18a72-a06f-4521-a3a2-5aad7ca79ce3:fx"
 EN_FILE = "locales/en.json"
-PRESERVE_KEYS = {'tastyJam', 'name', 'email', 'brand'}
-DEFAULT_LANGUAGES = ['fr', 'es', 'de', 'ja', 'pt']
+PRESERVE_KEYS = {"tastyJam", "name", "email", "brand"}
+DEFAULT_LANGUAGES = ["fr", "es", "de", "ja", "pt"]
+
 
 def translate_text(text: str, target_lang: str) -> str:
     """Translate text using DeepL API with rate limiting."""
@@ -29,16 +30,17 @@ def translate_text(text: str, target_lang: str) -> str:
         response = requests.post(
             "https://api-free.deepl.com/v1/translate",
             headers={"Authorization": f"DeepL-Auth-Key {API_KEY}"},
-            data={"text": text, "target_lang": target_lang}
+            data={"text": text, "target_lang": target_lang},
         )
         response.raise_for_status()
         result = response.json()
-        if result.get('translations'):
-            return result['translations'][0]['text']
+        if result.get("translations"):
+            return result["translations"][0]["text"]
         return text
     except Exception as e:
         print(f"Translation error: {e}", file=sys.stderr)
         return text
+
 
 def translate_nested(obj: Any, target_lang: str, current_key: str = "") -> Any:
     """Recursively translate all strings in a nested structure."""
@@ -53,7 +55,7 @@ def translate_nested(obj: Any, target_lang: str, current_key: str = "") -> Any:
             result.append(translate_nested(item, target_lang, f"[{i}]"))
         return result
     elif isinstance(obj, str):
-        if current_key in PRESERVE_KEYS or '@' in obj or not obj.strip():
+        if current_key in PRESERVE_KEYS or "@" in obj or not obj.strip():
             return obj
         print(f"  {current_key}: {obj[:50]}...")
         translated = translate_text(obj, target_lang)
@@ -62,20 +64,22 @@ def translate_nested(obj: Any, target_lang: str, current_key: str = "") -> Any:
     else:
         return obj
 
+
 def preserve_brand_names(translated: dict) -> dict:
     """Force preserve brand names and app names."""
-    translated['common']['tastyJam'] = 'Tasty Jam'
-    translated['spark']['name'] = 'Spark'
-    translated['klick']['name'] = 'Klick'
-    translated['fartSoundboard']['name'] = 'Fart Soundboard'
-    translated['nav']['tastyJam'] = 'Tasty Jam'
-    translated['common']['email'] = 'support@tastyjam.ca'
+    translated["common"]["tastyJam"] = "Tasty Jam"
+    translated["spark"]["name"] = "Spark"
+    translated["klick"]["name"] = "Klick"
+    translated["fartSoundboard"]["name"] = "Fart Soundboard"
+    translated["nav"]["tastyJam"] = "Tasty Jam"
+    translated["common"]["email"] = "support@tastyjam.ca"
     return translated
+
 
 def main():
     # Load English translations
     try:
-        with open(EN_FILE, 'r', encoding='utf-8') as f:
+        with open(EN_FILE, "r", encoding="utf-8") as f:
             en_data = json.load(f)
     except FileNotFoundError:
         print(f"❌ Error: {EN_FILE} not found")
@@ -85,13 +89,20 @@ def main():
     languages = sys.argv[1:] if len(sys.argv) > 1 else DEFAULT_LANGUAGES
 
     lang_mapping = {
-        'en': 'en', 'english': 'en',
-        'fr': 'FR', 'french': 'FR',
-        'es': 'ES', 'spanish': 'ES',
-        'de': 'DE', 'german': 'DE',
-        'ja': 'JA', 'japanese': 'JA',
-        'pt': 'PT', 'portuguese': 'PT',
-        'pt-br': 'PT-BR', 'brazilian': 'PT-BR',
+        "en": "en",
+        "english": "en",
+        "fr": "FR",
+        "french": "FR",
+        "es": "ES",
+        "spanish": "ES",
+        "de": "DE",
+        "german": "DE",
+        "ja": "JA",
+        "japanese": "JA",
+        "pt": "PT",
+        "portuguese": "PT",
+        "pt-br": "PT-BR",
+        "brazilian": "PT-BR",
     }
 
     for lang_input in languages:
@@ -103,7 +114,7 @@ def main():
             continue
 
         # Map language code to filename
-        filename_code = lang_input.lower().replace('-', '_')
+        filename_code = lang_input.lower().replace("-", "_")
         output_file = f"locales/{filename_code}.json"
 
         print(f"\n{'='*60}")
@@ -113,7 +124,7 @@ def main():
         translated = translate_nested(en_data, target_code)
         translated = preserve_brand_names(translated)
 
-        with open(output_file, 'w', encoding='utf-8') as f:
+        with open(output_file, "w", encoding="utf-8") as f:
             json.dump(translated, f, ensure_ascii=False, indent=2)
 
         print(f"✓ Saved to {output_file}")
@@ -122,5 +133,6 @@ def main():
     print("✓ All translations complete!")
     print(f"{'='*60}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
