@@ -228,17 +228,22 @@
           }
 
           // Poll for i18n initialization
+          let taglineSet = false;
           const taglinePoller = setInterval(() => {
-            if (window.tj && window.tj.i18n) {
+            if (window.tj && window.tj.i18n && !taglineSet) {
               clearInterval(taglinePoller);
+              taglineSet = true;
               setRandomTagline();
             }
           }, 50);
 
-          // Safety timeout - set tagline after 500ms regardless
+          // Safety timeout - set tagline after 500ms if not already set
           setTimeout(() => {
             clearInterval(taglinePoller);
-            setRandomTagline();
+            if (!taglineSet) {
+              taglineSet = true;
+              setRandomTagline();
+            }
           }, 500);
         </script>
       </header>
