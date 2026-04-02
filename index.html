@@ -251,7 +251,7 @@
       <div class="divider"></div>
 
       <section class="apps">
-        <div class="card" onclick="window.location = '/spark/'" role="link" data-app="spark">
+        <div class="card" role="link" data-app="spark">
           <span class="badge" data-i18n="spark.badge">New</span>
           <div class="card-icon">
             <img src="/assets/spark-icon.png" alt="Spark icon" />
@@ -277,7 +277,7 @@
           <div style="margin-top: 16px">
             <a
               href="https://apps.apple.com/app/spark-adhd-habit-tracker/id6760031434"
-              onclick="event.stopPropagation()"
+              onclick="event.stopPropagation(); return true;"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -289,8 +289,14 @@
             </a>
           </div>
         </div>
+        <script>
+          document.querySelector('[data-app="spark"]').addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            window.location = '/spark/';
+          });
+        </script>
 
-        <div class="card" onclick="window.location = '/klick/'" role="link" data-app="klick">
+        <div class="card" role="link" data-app="klick">
           <span class="badge coming" data-i18n="klick.badge">Coming Soon</span>
           <div class="card-icon">
             <img src="/assets/klick-icon.png" alt="Klick icon" />
@@ -314,10 +320,15 @@
             >
           </div>
         </div>
+        <script>
+          document.querySelector('[data-app="klick"]').addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            window.location = '/klick/';
+          });
+        </script>
 
         <div
           class="card"
-          onclick="window.location = '/fart-soundboard/'"
           role="link"
           data-app="fartSoundboard"
         >
@@ -345,6 +356,12 @@
             >
           </div>
         </div>
+        <script>
+          document.querySelector('[data-app="fartSoundboard"]').addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            window.location = '/fart-soundboard/';
+          });
+        </script>
       </section>
 
       <div id="tj-footer"></div>
