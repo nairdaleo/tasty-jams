@@ -198,7 +198,8 @@
           function setRandomTagline() {
             if (window.tj && window.tj.i18n) {
               const taglines = window.tj.i18n.homepage.taglines;
-              const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
+              const randomTagline =
+                taglines[Math.floor(Math.random() * taglines.length)];
               document.querySelector(".tagline").textContent = randomTagline;
             } else {
               // Fallback if i18n not loaded
@@ -222,7 +223,8 @@
                 "Stop scrolling, start using",
                 "Your new favorite tools",
               ];
-              const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
+              const randomTagline =
+                taglines[Math.floor(Math.random() * taglines.length)];
               document.querySelector(".tagline").textContent = randomTagline;
             }
           }
@@ -263,7 +265,11 @@
             shame.
           </p>
           <div class="card-links">
-            <a class="pill" href="/spark/" onclick="event.stopPropagation()" data-i18n="common.support"
+            <a
+              class="pill"
+              href="/spark/"
+              onclick="event.stopPropagation()"
+              data-i18n="common.support"
               >Support</a
             >
             <a
@@ -274,25 +280,37 @@
               >Privacy</a
             >
           </div>
+          <div class="card-links">
+            <a
+              href="https://apps.apple.com/app/spark-adhd-habit-tracker/id6760031434"
+              rel="noopener noreferrer"
+              class="app-store-badge-link"
+              data-app="spark"
+              style="margin-top: 20px"
+              onclick="event.stopPropagation()"
+            >
+              <img
+                src="/assets/app-store-badges/en.svg"
+                alt="Download on the App Store"
+                style="height: 40px; display: block"
+              />
+            </a>
+          </div>
         </div>
-        <a
-          href="https://apps.apple.com/app/spark-adhd-habit-tracker/id6760031434"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="app-store-badge-link"
-          data-app="spark"
-        >
-          <img
-            src="/assets/app-store-badges/en.svg"
-            alt="Download on the App Store"
-            style="height: 40px; display: block; margin-top: 16px"
-          />
-        </a>
         <script>
-          document.querySelector('[data-app="spark"].card').addEventListener('click', (e) => {
-            if (e.target.closest('a')) return;
-            window.location = '/spark/';
-          });
+          document
+            .querySelector('[data-app="spark"].card')
+            .addEventListener("click", (e) => {
+              if (e.target.closest("a")) return;
+              window.location = "/spark/";
+            });
+          // Ensure badge link opens in new tab
+          document
+            .querySelector('[data-app="spark"].app-store-badge-link')
+            ?.addEventListener("click", (e) => {
+              e.stopPropagation();
+              window.open(e.currentTarget.href, "_blank");
+            });
         </script>
 
         <div class="card" role="link" data-app="klick">
@@ -307,7 +325,11 @@
             your wrist.
           </p>
           <div class="card-links">
-            <a class="pill" href="/klick/" onclick="event.stopPropagation()" data-i18n="common.support"
+            <a
+              class="pill"
+              href="/klick/"
+              onclick="event.stopPropagation()"
+              data-i18n="common.support"
               >Support</a
             >
             <a
@@ -320,20 +342,22 @@
           </div>
         </div>
         <script>
-          document.querySelector('[data-app="klick"]').addEventListener('click', (e) => {
-            if (e.target.closest('a')) return;
-            window.location = '/klick/';
-          });
+          document
+            .querySelector('[data-app="klick"]')
+            .addEventListener("click", (e) => {
+              if (e.target.closest("a")) return;
+              window.location = "/klick/";
+            });
         </script>
 
-        <div
-          class="card"
-          role="link"
-          data-app="fartSoundboard"
-        >
-          <span class="badge archived" data-i18n="fartSoundboard.badge">Archived</span>
+        <div class="card" role="link" data-app="fartSoundboard">
+          <span class="badge archived" data-i18n="fartSoundboard.badge"
+            >Archived</span
+          >
           <div class="card-icon">💨</div>
-          <div class="card-name" data-i18n="fartSoundboard.name">Fart Soundboard</div>
+          <div class="card-name" data-i18n="fartSoundboard.name">
+            Fart Soundboard
+          </div>
           <p class="card-desc" data-i18n="fartSoundboard.description">
             The classic. Maximum hilarity, zero shame. TestFlight only — not on
             the App Store.
@@ -356,10 +380,12 @@
           </div>
         </div>
         <script>
-          document.querySelector('[data-app="fartSoundboard"]').addEventListener('click', (e) => {
-            if (e.target.closest('a')) return;
-            window.location = '/fart-soundboard/';
-          });
+          document
+            .querySelector('[data-app="fartSoundboard"]')
+            .addEventListener("click", (e) => {
+              if (e.target.closest("a")) return;
+              window.location = "/fart-soundboard/";
+            });
         </script>
       </section>
 
@@ -369,19 +395,21 @@
     <script>
       // Update App Store badge language
       function updateBadgeLanguage() {
-        const lang = localStorage.getItem('lang') || 'en';
-        document.querySelectorAll('.app-store-badge-link img').forEach(img => {
-          img.src = `/assets/app-store-badges/${lang}.svg`;
-        });
+        const lang = localStorage.getItem("tj-language") || "en";
+        document
+          .querySelectorAll(".app-store-badge-link img")
+          .forEach((img) => {
+            img.src = `/assets/app-store-badges/${lang}.svg`;
+          });
       }
 
       // Update on language change
-      window.addEventListener('languageChanged', updateBadgeLanguage);
+      window.addEventListener("languageChanged", updateBadgeLanguage);
 
       // Translate all elements with data-i18n attributes
       function translatePage() {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
           el.textContent = t(key, el.textContent);
         });
         updateBadgeLanguage();
@@ -398,8 +426,14 @@
       document.addEventListener("DOMContentLoaded", () => {
         injectFooter({
           links: [
-            { href: "mailto:support@tastyjam.ca", text: window.tj ? t('common.contact', 'Contact') : 'Contact' },
-            { href: "/spark/privacy.html", text: window.tj ? t('common.privacy', 'Privacy') : 'Privacy' },
+            {
+              href: "mailto:support@tastyjam.ca",
+              text: window.tj ? t("common.contact", "Contact") : "Contact",
+            },
+            {
+              href: "/spark/privacy.html",
+              text: window.tj ? t("common.privacy", "Privacy") : "Privacy",
+            },
           ],
         });
       });
