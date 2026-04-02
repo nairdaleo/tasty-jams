@@ -1,0 +1,96 @@
+{
+  "common": {
+    "tastyJam": "Tasty Jam",
+    "support": "Suporte",
+    "privacy": "Privacidade",
+    "privacyPolicy": "Política de Privacidade",
+    "terms": "Termos",
+    "allApps": "Todas as aplicações",
+    "contact": "Contacto",
+    "email": "support@tastyjam.ca"
+  },
+  "homepage": {
+    "brand": "Tasty Jam",
+    "taglines": [
+      "Aplicações bem pensadas, criadas com cuidado",
+      "Aplicações tão boas que dá para saborear",
+      "Aplicações divertidas de usar",
+      "Aplicações que se popularizam",
+      "Aplicações que realmente funcionam",
+      "A produtividade aliada à personalidade",
+      "Aplicações pequenas, grande impacto",
+      "Sem excessos, apenas bom gosto",
+      "Aplicações que vale a pena abrir",
+      "Chata? Nunca ouvi falar dela",
+      "Não nos contentamos com a mediocridade",
+      "Aplicações que entendem",
+      "Extremamente útil",
+      "A razão pela qual verificas o teu telemóvel",
+      "Deliciosamente minimalista",
+      "Aplicações com alma",
+      "Pare de percorrer a página e comece a usar",
+      "As tuas novas ferramentas favoritas"
+    ]
+  },
+  "spark": {
+    "badge": "Novo",
+    "name": "Spark",
+    "description": "Aplicativo para monitorizar hábitos relacionado com o TDAH, com sequências flexíveis. Faltou um dia? O indicador desce — mas não volta a zero. Animações com dopamina, lembretes inteligentes e sem qualquer sentimento de culpa.",
+    "tagline": "Aplicativo de acompanhamento de hábitos para TDAH — Crie rotinas sem cair na espiral da vergonha",
+    "faq": {
+      "title": "Perguntas frequentes",
+      "q1": "O que é o Spark Pro?",
+      "a1": "O Spark Pro oferece acesso a hábitos ilimitados, estatísticas e análises detalhadas, widgets para o ecrã inicial, atalhos da Siri, exportação para PDF/CSV e ícones personalizados da aplicação. Os utilizadores da versão gratuita podem monitorizar até 3 hábitos para sempre.",
+      "q2": "Como funcionam as séries de perdão?",
+      "a2": "Se falhares um dia, a tua sequência diminui — mas nunca volta a zero. Volta no dia seguinte e ela começa a recuperar. O impulso é mais importante do que a perfeição.",
+      "q3": "Como posso reativar a minha subscrição Pro?",
+      "a3": "Abra o Spark → toque no ícone da roda dentada → Restaurar compras. A sua subscrição está associada ao seu ID Apple e funciona em todos os seus dispositivos.",
+      "q4": "Como posso cancelar a minha assinatura?",
+      "a4": "Aceda a Definições → ID Apple → Subscrições → Spark. Pode cancelar a qualquer momento. O acesso Pro mantém-se até ao final do seu período de faturação atual.",
+      "q5": "Os meus dados estão guardados numa cópia de segurança?",
+      "a5": "Os dados do Habit são armazenados localmente no seu dispositivo. Mantenha a cópia de segurança do dispositivo no iCloud ativada nas definições do iOS para proteger os seus dados.",
+      "q6": "A aplicação está a falhar. O que devo fazer?",
+      "a6": "Força o encerramento da aplicação e reabre-a. Se o problema persistir, verifica se há atualizações disponíveis na App Store. Ainda não consegues resolver? Contacta-nos abaixo, indicando o modelo do teu dispositivo e a versão do iOS."
+    },
+    "contactForm": {
+      "title": "Contacte o Apoio ao Cliente",
+      "nameLabel": "Nome",
+      "namePlaceholder": "O seu nome",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Assunto",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "Descreva o seu problema ou dúvida...",
+      "submitBtn": "Enviar mensagem",
+      "sendingBtn": "A enviar…",
+      "bugReport": "Relatório de erro",
+      "subscriptionIssue": "Problema com a assinatura",
+      "featureRequest": "Sugestão de funcionalidade",
+      "generalQuestion": "Pergunta geral",
+      "successMsg": "Mensagem enviada — entraremos em contacto consigo no prazo de 48 horas.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
+    }
+  },
+  "klick": {
+    "badge": "Em breve",
+    "name": "Klick",
+    "description": "Contador multifuncional com complicação para o Apple Watch. Conta o que quiseres — repetições, bebidas, inventário, pontuação. Toca para aumentar, desliza para reiniciar. Sempre ao teu alcance, no teu pulso."
+  },
+  "fartSoundboard": {
+    "badge": "Arquivado",
+    "name": "Fart Soundboard",
+    "description": "O clássico. Diversão garantida, sem qualquer vergonha. Apenas no TestFlight — não está disponível na App Store."
+  },
+  "nav": {
+    "tastyJam": "Tasty Jam"
+  },
+  "footer": {
+    "copyright": "© {ano} Tasty Jam"
+  },
+  "theme": {
+    "toggle": "Alternar entre o modo claro e o modo escuro"
+  },
+  "appStore": {
+    "alt": "Descarregar na App Store"
+  }
+}

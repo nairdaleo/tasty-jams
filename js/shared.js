@@ -7,7 +7,7 @@
 async function initI18n() {
   try {
     const lng = localStorage.getItem('tj-language') || (navigator.language.split('-')[0] || 'en');
-    const supportedLangs = ['en', 'fr', 'es', 'de', 'ja'];
+    const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
     const language = supportedLangs.includes(lng) ? lng : 'en';
 
     // Load translation file
@@ -40,7 +40,7 @@ function t(key, fallback = '') {
 }
 
 function setLanguage(lang) {
-  const supportedLangs = ['en', 'fr', 'es', 'de', 'ja'];
+  const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
   if (!supportedLangs.includes(lang)) return;
   localStorage.setItem('tj-language', lang);
   location.reload();
@@ -92,8 +92,8 @@ function injectFooter(opts = {}) {
 
   // Language selector
   const currentLang = window.tj?.currentLanguage || 'en';
-  const langs = ['en', 'fr', 'es', 'de', 'ja'];
-  const langLabels = { en: 'English', fr: 'Français', es: 'Español', de: 'Deutsch', ja: '日本語' };
+  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+  const langLabels = { en: 'English', fr: 'Français', es: 'Español', de: 'Deutsch', ja: '日本語', pt: 'Português' };
   const langSelector = `<div class="lang-selector"><label for="lang-select">Language:</label><select id="lang-select" onchange="setLanguage(this.value)">` +
     langs.map(l => `<option value="${l}" ${l === currentLang ? 'selected' : ''}>${langLabels[l]}</option>`).join('') +
     `</select></div>`;
