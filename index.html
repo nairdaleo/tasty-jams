@@ -134,6 +134,7 @@
       }
       .card-icon {
         font-size: 3rem;
+        line-height: 1;
         margin-bottom: 16px;
         position: relative;
         z-index: 1;
@@ -142,6 +143,7 @@
         width: 72px;
         height: 72px;
         border-radius: 16px;
+        display: block;
       }
       .icon-split {
         position: relative;
@@ -158,8 +160,12 @@
         object-fit: cover;
         border-radius: 0;
       }
-      .icon-split-light { clip-path: polygon(0 0, 100% 0, 0 100%); }
-      .icon-split-dark { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+      .icon-split-light {
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+      }
+      .icon-split-dark {
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      }
       .card-name {
         font-family: var(--font-display);
         font-size: 1.5rem;
