@@ -23,6 +23,65 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/shared.css" />
+  
+    <style>
+      /* Pricing pill + currency widget — Klick */
+      .pricing-block {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .pricing-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.88rem;
+        color: var(--text);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .pricing-pill .price-em { font-weight: 700; color: var(--accent); }
+      .pricing-pill .price-sep { opacity: 0.25; }
+      .currency-widget {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+      .currency-widget select {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 5px 8px;
+        font-size: 0.82rem;
+        font-family: var(--font-body);
+        cursor: pointer;
+      }
+      .currency-widget select:hover { border-color: var(--accent); }
+      .price-converted {
+        font-weight: 700;
+        color: var(--text);
+        min-width: 80px;
+        font-variant-numeric: tabular-nums;
+      }
+      .price-note {
+        font-size: 0.72rem;
+        color: var(--text-dim);
+        text-align: center;
+        max-width: 340px;
+        line-height: 1.45;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -49,6 +108,46 @@
               style="height: 40px"
             />
           </a>
+        </div>
+        <div class="pricing-block">
+          <div class="pricing-pill">
+            <span>Free tier available</span>
+            <span class="price-sep">·</span>
+            <span>Pro: <span class="price-em">$4.99 USD</span> one-time</span>
+            <span class="price-sep">·</span>
+            <span>No subscription</span>
+          </div>
+          <div class="currency-widget">
+            <span>See price in</span>
+            <select id="currency-select" aria-label="Select currency">
+              <option value="">— select —</option>
+              <option value="CAD">🇨🇦 CAD</option>
+              <option value="EUR">🇪🇺 EUR</option>
+              <option value="GBP">🇬🇧 GBP</option>
+              <option value="AUD">🇦🇺 AUD</option>
+              <option value="JPY">🇯🇵 JPY</option>
+              <option value="MXN">🇲🇽 MXN</option>
+              <option value="BRL">🇧🇷 BRL</option>
+              <option value="INR">🇮🇳 INR</option>
+              <option value="KRW">🇰🇷 KRW</option>
+              <option value="CHF">🇨🇭 CHF</option>
+              <option value="SEK">🇸🇪 SEK</option>
+              <option value="NOK">🇳🇴 NOK</option>
+              <option value="DKK">🇩🇰 DKK</option>
+              <option value="NZD">🇳🇿 NZD</option>
+              <option value="SGD">🇸🇬 SGD</option>
+              <option value="HKD">🇭🇰 HKD</option>
+              <option value="CNY">🇨🇳 CNY</option>
+              <option value="PLN">🇵🇱 PLN</option>
+              <option value="CZK">🇨🇿 CZK</option>
+              <option value="HUF">🇭🇺 HUF</option>
+            </select>
+            <span class="price-converted" id="price-converted"></span>
+          </div>
+          <p class="price-note" id="price-note" style="display:none">
+            Approximate conversion via live exchange rate.
+            Actual App Store price may differ due to Apple's regional pricing and local taxes.
+          </p>
         </div>
       </div>
 
@@ -159,6 +258,56 @@
             { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
           ],
         });
+      });
+    </script>
+  
+    <script>
+      // === Pricing currency converter ===
+      const FX_FORMAT = {
+        CAD:{symbol:'CA$',dec:2},EUR:{symbol:'€',dec:2},GBP:{symbol:'£',dec:2},
+        AUD:{symbol:'A$',dec:2},JPY:{symbol:'¥',dec:0},MXN:{symbol:'MX$',dec:2},
+        BRL:{symbol:'R$',dec:2},INR:{symbol:'₹',dec:0},KRW:{symbol:'₩',dec:0},
+        CHF:{symbol:'CHF ',dec:2},SEK:{symbol:'kr',dec:2,sfx:true},
+        NOK:{symbol:'kr',dec:2,sfx:true},DKK:{symbol:'kr',dec:2,sfx:true},
+        NZD:{symbol:'NZ$',dec:2},SGD:{symbol:'S$',dec:2},HKD:{symbol:'HK$',dec:2},
+        CNY:{symbol:'¥',dec:2},PLN:{symbol:'zł',dec:2,sfx:true},
+        CZK:{symbol:'Kč',dec:2,sfx:true},HUF:{symbol:'Ft',dec:0,sfx:true},
+      };
+      function fmtPrice(amt, cur) {
+        const f = FX_FORMAT[cur] || {symbol:cur+' ',dec:2};
+        const n = amt.toFixed(f.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return f.sfx ? n + ' ' + f.symbol : f.symbol + n;
+      }
+      async function getRate(cur) {
+        const KEY = 'tj_fx_cache';
+        try {
+          const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+          if (c[cur] && Date.now() - c._ts < 4*3600*1000) return c[cur];
+        } catch {}
+        const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=' + cur);
+        if (!r.ok) throw new Error();
+        const d = await r.json();
+        const rate = d.rates[cur];
+        try {
+          const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+          c[cur] = rate; c._ts = Date.now();
+          sessionStorage.setItem(KEY, JSON.stringify(c));
+        } catch {}
+        return rate;
+      }
+      const _sel = document.getElementById('currency-select');
+      const _out = document.getElementById('price-converted');
+      const _note = document.getElementById('price-note');
+      const BASE_USD = 4.99;
+      _sel && _sel.addEventListener('change', async () => {
+        const cur = _sel.value;
+        if (!cur) { _out.textContent = ''; _note.style.display = 'none'; return; }
+        _out.textContent = '…'; _note.style.display = 'none';
+        try {
+          const rate = await getRate(cur);
+          _out.textContent = '≈ ' + fmtPrice(BASE_USD * rate, cur);
+          _note.style.display = 'block';
+        } catch { _out.textContent = 'unavailable'; }
       });
     </script>
   </body>
