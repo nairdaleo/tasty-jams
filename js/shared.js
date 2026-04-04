@@ -131,7 +131,7 @@ const _TJ_CURRENCIES = [
   { code: 'HUF', flag: '🇭🇺', symbol: 'Ft', dec: 0, sfx: true },
 ];
 
-const _TJ_FX_KEY = 'tj_fx_rates';
+const _TJ_FX_KEY = 'tj_fx_rates_v2';
 const _TJ_FX_TTL = 4 * 60 * 60 * 1000; // 4 hours
 
 function _tjFmtPrice(amt, cur) {
@@ -149,7 +149,7 @@ async function _tjLoadRates() {
   } catch { }
   try {
     const codes = _TJ_CURRENCIES.map(c => c.code).join(',');
-    const r = await fetch(`https://api.frankfurter.app/latest?from=USD&to=${codes}`);
+    const r = await fetch(`https://api.frankfurter.dev/v1/latest?from=USD&to=${codes}`);
     if (!r.ok) return null;
     const d = await r.json();
     localStorage.setItem(_TJ_FX_KEY, JSON.stringify({ rates: d.rates, _ts: Date.now() }));
