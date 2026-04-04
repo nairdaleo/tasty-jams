@@ -551,6 +551,7 @@ button[type="submit"]:disabled {
 }
 .privacy ul {
   padding-left: 20px;
+  list-style: disc;
 }
 .privacy li {
   margin-bottom: 6px;
