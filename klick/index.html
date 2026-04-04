@@ -284,7 +284,7 @@
           const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
           if (c[cur] && Date.now() - c._ts < 4*3600*1000) return c[cur];
         } catch {}
-        const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=' + cur);
+        const r = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=' + cur);
         if (!r.ok) throw new Error();
         const d = await r.json();
         const rate = d.rates[cur];
