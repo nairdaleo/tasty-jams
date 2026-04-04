@@ -78,7 +78,8 @@ function injectThemeToggle() {
 }
 
 // --- Language selector (top of page) ---
-// Injects a compact language pill fixed to the top-left of the page.
+// Injects a compact language pill fixed to the top-right (left of theme toggle).
+// Also owns App Store badge language swapping — one place for all language-switch side effects.
 function injectLangSelector() {
   const currentLang = window.tj?.currentLanguage || 'en';
   const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
@@ -89,13 +90,26 @@ function injectLangSelector() {
   wrap.className = 'lang-selector-top';
   wrap.innerHTML = `<select aria-label="Language" onchange="setLanguage(this.value)">${options}</select>`;
 
-  // Insert after the theme-toggle button so both sit in the top corners.
+  // Insert before theme-toggle so both sit flush in the top-right corner.
   const themeBtn = document.querySelector('.theme-toggle');
-  if (themeBtn && themeBtn.nextSibling) {
-    document.body.insertBefore(wrap, themeBtn.nextSibling);
+  if (themeBtn) {
+    document.body.insertBefore(wrap, themeBtn);
   } else {
     document.body.prepend(wrap);
   }
+
+  // Swap App Store badge to match the current language on every page load.
+  _updateAppStoreBadge(currentLang);
+}
+
+// Updates all .app-store-badge-link img src to the current language badge.
+// Falls back to 'en' if no badge exists for the language.
+function _updateAppStoreBadge(lang) {
+  const supported = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+  const code = supported.includes(lang) ? lang : 'en';
+  document.querySelectorAll('.app-store-badge-link img').forEach(img => {
+    img.src = `/assets/app-store-badges/${code}.svg`;
+  });
 }
 
 // --- Currency widget (reusable component) ---
@@ -173,7 +187,7 @@ async function initCurrencyWidget({ selectId = 'currency-select', prices = {} } 
 
   // Render placeholder options immediately so the select isn't empty while fetching.
   sel.innerHTML =
-    '<option value="">See price in…</option>' +
+    `<option value="">${t('common.seePriceIn', 'See price in…')}</option>` +
     _TJ_CURRENCIES.map(c => `<option value="${c.code}">${c.flag} ${c.code}</option>`).join('');
 
   const rates = await _tjLoadRates();
@@ -182,7 +196,7 @@ async function initCurrencyWidget({ selectId = 'currency-select', prices = {} } 
   // Rewrite every option with the converted price baked into the label.
   // Like pre-computing a lookup table at startup rather than on every access.
   sel.innerHTML =
-    '<option value="">See price in…</option>' +
+    `<option value="">${t('common.seePriceIn', 'See price in…')}</option>` +
     _TJ_CURRENCIES.map(c => {
       const rate = rates[c.code];
       const label = rate ? ` — ${_tjPriceLabel(prices, rate, c.code)}` : '';

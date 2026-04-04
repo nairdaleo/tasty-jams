@@ -7,7 +7,9 @@
     "terms": "Condiciones",
     "allApps": "Todas las aplicaciones",
     "contact": "Contacto",
-    "email": "support@tastyjam.ca"
+    "email": "support@tastyjam.ca",
+    "seePriceIn": "Ver precio en…",
+    "downloadOnAppStore": "Descargar en la App Store"
   },
   "homepage": {
     "brand": "Tasty Jam",
@@ -91,6 +93,11 @@
       "pro5": "Widgets para la pantalla de inicio y la pantalla de bloqueo",
       "pro6": "Iconos personalizados para aplicaciones",
       "pro7": "Categorías de hábitos personalizadas"
+    },
+    "pill": {
+      "freeTier": "Hay un plan gratuito disponible",
+      "proMonthly": "Plan Pro: 4,99 $ al mes",
+      "proYearly": "o 29,99 USD al año"
     }
   },
   "klick": {
@@ -116,6 +123,11 @@
       "pro4": "Widgets de la pantalla de inicio",
       "pro5": "Atajos de Siri: cuenta sin usar las manos",
       "pro6": "Incluye Family Sharing"
+    },
+    "pill": {
+      "freeTier": "Hay un plan gratuito disponible",
+      "proOnce": "Versión Pro: 4,99 $ (pago único)",
+      "noSub": "Sin suscripción"
     }
   },
   "fartSoundboard": {
@@ -193,6 +205,12 @@
       "pro4": "Atajos de Siri: lleva un registro de tus citas médicas y comprueba qué tienes pendiente sin usar las manos",
       "pro5": "Widgets de la pantalla de inicio: consulta el estado de las plantas de un vistazo sin necesidad de abrir la aplicación",
       "pro6": "Compartir en familia: una sola compra para todos los dispositivos de tu familia"
+    },
+    "pill": {
+      "comingSoon": "Próximamente en la App Store",
+      "freeForever": "🌿 Gratis para siempre",
+      "proOnce": "Versión Pro: 19,99 $ (una sola vez)",
+      "noSub": "Sin suscripción"
     }
   }
 }

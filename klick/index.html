@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/shared.css?v=3" />
+    <link rel="stylesheet" href="/css/shared.css?v=4" />
   
     <style>
       :root {
@@ -102,11 +102,11 @@
         </div>
         <div class="pricing-block">
           <div class="pricing-pill">
-            <span>Free tier available</span>
+            <span data-i18n="klick.pill.freeTier">Free tier available</span>
             <span class="price-sep">·</span>
-            <span>Pro: <span class="price-em">$4.99 USD</span> one-time</span>
+            <span class="price-em" data-i18n="klick.pill.proOnce">Pro: $4.99 USD one-time</span>
             <span class="price-sep">·</span>
-            <span>No subscription</span>
+            <span data-i18n="klick.pill.noSub">No subscription</span>
           </div>
           <div class="currency-widget">
             <select id="currency-select" aria-label="Select currency"></select>
@@ -245,7 +245,7 @@
 
       <div id="tj-footer"></div>
     </div>
-    <script src="/js/shared.js?v=3"></script>
+    <script src="/js/shared.js?v=4"></script>
     <script>
       document.addEventListener('tj:ready', () => {
         injectFooter({

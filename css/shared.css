@@ -79,10 +79,13 @@ body {
 }
 
 /* --- Language selector (top of page) --- */
+/* Sits to the left of the theme toggle. Gap calculated so they never overlap:
+   theme-toggle is 40px wide at right:20px, so right edge is at 60px from right.
+   We sit at right:68px with our own width ~48px — safe at any viewport width. */
 .lang-selector-top {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 68px;
   z-index: 10;
 }
 .lang-selector-top select {

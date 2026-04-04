@@ -7,7 +7,9 @@
     "terms": "利用規約",
     "allApps": "すべてのアプリ",
     "contact": "お問い合わせ",
-    "email": "support@tastyjam.ca"
+    "email": "support@tastyjam.ca",
+    "seePriceIn": "価格は…でご確認ください",
+    "downloadOnAppStore": "App Storeからダウンロード"
   },
   "homepage": {
     "brand": "Tasty Jam",
@@ -91,6 +93,11 @@
       "pro5": "ホーム画面とロック画面のウィジェット",
       "pro6": "カスタムアプリアイコン",
       "pro7": "カスタム習慣カテゴリ"
+    },
+    "pill": {
+      "freeTier": "無料プランをご利用いただけます",
+      "proMonthly": "プロプラン：月額4.99米ドル",
+      "proYearly": "または年額29.99米ドル"
     }
   },
   "klick": {
@@ -116,6 +123,11 @@
       "pro4": "ホーム画面のウィジェット",
       "pro5": "Siriショートカット — ハンズフリーでカウント",
       "pro6": "「ファミリー共有」が含まれています"
+    },
+    "pill": {
+      "freeTier": "無料プランをご利用いただけます",
+      "proOnce": "プロ版：4.99米ドル（一括払い）",
+      "noSub": "定期購読なし"
     }
   },
   "fartSoundboard": {
@@ -193,6 +205,12 @@
       "generalQuestion": "一般的な質問",
       "successMsg": "メッセージを送信しました。48時間以内にご連絡いたします。",
       "errorMsg": "何らかの問題が発生しました。support@tastyjam.ca まで直接メールをお送りください。"
+    },
+    "pill": {
+      "comingSoon": "まもなくApp Storeに登場",
+      "freeForever": "🌿 永久無料",
+      "proOnce": "プロ版：19.99米ドル（一括払い）",
+      "noSub": "定期購読なし"
     }
   }
 }

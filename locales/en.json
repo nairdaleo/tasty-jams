@@ -7,7 +7,9 @@
     "terms": "Terms",
     "allApps": "All Apps",
     "contact": "Contact",
-    "email": "support@tastyjam.ca"
+    "email": "support@tastyjam.ca",
+    "seePriceIn": "See price in…",
+    "downloadOnAppStore": "Download on the App Store"
   },
   "homepage": {
     "brand": "Tasty Jam",
@@ -91,6 +93,11 @@
       "pro5": "Home screen & lock screen widgets",
       "pro6": "Custom app icons",
       "pro7": "Custom habit categories"
+    },
+    "pill": {
+      "freeTier": "Free tier available",
+      "proMonthly": "Pro: $4.99 USD/month",
+      "proYearly": "or $29.99 USD/year"
     }
   },
   "klick": {
@@ -116,6 +123,11 @@
       "pro4": "Home screen widgets",
       "pro5": "Siri shortcuts — count hands-free",
       "pro6": "Family Sharing included"
+    },
+    "pill": {
+      "freeTier": "Free tier available",
+      "proOnce": "Pro: $4.99 USD one-time",
+      "noSub": "No subscription"
     }
   },
   "fartSoundboard": {
@@ -193,6 +205,12 @@
       "pro4": "Siri shortcuts — log care and check what's due hands-free",
       "pro5": "Home screen widgets — at-a-glance plant status without opening the app",
       "pro6": "Family Sharing — one purchase, all your family's devices"
+    },
+    "pill": {
+      "comingSoon": "Coming soon to the App Store",
+      "freeForever": "🌿 Free forever",
+      "proOnce": "Pro: $19.99 USD one-time",
+      "noSub": "No subscription"
     }
   }
 }

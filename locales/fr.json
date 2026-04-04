@@ -7,7 +7,9 @@
     "terms": "Conditions générales",
     "allApps": "Toutes les applications",
     "contact": "Contact",
-    "email": "support@tastyjam.ca"
+    "email": "support@tastyjam.ca",
+    "seePriceIn": "Voir le prix à…",
+    "downloadOnAppStore": "Télécharger sur l'App Store"
   },
   "homepage": {
     "brand": "Tasty Jam",
@@ -91,6 +93,11 @@
       "pro5": "Widgets pour l'écran d'accueil et l'écran de verrouillage",
       "pro6": "Icônes d'application personnalisées",
       "pro7": "Catégories d'habitudes personnalisées"
+    },
+    "pill": {
+      "freeTier": "Formule gratuite disponible",
+      "proMonthly": "Formule Pro : 4,99 $ US par mois",
+      "proYearly": "ou 29,99 $ US par an"
     }
   },
   "klick": {
@@ -116,6 +123,11 @@
       "pro4": "Widgets de l'écran d'accueil",
       "pro5": "Raccourcis Siri — compter sans les mains",
       "pro6": "Partage familial inclus"
+    },
+    "pill": {
+      "freeTier": "Formule gratuite disponible",
+      "proOnce": "Version Pro : 4,99 $ USD (paiement unique)",
+      "noSub": "Pas d'abonnement"
     }
   },
   "fartSoundboard": {
@@ -193,6 +205,12 @@
       "generalQuestion": "Question d'ordre général",
       "successMsg": "Votre message a bien été envoyé. Nous vous répondrons dans les 48 heures.",
       "errorMsg": "Une erreur s'est produite. Veuillez nous envoyer un e-mail directement à l'adresse support@tastyjam.ca"
+    },
+    "pill": {
+      "comingSoon": "Bientôt disponible sur l'App Store",
+      "freeForever": "🌿 Gratuit pour toujours",
+      "proOnce": "Version Pro : 19,99 $ USD (paiement unique)",
+      "noSub": "Pas d'abonnement"
     }
   }
 }

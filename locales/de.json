@@ -7,7 +7,9 @@
     "terms": "Bedingungen",
     "allApps": "Alle Apps",
     "contact": "Kontakt",
-    "email": "support@tastyjam.ca"
+    "email": "support@tastyjam.ca",
+    "seePriceIn": "Preis anzeigen in…",
+    "downloadOnAppStore": "Im App Store herunterladen"
   },
   "homepage": {
     "brand": "Tasty Jam",
@@ -91,6 +93,11 @@
       "pro5": "Widgets für den Startbildschirm und den Sperrbildschirm",
       "pro6": "Benutzerdefinierte App-Symbole",
       "pro7": "Benutzerdefinierte Gewohnheitskategorien"
+    },
+    "pill": {
+      "freeTier": "Kostenlose Version verfügbar",
+      "proMonthly": "Pro: 4,99 USD/Monat",
+      "proYearly": "oder 29,99 USD pro Jahr"
     }
   },
   "klick": {
@@ -116,6 +123,11 @@
       "pro4": "Widgets für den Startbildschirm",
       "pro5": "Siri-Shortcuts – freihändig zählen",
       "pro6": "Familienfreigabe inklusive"
+    },
+    "pill": {
+      "freeTier": "Kostenlose Version verfügbar",
+      "proOnce": "Pro: 4,99 USD (einmalig)",
+      "noSub": "Kein Abonnement"
     }
   },
   "fartSoundboard": {
@@ -193,6 +205,12 @@
       "generalQuestion": "Allgemeine Frage",
       "successMsg": "Ihre Nachricht wurde gesendet – wir melden uns innerhalb von 48 Stunden bei Ihnen.",
       "errorMsg": "Es ist ein Fehler aufgetreten. Bitte senden Sie uns eine E-Mail direkt an support@tastyjam.ca"
+    },
+    "pill": {
+      "comingSoon": "Demnächst im App Store",
+      "freeForever": "🌿 Für immer kostenlos",
+      "proOnce": "Pro: 19,99 USD (einmalig)",
+      "noSub": "Kein Abonnement"
     }
   }
 }
