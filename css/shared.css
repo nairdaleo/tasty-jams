@@ -79,34 +79,50 @@ body {
 }
 
 /* --- Language selector (top of page) --- */
-/* Sits to the left of the theme toggle. Gap calculated so they never overlap:
-   theme-toggle is 40px wide at right:20px, so right edge is at 60px from right.
-   We sit at right:68px with our own width ~48px — safe at any viewport width. */
+/* Matches the theme-toggle button exactly — same 40×40 circle, same colours.
+   Sits immediately left of the theme toggle with an 8px gap:
+   theme-toggle right:20px + 40px width + 8px gap = right:68px. */
 .lang-selector-top {
   position: fixed;
   top: 20px;
   right: 68px;
   z-index: 10;
+  width: 40px;
+  height: 40px;
 }
 .lang-selector-top select {
+  /* Fill the 40×40 circle exactly */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* Match theme-toggle colours */
   background: var(--toggle-bg);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 0.75rem;
+  /* Strip all native select chrome */
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: none;
+  /* Centre the text */
+  text-align: center;
+  text-align-last: center;
+  /* Typography */
+  font-size: 0.7rem;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
   cursor: pointer;
-  width: auto;
-  appearance: none;
-  background-image: none;
-  transition: border-color 0.2s, background 0.2s;
+  /* Animate like theme-toggle */
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  /* Prevent text overflow */
+  padding: 0;
+  line-height: 40px;
 }
 .lang-selector-top select:hover {
   background: var(--toggle-hover);
   border-color: var(--border-hover);
+  transform: scale(1.08);
 }
 .lang-selector-top select:focus {
   outline: none;
