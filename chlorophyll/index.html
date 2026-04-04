@@ -13,27 +13,26 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/shared.css" />
     <style>
-      /* Chlorophyll page — earth tone overrides */
       :root {
-        --chl-clay:   #C4714A;
-        --chl-moss:   #6B7C4A;
-        --chl-bark:   #6B4C35;
-        --chl-soil:   #3B2A1A;
-        --chl-cream:  #F5EFE4;
-        --chl-linen:  #EDE5D8;
-        --chl-sage:   #A8B89A;
-        --chl-bloom:  #B87A8A;
-        --chl-petal:  #D4906E;
+        --chl-clay:  #C4714A;
+        --chl-moss:  #6B7C4A;
+        --chl-bark:  #6B4C35;
+        --chl-soil:  #3B2A1A;
+        --chl-cream: #F5EFE4;
+        --chl-linen: #EDE5D8;
+        --chl-sage:  #A8B89A;
+        --chl-bloom: #B87A8A;
+        --chl-petal: #D4906E;
       }
 
-      /* Icon composite — splits the squircle diagonally, light top-left / dark bottom-right */
+      /* === Composite icon: diagonal split light/dark === */
       .icon-composite {
         position: relative;
         width: 120px;
         height: 120px;
         border-radius: 26px;
         overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         flex-shrink: 0;
       }
       .icon-composite img {
@@ -51,7 +50,6 @@
         clip-path: polygon(100% 0, 100% 100%, 0 100%);
         z-index: 2;
       }
-      /* Diagonal seam line */
       .icon-composite::after {
         content: '';
         position: absolute;
@@ -60,18 +58,115 @@
         background: linear-gradient(
           135deg,
           transparent calc(50% - 0.5px),
-          rgba(255,255,255,0.18) calc(50% - 0.5px),
-          rgba(255,255,255,0.18) calc(50% + 0.5px),
+          rgba(255,255,255,0.22) calc(50% - 0.5px),
+          rgba(255,255,255,0.22) calc(50% + 0.5px),
           transparent calc(50% + 0.5px)
         );
         pointer-events: none;
       }
 
-      /* Feature grid */
+      /* === Coming soon badge === */
+      .coming-soon-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--chl-clay);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 999px;
+        margin-top: 20px;
+      }
+      .coming-soon-badge::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0.8;
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50%       { opacity: 0.3; transform: scale(0.7); }
+      }
+
+      /* === Pricing pill + currency widget === */
+      .pricing-block {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .pricing-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        color: var(--text);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .pricing-pill .price-usd {
+        font-weight: 700;
+        color: var(--chl-clay);
+      }
+      .pricing-pill .price-sep {
+        opacity: 0.25;
+      }
+
+      /* Currency converter widget */
+      .currency-widget {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+      .currency-widget select {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 5px 8px;
+        font-size: 0.82rem;
+        font-family: var(--font-body);
+        cursor: pointer;
+        appearance: auto;
+      }
+      .currency-widget select:hover {
+        border-color: var(--chl-clay);
+      }
+      .price-converted {
+        font-weight: 700;
+        color: var(--text);
+        min-width: 80px;
+        text-align: left;
+        font-variant-numeric: tabular-nums;
+      }
+      .price-note {
+        font-size: 0.72rem;
+        color: var(--text-dim);
+        text-align: center;
+        max-width: 320px;
+        line-height: 1.4;
+      }
+
+      /* === Feature grid === */
       .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
+        gap: 14px;
         margin-top: 8px;
       }
       .feature-card {
@@ -81,29 +176,13 @@
         padding: 20px;
         transition: background 0.2s, border-color 0.2s;
       }
-      .feature-card:hover {
-        background: var(--surface-hover);
-        border-color: var(--chl-clay);
-      }
-      .feature-icon {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-        display: block;
-      }
-      .feature-title {
-        font-weight: 700;
-        font-size: 0.95rem;
-        margin-bottom: 4px;
-        color: var(--text);
-      }
-      .feature-desc {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        line-height: 1.5;
-      }
+      .feature-card:hover { background: var(--surface-hover); border-color: var(--chl-clay); }
+      .feature-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+      .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: var(--text); }
+      .feature-desc  { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
       .pro-badge {
         display: inline-block;
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         font-weight: 700;
         letter-spacing: 0.04em;
         text-transform: uppercase;
@@ -117,7 +196,7 @@
       }
       .free-badge {
         display: inline-block;
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         font-weight: 700;
         letter-spacing: 0.04em;
         text-transform: uppercase;
@@ -129,33 +208,6 @@
         vertical-align: middle;
         opacity: 0.9;
       }
-
-      /* Pricing pill */
-      .pricing-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        padding: 10px 20px;
-        font-size: 0.9rem;
-        margin-top: 16px;
-        color: var(--text);
-      }
-      .pricing-pill strong {
-        color: var(--chl-clay);
-      }
-
-      /* Accent overrides for this page */
-      .header-icon {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-      a.app-store-badge-link {
-        border-radius: 10px;
-      }
     </style>
   </head>
   <body>
@@ -166,35 +218,58 @@
       <div class="header">
         <div class="header-icon">
           <div class="icon-composite">
-            <img class="icon-light" src="/assets/chlorophyll-icon-light.png" alt="Chlorophyll icon light" />
-            <img class="icon-dark"  src="/assets/chlorophyll-icon-dark.png"  alt="Chlorophyll icon dark" />
+            <img class="icon-light" src="/assets/chlorophyll-icon-light.png" alt="Chlorophyll icon — light mode" />
+            <img class="icon-dark"  src="/assets/chlorophyll-icon-dark.png"  alt="Chlorophyll icon — dark mode" />
           </div>
         </div>
+
         <h1>Chlorophyll</h1>
         <p class="tagline">Plant Care Tracker — Manual-first. No AI. No subscription.</p>
-        <div style="margin-top: 24px">
-          <!-- App Store badge — will be live once the app is published -->
-          <a
-            href="https://apps.apple.com/app/chlorophyll-plant-care-log/id0000000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="app-store-badge-link"
-            id="appstore-link"
-          >
-            <img
-              src="/assets/app-store-badges/en.svg"
-              alt="Download on the App Store"
-              style="height: 40px"
-              id="appstore-badge"
-            />
-          </a>
-        </div>
-        <div class="pricing-pill">
-          <span>🌿 Free forever</span>
-          <span style="opacity:0.3">·</span>
-          <span><strong>$19.99</strong> one-time Pro unlock</span>
-          <span style="opacity:0.3">·</span>
-          <span>No subscription</span>
+
+        <!-- Coming soon state — replace with App Store badge when live -->
+        <div class="coming-soon-badge">Coming soon to the App Store</div>
+
+        <!-- Pricing block with live currency converter -->
+        <div class="pricing-block">
+          <div class="pricing-pill">
+            <span>🌿 Free forever</span>
+            <span class="price-sep">·</span>
+            <span>Pro: <span class="price-usd">$19.99 USD</span> one-time</span>
+            <span class="price-sep">·</span>
+            <span>No subscription</span>
+          </div>
+
+          <div class="currency-widget">
+            <span>See price in</span>
+            <select id="currency-select" aria-label="Select currency">
+              <option value="">— select —</option>
+              <option value="CAD">🇨🇦 CAD</option>
+              <option value="EUR">🇪🇺 EUR</option>
+              <option value="GBP">🇬🇧 GBP</option>
+              <option value="AUD">🇦🇺 AUD</option>
+              <option value="JPY">🇯🇵 JPY</option>
+              <option value="MXN">🇲🇽 MXN</option>
+              <option value="BRL">🇧🇷 BRL</option>
+              <option value="INR">🇮🇳 INR</option>
+              <option value="KRW">🇰🇷 KRW</option>
+              <option value="CHF">🇨🇭 CHF</option>
+              <option value="SEK">🇸🇪 SEK</option>
+              <option value="NOK">🇳🇴 NOK</option>
+              <option value="DKK">🇩🇰 DKK</option>
+              <option value="NZD">🇳🇿 NZD</option>
+              <option value="SGD">🇸🇬 SGD</option>
+              <option value="HKD">🇭🇰 HKD</option>
+              <option value="CNY">🇨🇳 CNY</option>
+              <option value="PLN">🇵🇱 PLN</option>
+              <option value="CZK">🇨🇿 CZK</option>
+              <option value="HUF">🇭🇺 HUF</option>
+            </select>
+            <span class="price-converted" id="price-converted"></span>
+          </div>
+          <p class="price-note" id="price-note" style="display:none">
+            Approximate conversion from USD $19.99 via live exchange rate.
+            Actual App Store price may differ due to Apple's regional pricing and local taxes.
+          </p>
         </div>
       </div>
 
@@ -210,7 +285,7 @@
           <div class="feature-card">
             <span class="feature-icon">🔔</span>
             <div class="feature-title">Smart reminders <span class="free-badge">Free</span></div>
-            <div class="feature-desc">Reminders at the time that works for you — morning, evening, or whenever. Day-of-week filters so you only get nudged on your schedule.</div>
+            <div class="feature-desc">Reminders at the time that works for you. Day-of-week filters so you only get nudged on your schedule — morning, evening, or whenever.</div>
           </div>
           <div class="feature-card">
             <span class="feature-icon">📋</span>
@@ -235,7 +310,7 @@
           <div class="feature-card">
             <span class="feature-icon">📤</span>
             <div class="feature-title">CSV &amp; PDF export <span class="pro-badge">Pro</span></div>
-            <div class="feature-desc">Export your full care history as a spreadsheet or formatted PDF report. Share with a botanist or just keep your own records.</div>
+            <div class="feature-desc">Export your full care history as a spreadsheet or formatted PDF report. Share with a botanist or keep your own records.</div>
           </div>
           <div class="feature-card">
             <span class="feature-icon">🎙</span>
@@ -247,40 +322,38 @@
 
       <!-- FAQ -->
       <div class="section">
-        <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
-        <div id="faq-items">
-          <div class="faq-item">
-            <div class="faq-q">What is Chlorophyll Pro?</div>
-            <div class="faq-a">Chlorophyll Pro is a one-time purchase that unlocks the photo growth timeline, fertilizer stats, CSV &amp; PDF export, Siri shortcuts, and home screen widgets. The free tier is generous and stays free forever — unlimited plants, unlimited care tasks, full reminders, and complete care history.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Does it work without an internet connection?</div>
-            <div class="faq-a">Yes. Chlorophyll works fully offline. iCloud syncs your data in the background when you're connected, but the app never requires a network connection to use.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Does Chlorophyll identify plants or suggest care schedules?</div>
-            <div class="faq-a">No — intentionally. Chlorophyll is a manual tracker. You know your plants best. We give you the tools to log what you do and remind you when to do it again. No AI, no guesswork, no algorithm overriding your judgment.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">How do I restore my Pro purchase?</div>
-            <div class="faq-a">Open Chlorophyll → tap the menu → Restore Purchase. Your purchase is tied to your Apple ID and works across all your devices. Pro also includes Family Sharing.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Is my data backed up?</div>
-            <div class="faq-a">Yes — via iCloud. Your plants, tasks, care logs, and photos sync automatically to iCloud and are available on all your devices. No data is stored on our servers.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Does Chlorophyll work on Mac and iPad?</div>
-            <div class="faq-a">Yes. Chlorophyll is a universal app — iPhone, iPad, and Mac all use the same purchase. On iPad and Mac, the plant list appears in a sidebar with the detail view on the right.</div>
-          </div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <div class="faq-q">What is Chlorophyll Pro?</div>
+          <div class="faq-a">Chlorophyll Pro is a one-time purchase (no subscription) that unlocks the photo growth timeline, fertilizer stats, CSV &amp; PDF export, Siri shortcuts, and home screen widgets. The free tier is generous and stays free forever — unlimited plants, unlimited care tasks, full reminders, and complete care history.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does it work without an internet connection?</div>
+          <div class="faq-a">Yes. Chlorophyll works fully offline. iCloud syncs your data in the background when connected, but the app never requires a network connection to use.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does Chlorophyll identify plants or suggest care schedules?</div>
+          <div class="faq-a">No — intentionally. Chlorophyll is a manual tracker. You know your plants best. We give you the tools to log what you do and remind you when to do it again. No AI, no algorithm overriding your judgment.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I restore my Pro purchase?</div>
+          <div class="faq-a">Open Chlorophyll → tap the menu → Restore Purchase. Your purchase is tied to your Apple ID and works across all your devices. Pro also includes Family Sharing.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my data backed up?</div>
+          <div class="faq-a">Yes — via iCloud. Your plants, tasks, care logs, and photos sync automatically. No data is stored on our servers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does Chlorophyll work on Mac and iPad?</div>
+          <div class="faq-a">Yes. Chlorophyll is a universal app — iPhone, iPad, and Mac all use the same purchase. On iPad and Mac, the plant list appears in a sidebar with the detail view on the right.</div>
         </div>
       </div>
 
       <!-- Contact -->
       <div class="section">
         <h2 class="section-title">Contact Support</h2>
-        <div id="msgOk" class="msg msg-ok"></div>
-        <div id="msgErr" class="msg msg-err"></div>
+        <div id="msgOk" class="msg msg-ok">Message sent — we'll get back to you within 48 hours.</div>
+        <div id="msgErr" class="msg msg-err">Something went wrong. Please email support@tastyjam.ca</div>
         <form id="contact-form" method="POST">
           <input type="hidden" name="app" value="Chlorophyll" />
           <div class="form-group">
@@ -313,20 +386,111 @@
 
     <script src="/js/shared.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Update App Store badge language
-        const lang = localStorage.getItem('tj-language') || 'en';
-        document.getElementById('appstore-badge').src = `/assets/app-store-badges/${lang}.svg`;
-        window.addEventListener('languageChanged', () => {
-          const l = localStorage.getItem('tj-language') || 'en';
-          document.getElementById('appstore-badge').src = `/assets/app-store-badges/${l}.svg`;
-        });
+      // === Currency converter ===
+      // Uses frankfurter.app — free, open-source, no auth, CORS-enabled.
+      // Converts $19.99 USD to the selected currency via live exchange rates.
+      // Disclaimer shown: Apple's actual App Store price will differ
+      // due to fixed pricing tiers, rounding conventions, and local taxes.
 
+      const BASE_USD = 19.99;
+      const CACHE_KEY = 'chl_fx_cache';
+      const CACHE_TTL = 4 * 60 * 60 * 1000; // 4 hours in ms
+
+      // Currency formatting config — symbols + decimal rules
+      const FX_FORMAT = {
+        CAD: { symbol: 'CA$', decimals: 2 },
+        EUR: { symbol: '€',   decimals: 2 },
+        GBP: { symbol: '£',   decimals: 2 },
+        AUD: { symbol: 'A$',  decimals: 2 },
+        JPY: { symbol: '¥',   decimals: 0 },
+        MXN: { symbol: 'MX$', decimals: 2 },
+        BRL: { symbol: 'R$',  decimals: 2 },
+        INR: { symbol: '₹',   decimals: 0 },
+        KRW: { symbol: '₩',   decimals: 0 },
+        CHF: { symbol: 'CHF ', decimals: 2 },
+        SEK: { symbol: 'kr',  decimals: 2, suffix: true },
+        NOK: { symbol: 'kr',  decimals: 2, suffix: true },
+        DKK: { symbol: 'kr',  decimals: 2, suffix: true },
+        NZD: { symbol: 'NZ$', decimals: 2 },
+        SGD: { symbol: 'S$',  decimals: 2 },
+        HKD: { symbol: 'HK$', decimals: 2 },
+        CNY: { symbol: '¥',   decimals: 2 },
+        PLN: { symbol: 'zł',  decimals: 2, suffix: true },
+        CZK: { symbol: 'Kč',  decimals: 2, suffix: true },
+        HUF: { symbol: 'Ft',  decimals: 0, suffix: true },
+      };
+
+      function formatPrice(amount, currency) {
+        const fmt = FX_FORMAT[currency] || { symbol: currency + ' ', decimals: 2 };
+        const fixed = amount.toFixed(fmt.decimals);
+        // Add thousands separator for large amounts
+        const parts = fixed.split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        const num = parts.join('.');
+        return fmt.suffix ? `${num} ${fmt.symbol}` : `${fmt.symbol}${num}`;
+      }
+
+      async function getRate(currency) {
+        // Check cache first
+        try {
+          const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || '{}');
+          if (cached[currency] && Date.now() - cached._ts < CACHE_TTL) {
+            return cached[currency];
+          }
+        } catch {}
+
+        // Fetch from frankfurter.app — free, no key, CORS ok
+        const resp = await fetch(
+          `https://api.frankfurter.app/latest?from=USD&to=${currency}`
+        );
+        if (!resp.ok) throw new Error('FX fetch failed');
+        const data = await resp.json();
+        const rate = data.rates[currency];
+        if (!rate) throw new Error('Rate not found');
+
+        // Store in cache with all fetched rates
+        try {
+          const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || '{}');
+          cached[currency] = rate;
+          cached._ts = Date.now();
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(cached));
+        } catch {}
+
+        return rate;
+      }
+
+      const select = document.getElementById('currency-select');
+      const priceEl = document.getElementById('price-converted');
+      const noteEl = document.getElementById('price-note');
+
+      select.addEventListener('change', async () => {
+        const currency = select.value;
+        if (!currency) {
+          priceEl.textContent = '';
+          noteEl.style.display = 'none';
+          return;
+        }
+
+        priceEl.textContent = '…';
+        noteEl.style.display = 'none';
+
+        try {
+          const rate = await getRate(currency);
+          const converted = BASE_USD * rate;
+          priceEl.textContent = '≈ ' + formatPrice(converted, currency);
+          noteEl.style.display = 'block';
+        } catch {
+          priceEl.textContent = 'unavailable';
+        }
+      });
+
+      // Footer
+      document.addEventListener("DOMContentLoaded", () => {
         injectFooter({
           links: [
             { href: "/chlorophyll/privacy.html", text: "Privacy Policy" },
-            { href: "/chlorophyll/terms.html",   text: "Terms of Use" },
-            { href: "/",                          text: "All Apps" },
+            { href: "/chlorophyll/terms.html",   text: "Terms of Use"  },
+            { href: "/",                          text: "All Apps"      },
             { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
           ],
         });
