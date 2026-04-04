@@ -77,6 +77,105 @@ function injectThemeToggle() {
   document.body.prepend(btn);
 }
 
+// --- Language selector (top of page) ---
+// Injects a compact language pill in the top-left corner of the page body.
+function injectLangSelector() {
+  const currentLang = window.tj?.currentLanguage || 'en';
+  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+  const langLabels = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ja: 'JP', pt: 'PT' };
+
+  const wrap = document.createElement('div');
+  wrap.className = 'lang-selector-top';
+  wrap.innerHTML =
+    `<select aria-label="Language" onchange="setLanguage(this.value)">` +
+    langs.map(l => `<option value="${l}"${l === currentLang ? ' selected' : ''}>${langLabels[l]}</option>`).join('') +
+    `</select>`;
+  // Insert after the theme-toggle button (first child)
+  const themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn && themeBtn.nextSibling) {
+    document.body.insertBefore(wrap, themeBtn.nextSibling);
+  } else {
+    document.body.prepend(wrap);
+  }
+}
+
+// --- Currency widget (reusable component) ---
+// Usage: initCurrencyWidget({ selectId, outputId, noteId, prices, accentVar })
+//   prices: { month: 4.99, year: 29.99 } OR { once: 19.99 }
+//   accentVar: CSS variable name for the hover colour, e.g. '--accent' (default)
+//
+// In C++ terms: think of this as a templated function that takes a config struct.
+// The config drives which DOM IDs to bind and which price(s) to convert.
+const _TJ_FX_FORMAT = {
+  CAD:{symbol:'CA$',dec:2},EUR:{symbol:'€',dec:2},GBP:{symbol:'£',dec:2},
+  AUD:{symbol:'A$',dec:2},JPY:{symbol:'¥',dec:0},MXN:{symbol:'MX$',dec:2},
+  BRL:{symbol:'R$',dec:2},INR:{symbol:'₹',dec:0},KRW:{symbol:'₩',dec:0},
+  CHF:{symbol:'CHF ',dec:2},SEK:{symbol:'kr',dec:2,sfx:true},
+  NOK:{symbol:'kr',dec:2,sfx:true},DKK:{symbol:'kr',dec:2,sfx:true},
+  NZD:{symbol:'NZ$',dec:2},SGD:{symbol:'S$',dec:2},HKD:{symbol:'HK$',dec:2},
+  CNY:{symbol:'¥',dec:2},PLN:{symbol:'zł',dec:2,sfx:true},
+  CZK:{symbol:'Kč',dec:2,sfx:true},HUF:{symbol:'Ft',dec:0,sfx:true},
+};
+
+function _tjFmtPrice(amt, cur) {
+  const f = _TJ_FX_FORMAT[cur] || {symbol: cur + ' ', dec: 2};
+  const n = amt.toFixed(f.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return f.sfx ? n + ' ' + f.symbol : f.symbol + n;
+}
+
+async function _tjGetRate(cur) {
+  const KEY = 'tj_fx_cache';
+  try {
+    const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+    if (c[cur] && Date.now() - c._ts < 4 * 3600 * 1000) return c[cur];
+  } catch {}
+  // api.frankfurter.app — free, open-source, CORS-enabled, no auth required
+  const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=' + cur);
+  if (!r.ok) throw new Error('FX fetch failed');
+  const d = await r.json();
+  const rate = d.rates[cur];
+  if (!rate) throw new Error('Rate not in response');
+  try {
+    const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+    c[cur] = rate;
+    c._ts = Date.now();
+    sessionStorage.setItem(KEY, JSON.stringify(c));
+  } catch {}
+  return rate;
+}
+
+function initCurrencyWidget({ selectId = 'currency-select', outputId = 'price-converted', noteId = 'price-note', prices = {} } = {}) {
+  const sel  = document.getElementById(selectId);
+  const out  = document.getElementById(outputId);
+  const note = document.getElementById(noteId);
+  if (!sel || !out) return;
+
+  sel.addEventListener('change', async () => {
+    const cur = sel.value;
+    if (!cur) {
+      out.textContent = '';
+      if (note) note.style.display = 'none';
+      return;
+    }
+    out.textContent = '…';
+    if (note) note.style.display = 'none';
+    try {
+      const rate = await _tjGetRate(cur);
+      if (prices.month && prices.year) {
+        // Subscription: show both tiers
+        out.textContent = '≈ ' + _tjFmtPrice(prices.month * rate, cur) + '/mo · ' + _tjFmtPrice(prices.year * rate, cur) + '/yr';
+      } else if (prices.once) {
+        out.textContent = '≈ ' + _tjFmtPrice(prices.once * rate, cur);
+      } else {
+        out.textContent = 'unavailable';
+      }
+      if (note) note.style.display = 'block';
+    } catch {
+      out.textContent = 'unavailable';
+    }
+  });
+}
+
 // --- Footer ---
 // Call with optional overrides: injectFooter({ links: [...] })
 function injectFooter(opts = {}) {
@@ -99,7 +198,7 @@ function injectFooter(opts = {}) {
     `</select></div>`;
 
   el.className = 'site-footer';
-  el.innerHTML = `<span>${t('footer.copyright', '© {year} Tasty Jam').replace('{year}', year)}</span><div class="footer-links">${linksHtml}</div>${langSelector}`;
+  el.innerHTML = `<span>${t('footer.copyright', '© {year} Tasty Jam').replace('{year}', year)}</span><div class="footer-links">${linksHtml}</div>`;
 }
 
 // --- Contact form ---
@@ -184,6 +283,7 @@ function injectNav() {
 document.addEventListener('DOMContentLoaded', async () => {
   await initI18n();
   injectThemeToggle();
+  injectLangSelector();
   injectNav();
   injectFooter();
   // Auto-init contact form if present

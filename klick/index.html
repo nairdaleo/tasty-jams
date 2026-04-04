@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/css/shared.css" />
   
     <style>
+      :root {
+        --app-accent: #3b82f6;
+        --app-accent-free: #1d4ed8;
+      }
       /* Pricing pill + currency widget — Klick */
       .pricing-block {
         margin-top: 16px;
@@ -152,6 +156,41 @@
       </div>
 
       <div class="section">
+        <h2 class="section-title">What's included</h2>
+        <div class="pricing-cards">
+          <!-- Free card -->
+          <div class="pricing-card card-free">
+            <div class="pricing-card-label">Free</div>
+            <div class="pricing-card-name">Klick</div>
+            <div class="pricing-card-price">Free forever · No account needed</div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-feature-list">
+              <li><span class="fi-check">✓</span><span>🔢 Up to 3 counters</span></li>
+              <li><span class="fi-check">✓</span><span>➕ Tap to count, swipe to reset</span></li>
+              <li><span class="fi-check">✓</span><span>☁️ iCloud sync across devices</span></li>
+              <li><span class="fi-check">✓</span><span>⌚ Apple Watch companion app</span></li>
+            </ul>
+          </div>
+          <!-- Pro card -->
+          <div class="pricing-card card-pro">
+            <div class="pricing-card-label">Pro</div>
+            <div class="pricing-card-name">Klick Pro</div>
+            <div class="pricing-card-price">$4.99 USD · One-time · No subscription</div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-feature-list">
+              <li class="fi-inherit-note">Everything in Free, plus:</li>
+              <li><span class="fi-check">✓</span><span>♾️ Unlimited counters</span></li>
+              <li><span class="fi-check">✓</span><span>🎨 Custom counter colours &amp; icons</span></li>
+              <li><span class="fi-check">✓</span><span>⌚ Watch complications on every face</span></li>
+              <li><span class="fi-check">✓</span><span>🏠 Home screen widgets</span></li>
+              <li><span class="fi-check">✓</span><span>🎙 Siri shortcuts — count hands-free</span></li>
+              <li><span class="fi-check">✓</span><span>👨‍👩‍👧 Family Sharing included</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq-item">
           <div class="faq-q">What is Klick?</div>
@@ -262,52 +301,9 @@
     </script>
   
     <script>
-      // === Pricing currency converter ===
-      const FX_FORMAT = {
-        CAD:{symbol:'CA$',dec:2},EUR:{symbol:'€',dec:2},GBP:{symbol:'£',dec:2},
-        AUD:{symbol:'A$',dec:2},JPY:{symbol:'¥',dec:0},MXN:{symbol:'MX$',dec:2},
-        BRL:{symbol:'R$',dec:2},INR:{symbol:'₹',dec:0},KRW:{symbol:'₩',dec:0},
-        CHF:{symbol:'CHF ',dec:2},SEK:{symbol:'kr',dec:2,sfx:true},
-        NOK:{symbol:'kr',dec:2,sfx:true},DKK:{symbol:'kr',dec:2,sfx:true},
-        NZD:{symbol:'NZ$',dec:2},SGD:{symbol:'S$',dec:2},HKD:{symbol:'HK$',dec:2},
-        CNY:{symbol:'¥',dec:2},PLN:{symbol:'zł',dec:2,sfx:true},
-        CZK:{symbol:'Kč',dec:2,sfx:true},HUF:{symbol:'Ft',dec:0,sfx:true},
-      };
-      function fmtPrice(amt, cur) {
-        const f = FX_FORMAT[cur] || {symbol:cur+' ',dec:2};
-        const n = amt.toFixed(f.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return f.sfx ? n + ' ' + f.symbol : f.symbol + n;
-      }
-      async function getRate(cur) {
-        const KEY = 'tj_fx_cache';
-        try {
-          const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
-          if (c[cur] && Date.now() - c._ts < 4*3600*1000) return c[cur];
-        } catch {}
-        const r = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=' + cur);
-        if (!r.ok) throw new Error();
-        const d = await r.json();
-        const rate = d.rates[cur];
-        try {
-          const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
-          c[cur] = rate; c._ts = Date.now();
-          sessionStorage.setItem(KEY, JSON.stringify(c));
-        } catch {}
-        return rate;
-      }
-      const _sel = document.getElementById('currency-select');
-      const _out = document.getElementById('price-converted');
-      const _note = document.getElementById('price-note');
-      const BASE_USD = 4.99;
-      _sel && _sel.addEventListener('change', async () => {
-        const cur = _sel.value;
-        if (!cur) { _out.textContent = ''; _note.style.display = 'none'; return; }
-        _out.textContent = '…'; _note.style.display = 'none';
-        try {
-          const rate = await getRate(cur);
-          _out.textContent = '≈ ' + fmtPrice(BASE_USD * rate, cur);
-          _note.style.display = 'block';
-        } catch { _out.textContent = 'unavailable'; }
+      // === Pricing currency converter (via shared initCurrencyWidget) ===
+      document.addEventListener('DOMContentLoaded', () => {
+        initCurrencyWidget({ prices: { once: 4.99 } });
       });
     </script>
   </body>

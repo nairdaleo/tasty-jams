@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/css/shared.css" />
     <style>
       :root {
+        --app-accent: #C4714A;
+        --app-accent-free: #6B7C4A;
         --chl-clay:  #C4714A;
         --chl-moss:  #6B7C4A;
         --chl-bark:  #6B4C35;
@@ -162,97 +164,6 @@
         line-height: 1.4;
       }
 
-      /* === Pricing cards (Free vs Pro) === */
-      .pricing-cards {
-        display: flex;
-        gap: 20px;
-        margin-top: 8px;
-        align-items: stretch;
-      }
-      @media (max-width: 600px) {
-        .pricing-cards { flex-direction: column; }
-      }
-      .pricing-card {
-        flex: 1;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 28px 24px;
-        display: flex;
-        flex-direction: column;
-      }
-      .pricing-card.card-pro {
-        border-color: var(--chl-clay);
-        background: linear-gradient(160deg, color-mix(in srgb, var(--chl-clay) 8%, var(--surface)) 0%, var(--surface) 60%);
-      }
-      .pricing-card-label {
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-      }
-      .card-pro .pricing-card-label { color: var(--chl-clay); }
-      .pricing-card-name {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--text);
-        line-height: 1.1;
-        margin-bottom: 4px;
-      }
-      .pricing-card-price {
-        font-size: 0.88rem;
-        color: var(--text-muted);
-        margin-bottom: 20px;
-      }
-      .card-pro .pricing-card-price { color: var(--chl-clay); font-weight: 600; }
-      .pricing-divider {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 0 0 18px 0;
-      }
-      .pricing-feature-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        flex: 1;
-      }
-      .pricing-feature-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: 0.9rem;
-        color: var(--text);
-        line-height: 1.4;
-      }
-      .fi-check {
-        flex-shrink: 0;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: var(--chl-moss);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
-        font-size: 0.6rem;
-        color: #fff;
-        font-weight: 900;
-      }
-      .card-pro .fi-check { background: var(--chl-clay); }
-      .fi-inherit-note {
-        font-size: 0.78rem;
-        font-style: italic;
-        color: var(--text-muted);
-        padding: 8px 0 4px 0;
-        border-top: 1px dashed var(--border);
-        margin-top: 4px;
-      }
     </style>
   </head>
   <body>
@@ -424,106 +335,10 @@
 
     <script src="/js/shared.js"></script>
     <script>
-      // === Currency converter ===
-      // Uses frankfurter.app — free, open-source, no auth, CORS-enabled.
-      // Converts $19.99 USD to the selected currency via live exchange rates.
-      // Disclaimer shown: Apple's actual App Store price will differ
-      // due to fixed pricing tiers, rounding conventions, and local taxes.
-
-      const BASE_USD = 19.99;
-      const CACHE_KEY = 'chl_fx_cache';
-      const CACHE_TTL = 4 * 60 * 60 * 1000; // 4 hours in ms
-
-      // Currency formatting config — symbols + decimal rules
-      const FX_FORMAT = {
-        CAD: { symbol: 'CA$', decimals: 2 },
-        EUR: { symbol: '€',   decimals: 2 },
-        GBP: { symbol: '£',   decimals: 2 },
-        AUD: { symbol: 'A$',  decimals: 2 },
-        JPY: { symbol: '¥',   decimals: 0 },
-        MXN: { symbol: 'MX$', decimals: 2 },
-        BRL: { symbol: 'R$',  decimals: 2 },
-        INR: { symbol: '₹',   decimals: 0 },
-        KRW: { symbol: '₩',   decimals: 0 },
-        CHF: { symbol: 'CHF ', decimals: 2 },
-        SEK: { symbol: 'kr',  decimals: 2, suffix: true },
-        NOK: { symbol: 'kr',  decimals: 2, suffix: true },
-        DKK: { symbol: 'kr',  decimals: 2, suffix: true },
-        NZD: { symbol: 'NZ$', decimals: 2 },
-        SGD: { symbol: 'S$',  decimals: 2 },
-        HKD: { symbol: 'HK$', decimals: 2 },
-        CNY: { symbol: '¥',   decimals: 2 },
-        PLN: { symbol: 'zł',  decimals: 2, suffix: true },
-        CZK: { symbol: 'Kč',  decimals: 2, suffix: true },
-        HUF: { symbol: 'Ft',  decimals: 0, suffix: true },
-      };
-
-      function formatPrice(amount, currency) {
-        const fmt = FX_FORMAT[currency] || { symbol: currency + ' ', decimals: 2 };
-        const fixed = amount.toFixed(fmt.decimals);
-        // Add thousands separator for large amounts
-        const parts = fixed.split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        const num = parts.join('.');
-        return fmt.suffix ? `${num} ${fmt.symbol}` : `${fmt.symbol}${num}`;
-      }
-
-      async function getRate(currency) {
-        // Check cache first
-        try {
-          const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || '{}');
-          if (cached[currency] && Date.now() - cached._ts < CACHE_TTL) {
-            return cached[currency];
-          }
-        } catch {}
-
-        // Fetch from frankfurter.app — free, no key, CORS ok
-        const resp = await fetch(
-          `https://api.frankfurter.app/latest?from=USD&to=${currency}`
-        );
-        if (!resp.ok) throw new Error('FX fetch failed');
-        const data = await resp.json();
-        const rate = data.rates[currency];
-        if (!rate) throw new Error('Rate not found');
-
-        // Store in cache with all fetched rates
-        try {
-          const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || '{}');
-          cached[currency] = rate;
-          cached._ts = Date.now();
-          sessionStorage.setItem(CACHE_KEY, JSON.stringify(cached));
-        } catch {}
-
-        return rate;
-      }
-
-      const select = document.getElementById('currency-select');
-      const priceEl = document.getElementById('price-converted');
-      const noteEl = document.getElementById('price-note');
-
-      select.addEventListener('change', async () => {
-        const currency = select.value;
-        if (!currency) {
-          priceEl.textContent = '';
-          noteEl.style.display = 'none';
-          return;
-        }
-
-        priceEl.textContent = '…';
-        noteEl.style.display = 'none';
-
-        try {
-          const rate = await getRate(currency);
-          const converted = BASE_USD * rate;
-          priceEl.textContent = '≈ ' + formatPrice(converted, currency);
-          noteEl.style.display = 'block';
-        } catch {
-          priceEl.textContent = 'unavailable';
-        }
-      });
-
-      // Footer
-      document.addEventListener("DOMContentLoaded", () => {
+      // === Currency converter (via shared initCurrencyWidget) ===
+      // Chlorophyll Pro is a one-time purchase: $19.99 USD.
+      document.addEventListener('DOMContentLoaded', () => {
+        initCurrencyWidget({ prices: { once: 19.99 } });
         injectFooter({
           links: [
             { href: "/chlorophyll/privacy.html", text: "Privacy Policy" },

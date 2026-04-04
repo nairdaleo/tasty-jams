@@ -75,7 +75,140 @@ body {
     color 0.3s;
 }
 
-/* --- Theme toggle --- */
+/* --- Language selector (top of page) --- */
+.lang-selector-top {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+.lang-selector-top select {
+  background: var(--toggle-bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  width: auto;
+  appearance: none;
+  background-image: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.lang-selector-top select:hover {
+  background: var(--toggle-hover);
+  border-color: var(--border-hover);
+}
+.lang-selector-top select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* --- Shared Free/Pro pricing cards ---
+   App pages set --app-accent and --app-accent-dim on :root or .container
+   to tint the Pro card. Falls back to --accent / --border. */
+.pricing-cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+  align-items: stretch;
+}
+@media (max-width: 600px) {
+  .pricing-cards { flex-direction: column; }
+}
+.pricing-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card.card-pro {
+  border-color: var(--app-accent, var(--accent));
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--app-accent, var(--accent)) 8%, var(--surface)) 0%,
+    var(--surface) 60%
+  );
+}
+.pricing-card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.card-pro .pricing-card-label { color: var(--app-accent, var(--accent)); }
+.pricing-card-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.pricing-card-price {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.card-pro .pricing-card-price {
+  color: var(--app-accent, var(--accent));
+  font-weight: 600;
+}
+.pricing-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 18px 0;
+}
+.pricing-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.pricing-feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+.fi-check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--app-accent-free, var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  font-size: 0.6rem;
+  color: #fff;
+  font-weight: 900;
+}
+.card-pro .fi-check { background: var(--app-accent, var(--accent)); }
+.fi-inherit-note {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 8px 0 4px 0;
+  border-top: 1px dashed var(--border);
+  margin-top: 4px;
+}
+
+
 .theme-toggle {
   position: fixed;
   top: 20px;
@@ -376,35 +509,6 @@ button[type="submit"]:disabled {
 .site-footer .footer-links {
   display: flex;
   gap: 20px;
-}
-.site-footer .lang-selector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-}
-.site-footer .lang-selector label {
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-.site-footer .lang-selector select {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.82rem;
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-}
-.site-footer .lang-selector select:hover {
-  border-color: var(--border-hover);
-  background: var(--surface-hover);
-}
-.site-footer .lang-selector select:focus {
-  outline: none;
-  border-color: var(--accent);
 }
 
 /* --- Privacy page typography --- */
