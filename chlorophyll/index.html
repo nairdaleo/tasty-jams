@@ -162,51 +162,96 @@
         line-height: 1.4;
       }
 
-      /* === Feature grid === */
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 14px;
+      /* === Pricing cards (Free vs Pro) === */
+      .pricing-cards {
+        display: flex;
+        gap: 20px;
         margin-top: 8px;
+        align-items: stretch;
       }
-      .feature-card {
+      @media (max-width: 600px) {
+        .pricing-cards { flex-direction: column; }
+      }
+      .pricing-card {
+        flex: 1;
         background: var(--surface);
         border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 20px;
-        transition: background 0.2s, border-color 0.2s;
+        border-radius: 18px;
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
       }
-      .feature-card:hover { background: var(--surface-hover); border-color: var(--chl-clay); }
-      .feature-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
-      .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: var(--text); }
-      .feature-desc  { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-      .pro-badge {
-        display: inline-block;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        padding: 2px 7px;
-        border-radius: 20px;
-        background: var(--chl-clay);
-        color: #fff;
-        margin-left: 6px;
-        vertical-align: middle;
-        opacity: 0.9;
+      .pricing-card.card-pro {
+        border-color: var(--chl-clay);
+        background: linear-gradient(160deg, color-mix(in srgb, var(--chl-clay) 8%, var(--surface)) 0%, var(--surface) 60%);
       }
-      .free-badge {
-        display: inline-block;
-        font-size: 0.62rem;
+      .pricing-card-label {
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        padding: 2px 7px;
-        border-radius: 20px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+      .card-pro .pricing-card-label { color: var(--chl-clay); }
+      .pricing-card-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text);
+        line-height: 1.1;
+        margin-bottom: 4px;
+      }
+      .pricing-card-price {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+      .card-pro .pricing-card-price { color: var(--chl-clay); font-weight: 600; }
+      .pricing-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0 0 18px 0;
+      }
+      .pricing-feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+      }
+      .pricing-feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        line-height: 1.4;
+      }
+      .fi-check {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
         background: var(--chl-moss);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+        font-size: 0.6rem;
         color: #fff;
-        margin-left: 6px;
-        vertical-align: middle;
-        opacity: 0.9;
+        font-weight: 900;
+      }
+      .card-pro .fi-check { background: var(--chl-clay); }
+      .fi-inherit-note {
+        font-size: 0.78rem;
+        font-style: italic;
+        color: var(--text-muted);
+        padding: 8px 0 4px 0;
+        border-top: 1px dashed var(--border);
+        margin-top: 4px;
       }
     </style>
   </head>
@@ -275,48 +320,41 @@
 
       <!-- Features -->
       <div class="section">
-        <h2 class="section-title">What Chlorophyll does</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <span class="feature-icon">💧</span>
-            <div class="feature-title">Care tasks <span class="free-badge">Free</span></div>
-            <div class="feature-desc">Log waterings, fertilizing, repotting, pruning, and custom tasks. Set flexible schedules — every N days or on specific days of the week.</div>
+        <h2 class="section-title">What's included</h2>
+        <div class="pricing-cards">
+
+          <!-- Free card -->
+          <div class="pricing-card card-free">
+            <div class="pricing-card-label">Free</div>
+            <div class="pricing-card-name">Chlorophyll</div>
+            <div class="pricing-card-price">Free forever · No account needed</div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-feature-list">
+              <li><span class="fi-check">✓</span><span>💧 Unlimited plants &amp; care tasks — watering, fertilizing, repotting, pruning, and custom tasks</span></li>
+              <li><span class="fi-check">✓</span><span>📅 Flexible schedules — every N days or specific days of the week</span></li>
+              <li><span class="fi-check">✓</span><span>🔔 Smart reminders — pick your time, filter by day of week</span></li>
+              <li><span class="fi-check">✓</span><span>📋 Full care history — every event logged with notes and product details</span></li>
+              <li><span class="fi-check">✓</span><span>☁️ iCloud sync — iPhone, iPad, and Mac, offline-first</span></li>
+            </ul>
           </div>
-          <div class="feature-card">
-            <span class="feature-icon">🔔</span>
-            <div class="feature-title">Smart reminders <span class="free-badge">Free</span></div>
-            <div class="feature-desc">Reminders at the time that works for you. Day-of-week filters so you only get nudged on your schedule — morning, evening, or whenever.</div>
+
+          <!-- Pro card -->
+          <div class="pricing-card card-pro">
+            <div class="pricing-card-label">Pro</div>
+            <div class="pricing-card-name">Chlorophyll Pro</div>
+            <div class="pricing-card-price">$19.99 USD · One-time · No subscription</div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-feature-list">
+              <li class="fi-inherit-note">Everything in Free, plus:</li>
+              <li><span class="fi-check">✓</span><span>📸 Photo growth timeline — dated photos in a beautiful gallery view</span></li>
+              <li><span class="fi-check">✓</span><span>📊 Fertilizer stats — usage by product, application counts, frequency charts</span></li>
+              <li><span class="fi-check">✓</span><span>📤 CSV &amp; PDF export — full care history as spreadsheet or report</span></li>
+              <li><span class="fi-check">✓</span><span>🎙 Siri shortcuts — log care and check what's due hands-free</span></li>
+              <li><span class="fi-check">✓</span><span>🏠 Home screen widgets — at-a-glance plant status without opening the app</span></li>
+              <li><span class="fi-check">✓</span><span>👨‍👩‍👧 Family Sharing — one purchase, all your family's devices</span></li>
+            </ul>
           </div>
-          <div class="feature-card">
-            <span class="feature-icon">📋</span>
-            <div class="feature-title">Full care history <span class="free-badge">Free</span></div>
-            <div class="feature-desc">Every care event, grouped by day. Fertilizer product, amount, and notes all logged. Know exactly when you last did anything.</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">☁️</span>
-            <div class="feature-title">iCloud sync <span class="free-badge">Free</span></div>
-            <div class="feature-desc">Your plants sync automatically across iPhone, iPad, and Mac. No account needed. Works offline, always.</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">📸</span>
-            <div class="feature-title">Photo timeline <span class="pro-badge">Pro</span></div>
-            <div class="feature-desc">Document your plants' growth with dated photos. Watch them change over months in a beautiful gallery view.</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">📊</span>
-            <div class="feature-title">Fertilizer stats <span class="pro-badge">Pro</span></div>
-            <div class="feature-desc">Track usage by product — total applications, total mL used, watering frequency chart. Know what's working.</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">📤</span>
-            <div class="feature-title">CSV &amp; PDF export <span class="pro-badge">Pro</span></div>
-            <div class="feature-desc">Export your full care history as a spreadsheet or formatted PDF report. Share with a botanist or keep your own records.</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">🎙</span>
-            <div class="feature-title">Siri shortcuts <span class="pro-badge">Pro</span></div>
-            <div class="feature-desc">"Water my Monstera in Chlorophyll." Log care and check what's due without opening the app.</div>
-          </div>
+
         </div>
       </div>
 
