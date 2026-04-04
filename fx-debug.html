@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FX Debug</title>
+    <style>
+      body { font-family: monospace; padding: 24px; background: #111; color: #eee; }
+      .ok  { color: #4ade80; }
+      .err { color: #f87171; }
+      .dim { color: #888; }
+      pre  { background: #222; padding: 12px; border-radius: 8px; white-space: pre-wrap; word-break: break-all; }
+      h2   { margin-top: 32px; color: #a78bfa; }
+    </style>
+  </head>
+  <body>
+    <h1>FX Widget Debug</h1>
+
+    <h2>1. localStorage cache</h2>
+    <pre id="cache-out">checking…</pre>
+
+    <h2>2. Raw fetch</h2>
+    <pre id="fetch-out">fetching…</pre>
+
+    <h2>3. Parsed rates (first 5)</h2>
+    <pre id="rates-out">waiting…</pre>
+
+    <h2>4. _tjLoadRates() via shared.js</h2>
+    <pre id="shared-out">waiting…</pre>
+
+    <h2>5. initCurrencyWidget output</h2>
+    <select id="currency-select" style="font-size:1rem;padding:6px 10px;width:100%;max-width:500px">
+      <option>waiting for shared.js…</option>
+    </select>
+
+    <!-- Load shared.js FIRST so all _tj* functions are defined -->
+    <script src="/js/shared.js?v=2"></script>
+    <script>
+      const log = (id, msg, cls) => {
+        const el = document.getElementById(id);
+        el.textContent = msg;
+        if (cls) el.className = cls;
+      };
+
+      // 1. Cache check
+      try {
+        const raw = localStorage.getItem('tj_fx_rates_v2');
+        if (!raw) {
+          log('cache-out', 'No entry (key: tj_fx_rates_v2)', 'dim');
+        } else {
+          const c = JSON.parse(raw);
+          const age = Math.round((Date.now() - c._ts) / 1000);
+          log('cache-out', `Hit — age: ${age}s  keys: ${Object.keys(c.rates).join(', ')}`, 'ok');
+        }
+      } catch (e) {
+        log('cache-out', 'Error: ' + e, 'err');
+      }
+
+      // 2+3. Raw fetch (independent of shared.js)
+      const CODES = ['CAD','EUR','GBP','AUD','JPY','MXN','BRL','INR','KRW','CHF',
+                     'SEK','NOK','DKK','NZD','SGD','HKD','CNY','PLN','CZK','HUF'];
+      const url = `https://api.frankfurter.dev/v1/latest?from=USD&to=${CODES.join(',')}`;
+      log('fetch-out', `GET ${url}\n\nfetching…`);
+
+      fetch(url)
+        .then(r => {
+          log('fetch-out',
+            `Status: ${r.status}\nRedirected: ${r.redirected}\nURL: ${r.url}`,
+            r.ok ? 'ok' : 'err');
+          return r.json();
+        })
+        .then(d => {
+          const first5 = Object.entries(d.rates).slice(0,5).map(([k,v]) => `  ${k}: ${v}`).join('\n');
+          log('rates-out', `date: ${d.date}\n${first5}`, 'ok');
+        })
+        .catch(e => {
+          log('fetch-out', 'FAILED: ' + e, 'err');
+          log('rates-out', '—', 'err');
+        });
+
+      // 4. _tjLoadRates() — now defined because shared.js loaded first
+      console.log('typeof _tjLoadRates:', typeof _tjLoadRates);
+      console.log('typeof initCurrencyWidget:', typeof initCurrencyWidget);
+
+      _tjLoadRates()
+        .then(rates => {
+          if (!rates) {
+            log('shared-out', '_tjLoadRates() returned null', 'err');
+            console.error('_tjLoadRates returned null');
+          } else {
+            const first5 = Object.entries(rates).slice(0,5).map(([k,v]) => `  ${k}: ${v}`).join('\n');
+            log('shared-out', `OK — ${Object.keys(rates).length} rates\n${first5}`, 'ok');
+          }
+        })
+        .catch(e => {
+          log('shared-out', 'THREW: ' + e, 'err');
+          console.error('_tjLoadRates threw:', e);
+        });
+
+      // 5. Widget — call directly, no DOMContentLoaded wrapper
+      initCurrencyWidget({ prices: { month: 4.99, year: 29.99 } })
+        .then(() => console.log('initCurrencyWidget resolved'))
+        .catch(e => console.error('initCurrencyWidget threw:', e));
+    </script>
+  </body>
+</html>
