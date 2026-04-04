@@ -217,59 +217,14 @@
         <h1 class="brand">Tasty <em>Jam</em></h1>
         <p class="tagline">Thoughtful apps, built with care</p>
         <script>
-          // Wait for i18n to load, then pick random tagline
-          function setRandomTagline() {
-            if (window.tj && window.tj.i18n) {
-              const taglines = window.tj.i18n.homepage.taglines;
-              const randomTagline =
+          // Set random tagline from i18n JSON once shared.js signals ready.
+          document.addEventListener('tj:ready', () => {
+            const taglines = window.tj.i18n?.homepage?.taglines;
+            if (taglines?.length) {
+              document.querySelector('.tagline').textContent =
                 taglines[Math.floor(Math.random() * taglines.length)];
-              document.querySelector(".tagline").textContent = randomTagline;
-            } else {
-              // Fallback if i18n not loaded
-              const taglines = [
-                "Thoughtful apps, built with care",
-                "Apps so good you can taste",
-                "Apps that are fun to use",
-                "Apps that spread well",
-                "Apps that actually work",
-                "Productivity meets personality",
-                "Small apps, big vibes",
-                "No bloat, just good taste",
-                "Apps worth opening",
-                "Boring? Never heard of her",
-                "We don't do mediocre",
-                "Apps that get it",
-                "Addictively useful",
-                "The reason you check your phone",
-                "Delightfully minimalist",
-                "Apps with soul",
-                "Stop scrolling, start using",
-                "Your new favorite tools",
-              ];
-              const randomTagline =
-                taglines[Math.floor(Math.random() * taglines.length)];
-              document.querySelector(".tagline").textContent = randomTagline;
             }
-          }
-
-          // Poll for i18n initialization
-          let taglineSet = false;
-          const taglinePoller = setInterval(() => {
-            if (window.tj && window.tj.i18n && !taglineSet) {
-              clearInterval(taglinePoller);
-              taglineSet = true;
-              setRandomTagline();
-            }
-          }, 50);
-
-          // Safety timeout - set tagline after 500ms if not already set
-          setTimeout(() => {
-            clearInterval(taglinePoller);
-            if (!taglineSet) {
-              taglineSet = true;
-              setRandomTagline();
-            }
-          }, 500);
+          });
         </script>
       </header>
 
@@ -438,7 +393,7 @@
 
       <div id="tj-footer"></div>
     </div>
-    <script src="/js/shared.js?v=2"></script>
+    <script src="/js/shared.js?v=3"></script>
     <script>
       // Update App Store badge language
       function updateBadgeLanguage() {
@@ -453,34 +408,14 @@
       // Update on language change
       window.addEventListener("languageChanged", updateBadgeLanguage);
 
-      // Translate all elements with data-i18n attributes
-      function translatePage() {
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.getAttribute("data-i18n");
-          el.textContent = t(key, el.textContent);
-        });
+      // data-i18n is now handled by shared.js translateDataAttrs() via tj:ready.
+      // Badge language update and footer run here after shared init completes.
+      document.addEventListener('tj:ready', () => {
         updateBadgeLanguage();
-      }
-
-      // Wait for i18n to load, then translate
-      const checkI18n = setInterval(() => {
-        if (window.tj && window.tj.i18n) {
-          clearInterval(checkI18n);
-          translatePage();
-        }
-      }, 50);
-
-      document.addEventListener("DOMContentLoaded", () => {
         injectFooter({
           links: [
-            {
-              href: "mailto:support@tastyjam.ca",
-              text: window.tj ? t("common.contact", "Contact") : "Contact",
-            },
-            {
-              href: "/spark/privacy.html",
-              text: window.tj ? t("common.privacy", "Privacy") : "Privacy",
-            },
+            { href: 'mailto:support@tastyjam.ca', text: t('common.contact', 'Contact') },
+            { href: '/spark/privacy.html', text: t('common.privacy', 'Privacy') },
           ],
         });
       });

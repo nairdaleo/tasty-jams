@@ -69,12 +69,54 @@
       "generalQuestion": "General question",
       "successMsg": "Message sent — we'll get back to you within 48 hours.",
       "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
+    },
+    "pricing": {
+      "sectionTitle": "What's included",
+      "freeLabel": "Free",
+      "freeName": "Spark",
+      "freePrice": "Free forever · No account needed",
+      "proLabel": "Pro",
+      "proName": "Spark Pro",
+      "proPrice": "$4.99 USD/month · or $29.99 USD/year",
+      "proInherits": "Everything in Free, plus:",
+      "free1": "Up to 3 habits with full tracking",
+      "free2": "Forgiving streaks — no shame resets",
+      "free3": "Daily reminders for each habit",
+      "free4": "Calendar heatmap view",
+      "free5": "Habit notes & journaling",
+      "pro1": "Unlimited habits",
+      "pro2": "Full stats dashboard — bar charts, day-of-week breakdown",
+      "pro3": "PDF & CSV export",
+      "pro4": "Siri shortcuts — log habits hands-free",
+      "pro5": "Home screen & lock screen widgets",
+      "pro6": "Custom app icons",
+      "pro7": "Custom habit categories"
     }
   },
   "klick": {
     "badge": "New",
     "name": "Klick",
-    "description": "Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist."
+    "description": "Multi-counter with Apple Watch complication. Count anything — reps, drinks, inventory, score. Tap to increment, swipe to reset. Lives on your wrist.",
+    "pricing": {
+      "sectionTitle": "What's included",
+      "freeLabel": "Free",
+      "freeName": "Klick",
+      "freePrice": "Free forever · No account needed",
+      "proLabel": "Pro",
+      "proName": "Klick Pro",
+      "proPrice": "$4.99 USD · One-time · No subscription",
+      "proInherits": "Everything in Free, plus:",
+      "free1": "Up to 3 counters",
+      "free2": "Tap to count, swipe to reset",
+      "free3": "iCloud sync across devices",
+      "free4": "Apple Watch companion app",
+      "pro1": "Unlimited counters",
+      "pro2": "Custom counter colours & icons",
+      "pro3": "Watch complications on every face",
+      "pro4": "Home screen widgets",
+      "pro5": "Siri shortcuts — count hands-free",
+      "pro6": "Family Sharing included"
+    }
   },
   "fartSoundboard": {
     "badge": "Archived",
@@ -130,6 +172,27 @@
       "generalQuestion": "General question",
       "successMsg": "Message sent — we'll get back to you within 48 hours.",
       "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
+    },
+    "pricing": {
+      "sectionTitle": "What's included",
+      "freeLabel": "Free",
+      "freeName": "Chlorophyll",
+      "freePrice": "Free forever · No account needed",
+      "proLabel": "Pro",
+      "proName": "Chlorophyll Pro",
+      "proPrice": "$19.99 USD · One-time · No subscription",
+      "proInherits": "Everything in Free, plus:",
+      "free1": "Unlimited plants & care tasks — watering, fertilizing, repotting, pruning, and custom tasks",
+      "free2": "Flexible schedules — every N days or specific days of the week",
+      "free3": "Smart reminders — pick your time, filter by day of week",
+      "free4": "Full care history — every event logged with notes and product details",
+      "free5": "iCloud sync — iPhone, iPad, and Mac, offline-first",
+      "pro1": "Photo growth timeline — dated photos in a beautiful gallery view",
+      "pro2": "Fertilizer stats — usage by product, application counts, frequency charts",
+      "pro3": "CSV & PDF export — full care history as spreadsheet or report",
+      "pro4": "Siri shortcuts — log care and check what's due hands-free",
+      "pro5": "Home screen widgets — at-a-glance plant status without opening the app",
+      "pro6": "Family Sharing — one purchase, all your family's devices"
     }
   }
 }

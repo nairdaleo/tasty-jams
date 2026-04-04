@@ -115,35 +115,35 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">What's included</h2>
+        <h2 class="section-title" data-i18n="klick.pricing.sectionTitle">What's included</h2>
         <div class="pricing-cards">
           <!-- Free card -->
           <div class="pricing-card card-free">
-            <div class="pricing-card-label">Free</div>
-            <div class="pricing-card-name">Klick</div>
-            <div class="pricing-card-price">Free forever · No account needed</div>
+            <div class="pricing-card-label" data-i18n="klick.pricing.freeLabel">Free</div>
+            <div class="pricing-card-name" data-i18n="klick.pricing.freeName">Klick</div>
+            <div class="pricing-card-price" data-i18n="klick.pricing.freePrice">Free forever · No account needed</div>
             <hr class="pricing-divider" />
             <ul class="pricing-feature-list">
-              <li><span class="fi-check">✓</span><span>🔢 Up to 3 counters</span></li>
-              <li><span class="fi-check">✓</span><span>➕ Tap to count, swipe to reset</span></li>
-              <li><span class="fi-check">✓</span><span>☁️ iCloud sync across devices</span></li>
-              <li><span class="fi-check">✓</span><span>⌚ Apple Watch companion app</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.free1">🔢 Up to 3 counters</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.free2">➕ Tap to count, swipe to reset</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.free3">☁️ iCloud sync across devices</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.free4">⌚ Apple Watch companion app</span></li>
             </ul>
           </div>
           <!-- Pro card -->
           <div class="pricing-card card-pro">
-            <div class="pricing-card-label">Pro</div>
-            <div class="pricing-card-name">Klick Pro</div>
-            <div class="pricing-card-price">$4.99 USD · One-time · No subscription</div>
+            <div class="pricing-card-label" data-i18n="klick.pricing.proLabel">Pro</div>
+            <div class="pricing-card-name" data-i18n="klick.pricing.proName">Klick Pro</div>
+            <div class="pricing-card-price" data-i18n="klick.pricing.proPrice">$4.99 USD · One-time · No subscription</div>
             <hr class="pricing-divider" />
             <ul class="pricing-feature-list">
-              <li class="fi-inherit-note">Everything in Free, plus:</li>
-              <li><span class="fi-check">✓</span><span>♾️ Unlimited counters</span></li>
-              <li><span class="fi-check">✓</span><span>🎨 Custom counter colours &amp; icons</span></li>
-              <li><span class="fi-check">✓</span><span>⌚ Watch complications on every face</span></li>
-              <li><span class="fi-check">✓</span><span>🏠 Home screen widgets</span></li>
-              <li><span class="fi-check">✓</span><span>🎙 Siri shortcuts — count hands-free</span></li>
-              <li><span class="fi-check">✓</span><span>👨‍👩‍👧 Family Sharing included</span></li>
+              <li class="fi-inherit-note" data-i18n="klick.pricing.proInherits">Everything in Free, plus:</li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro1">♾️ Unlimited counters</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro2">🎨 Custom counter colours &amp; icons</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro3">⌚ Watch complications on every face</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro4">🏠 Home screen widgets</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro5">🎙 Siri shortcuts — count hands-free</span></li>
+              <li><span class="fi-check">✓</span><span data-i18n="klick.pricing.pro6">👨‍👩‍👧 Family Sharing included</span></li>
             </ul>
           </div>
         </div>
@@ -245,23 +245,17 @@
 
       <div id="tj-footer"></div>
     </div>
-    <script src="/js/shared.js?v=2"></script>
+    <script src="/js/shared.js?v=3"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('tj:ready', () => {
         injectFooter({
           links: [
-            { href: "/klick/privacy.html", text: "Privacy Policy" },
-            { href: "/klick/terms.html", text: "Terms of Use" },
-            { href: "/", text: "All Apps" },
-            { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
+            { href: '/klick/privacy.html', text: 'Privacy Policy' },
+            { href: '/klick/terms.html', text: 'Terms of Use' },
+            { href: '/', text: 'All Apps' },
+            { href: 'mailto:support@tastyjam.ca', text: 'support@tastyjam.ca' },
           ],
         });
-      });
-    </script>
-  
-    <script>
-      // === Pricing currency converter (via shared initCurrencyWidget) ===
-      document.addEventListener('DOMContentLoaded', () => {
         initCurrencyWidget({ prices: { once: 4.99 } });
       });
     </script>

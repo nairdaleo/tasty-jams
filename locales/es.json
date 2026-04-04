@@ -69,12 +69,54 @@
       "generalQuestion": "Pregunta general",
       "successMsg": "Mensaje enviado. Nos pondremos en contacto contigo en un plazo de 48 horas.",
       "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
+    },
+    "pricing": {
+      "sectionTitle": "Qué incluye",
+      "freeLabel": "Gratis",
+      "freeName": "Spark",
+      "freePrice": "Gratis para siempre · No es necesario registrarse",
+      "proLabel": "Para",
+      "proName": "Spark Pro",
+      "proPrice": "4,99 $ al mes · o 29,99 $ al año",
+      "proInherits": "Todo lo que incluye la versión gratuita, además de:",
+      "free1": "Hasta 3 hábitos con seguimiento completo",
+      "free2": "Rachas de indulgencia: sin reinicios por vergüenza",
+      "free3": "Recordatorios diarios para cada hábito",
+      "free4": "Vista de mapa de calor del calendario",
+      "free5": "Notas sobre hábitos y diario",
+      "pro1": "Hábitos ilimitados",
+      "pro2": "Panel de estadísticas completo: gráficos de barras, desglose por días de la semana",
+      "pro3": "Exportación a PDF y CSV",
+      "pro4": "Atajos de Siri: registra tus hábitos sin usar las manos",
+      "pro5": "Widgets para la pantalla de inicio y la pantalla de bloqueo",
+      "pro6": "Iconos personalizados para aplicaciones",
+      "pro7": "Categorías de hábitos personalizadas"
     }
   },
   "klick": {
     "badge": "Nuevo",
     "name": "Klick",
-    "description": "Contador múltiple con complicación para Apple Watch. Cuenta lo que quieras: repeticiones, bebidas, inventario, puntuación. Toca para aumentar el recuento y desliza para reiniciar. Siempre a tu alcance, en tu muñeca."
+    "description": "Contador múltiple con complicación para Apple Watch. Cuenta lo que quieras: repeticiones, bebidas, inventario, puntuación. Toca para aumentar el recuento y desliza para reiniciar. Siempre a tu alcance, en tu muñeca.",
+    "pricing": {
+      "sectionTitle": "Qué incluye",
+      "freeLabel": "Gratis",
+      "freeName": "Haga clic",
+      "freePrice": "Gratis para siempre · No es necesario registrarse",
+      "proLabel": "Para",
+      "proName": "Klick Pro",
+      "proPrice": "4,99 $ USD · Pago único · Sin suscripción",
+      "proInherits": "Todo lo que incluye la versión gratuita, además de:",
+      "free1": "Hasta 3 mostradores",
+      "free2": "Toca para contar, desliza para reiniciar",
+      "free3": "Sincronización de iCloud entre dispositivos",
+      "free4": "Aplicación complementaria para el Apple Watch",
+      "pro1": "Fichas ilimitadas",
+      "pro2": "Colores e iconos personalizados para el contador",
+      "pro3": "Complicaciones de reloj en cada esfera",
+      "pro4": "Widgets de la pantalla de inicio",
+      "pro5": "Atajos de Siri: cuenta sin usar las manos",
+      "pro6": "Incluye Family Sharing"
+    }
   },
   "fartSoundboard": {
     "badge": "Archivado",
@@ -130,6 +172,27 @@
       "generalQuestion": "Pregunta general",
       "successMsg": "Mensaje enviado — te responderemos en 48 horas.",
       "errorMsg": "Algo salió mal. Por favor escríbenos a support@tastyjam.ca"
+    },
+    "pricing": {
+      "sectionTitle": "Qué incluye",
+      "freeLabel": "Gratis",
+      "freeName": "Clorofila",
+      "freePrice": "Gratis para siempre · No es necesario crear una cuenta",
+      "proLabel": "Para",
+      "proName": "Chlorophyll Pro",
+      "proPrice": "19,99 $ USD · Pago único · Sin suscripción",
+      "proInherits": "Todo lo que incluye la versión gratuita, además de:",
+      "free1": "Plantas y tareas de cuidado ilimitadas: riego, abono, trasplante, poda y tareas personalizadas",
+      "free2": "Horarios flexibles: cada N días o en días concretos de la semana",
+      "free3": "Recordatorios inteligentes: elige la hora y filtra por día de la semana",
+      "free4": "Historial completo de mantenimiento: todos los eventos registrados con notas y detalles del producto",
+      "free5": "Sincronización de iCloud: iPhone, iPad y Mac, con prioridad para el modo sin conexión",
+      "pro1": "Cronología fotográfica: fotos ordenadas por fecha en una bonita galería",
+      "pro2": "Estadísticas sobre fertilizantes: uso por producto, número de aplicaciones, gráficos de frecuencia",
+      "pro3": "Exportación a CSV y PDF: historial completo de la atención en formato de hoja de cálculo o informe",
+      "pro4": "Atajos de Siri: lleva un registro de tus citas médicas y comprueba qué tienes pendiente sin usar las manos",
+      "pro5": "Widgets de la pantalla de inicio: consulta el estado de las plantas de un vistazo sin necesidad de abrir la aplicación",
+      "pro6": "Compartir en familia: una sola compra para todos los dispositivos de tu familia"
     }
   }
 }

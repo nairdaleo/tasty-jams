@@ -69,12 +69,54 @@
       "generalQuestion": "Allgemeine Frage",
       "successMsg": "Ihre Nachricht wurde gesendet – wir melden uns innerhalb von 48 Stunden bei Ihnen.",
       "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
+    },
+    "pricing": {
+      "sectionTitle": "Was ist im Lieferumfang enthalten?",
+      "freeLabel": "Kostenlos",
+      "freeName": "Tritt",
+      "freePrice": "Für immer kostenlos · Kein Konto erforderlich",
+      "proLabel": "Für",
+      "proName": "Spark Pro",
+      "proPrice": "4,99 USD/Monat · oder 29,99 USD/Jahr",
+      "proInherits": "Alles aus der kostenlosen Version, plus:",
+      "free1": "Bis zu 3 Gewohnheiten mit vollständiger Nachverfolgung",
+      "free2": "Verzeihende Phasen – keine Zurücksetzung der Scham",
+      "free3": "Tägliche Erinnerungen für jede Gewohnheit",
+      "free4": "Kalender-Heatmap-Ansicht",
+      "free5": "Notizen zu Gewohnheiten & Tagebuchschreiben",
+      "pro1": "Unbegrenzte Gewohnheiten",
+      "pro2": "Umfassendes Statistik-Dashboard – Balkendiagramme, Aufschlüsselung nach Wochentagen",
+      "pro3": "PDF- und CSV-Export",
+      "pro4": "Siri-Shortcuts – Gewohnheiten ganz ohne Handgriffe protokollieren",
+      "pro5": "Widgets für den Startbildschirm und den Sperrbildschirm",
+      "pro6": "Benutzerdefinierte App-Symbole",
+      "pro7": "Benutzerdefinierte Gewohnheitskategorien"
     }
   },
   "klick": {
     "badge": "Neu",
     "name": "Klick",
-    "description": "Multizähler mit Apple Watch-Komplikation. Zähle alles – Wiederholungen, Getränke, Lagerbestände, Punkte. Tippen zum Erhöhen, wischen zum Zurücksetzen. Immer am Handgelenk dabei."
+    "description": "Multizähler mit Apple Watch-Komplikation. Zähle alles – Wiederholungen, Getränke, Lagerbestände, Punkte. Tippen zum Erhöhen, wischen zum Zurücksetzen. Immer am Handgelenk dabei.",
+    "pricing": {
+      "sectionTitle": "Was ist im Lieferumfang enthalten?",
+      "freeLabel": "Kostenlos",
+      "freeName": "Klick",
+      "freePrice": "Für immer kostenlos · Kein Konto erforderlich",
+      "proLabel": "Für",
+      "proName": "Klick Pro",
+      "proPrice": "4,99 USD · Einmalig · Kein Abonnement",
+      "proInherits": "Alles aus der kostenlosen Version, plus:",
+      "free1": "Bis zu 3 Zähler",
+      "free2": "Zum Zählen antippen, zum Zurücksetzen wischen",
+      "free3": "iCloud-Synchronisierung zwischen verschiedenen Geräten",
+      "free4": "Begleit-App für die Apple Watch",
+      "pro1": "Unbegrenzte Anzahl an Zählern",
+      "pro2": "Benutzerdefinierte Farben und Symbole für Zählwerke",
+      "pro3": "Uhrkomplikationen auf jedem Zifferblatt",
+      "pro4": "Widgets für den Startbildschirm",
+      "pro5": "Siri-Shortcuts – freihändig zählen",
+      "pro6": "Familienfreigabe inklusive"
+    }
   },
   "fartSoundboard": {
     "badge": "Archiviert",
@@ -92,5 +134,65 @@
   },
   "appStore": {
     "alt": "Im App Store herunterladen"
+  },
+  "chlorophyll": {
+    "pricing": {
+      "sectionTitle": "Was ist im Lieferumfang enthalten?",
+      "freeLabel": "Kostenlos",
+      "freeName": "Chlorophyll",
+      "freePrice": "Für immer kostenlos · Kein Konto erforderlich",
+      "proLabel": "Für",
+      "proName": "Chlorophyll Pro",
+      "proPrice": "19,99 USD · Einmalig · Kein Abonnement",
+      "proInherits": "Alles aus der kostenlosen Version, plus:",
+      "free1": "Unbegrenzte Anzahl an Pflanzen und Pflegeaufgaben – Gießen, Düngen, Umtopfen, Zurückschneiden und benutzerdefinierte Aufgaben",
+      "free2": "Flexible Zeitpläne – alle N Tage oder an bestimmten Wochentagen",
+      "free3": "Intelligente Erinnerungen – Wähle einen Zeitpunkt aus, filtere nach Wochentag",
+      "free4": "Vollständige Wartungshistorie – jedes Ereignis wird mit Notizen und Produktdetails protokolliert",
+      "free5": "iCloud-Synchronisierung – iPhone, iPad und Mac, Offline-First",
+      "pro1": "Zeitleiste mit Fotos – Fotos mit Datumsangabe in einer ansprechenden Galerieansicht",
+      "pro2": "Statistiken zu Düngemitteln – Verbrauch nach Produkt, Anzahl der Ausbringungen, Häufigkeitsdiagramme",
+      "pro3": "CSV- und PDF-Export – vollständige Behandlungshistorie als Tabelle oder Bericht",
+      "pro4": "Siri-Shortcuts – Pflegeprotokolle erstellen und fällige Termine freihändig überprüfen",
+      "pro5": "Widgets für den Startbildschirm – den Pflanzenstatus auf einen Blick, ohne die App öffnen zu müssen",
+      "pro6": "Familienfreigabe – ein Kauf, alle Geräte deiner Familie"
+    },
+    "badge": "Demnächst",
+    "name": "Chlorophyll",
+    "description": "Manueller Pflanzenpflegetracker. Keine KI, kein Abonnement. Erfasse Bewässerungen, Düngungen und mehr – flexible Erinnerungen und iCloud-Synchronisierung auf all deinen Geräten.",
+    "tagline": "Pflanzenpflege-Tracker – Vor allem manuell. Keine KI. Kein Abonnement.",
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Was ist Chlorophyll Pro?",
+      "a1": "Chlorophyll Pro ist ein einmaliger Kauf, der die Wachstumszeitleiste für Fotos, Düngerstatistiken, den Export als CSV- und PDF-Datei, Siri-Kurzbefehle sowie Widgets für den Startbildschirm freischaltet. Die kostenlose Version ist großzügig ausgestattet und bleibt für immer kostenlos – unbegrenzte Anzahl an Pflanzen, unbegrenzte Pflegeaufgaben, umfassende Erinnerungen und eine vollständige Pflegehistorie.",
+      "q2": "Funktioniert es auch ohne Internetverbindung?",
+      "a2": "Ja. Chlorophyll funktioniert vollständig offline. iCloud synchronisiert deine Daten im Hintergrund, sobald du mit dem Internet verbunden bist, aber die App benötigt zur Nutzung keine Netzwerkverbindung.",
+      "q3": "Erkennt Chlorophyll Pflanzen oder schlägt es Pflegepläne vor?",
+      "a3": "Nein – ganz bewusst. Chlorophyll ist ein manueller Tracker. Du kennst deine Pflanzen am besten. Wir geben dir die Werkzeuge an die Hand, um deine Maßnahmen zu protokollieren, und erinnern dich daran, wann es wieder an der Zeit ist, sie durchzuführen. Keine KI, kein Rätselraten.",
+      "q4": "Wie kann ich meinen Pro-Kauf wiederherstellen?",
+      "a4": "Öffne Chlorophyll → tippe auf das Menü → „Kauf wiederherstellen“. Dein Kauf ist mit deiner Apple-ID verknüpft und funktioniert auf allen deinen Geräten. Die Pro-Version umfasst außerdem die Familienfreigabe.",
+      "q5": "Sind meine Daten gesichert?",
+      "a5": "Ja – über iCloud. Deine Pflanzen, Aufgaben, Pflegeprotokolle und Fotos werden automatisch mit iCloud synchronisiert und sind auf all deinen Geräten verfügbar. Es werden keine Daten auf unseren Servern gespeichert.",
+      "q6": "Funktioniert Chlorophyll auf dem Mac und dem iPad?",
+      "a6": "Ja. Chlorophyll ist eine Universal-App – iPhone, iPad und Mac nutzen denselben Kauf. Auf dem iPad und dem Mac wird die Pflanzenliste in einer Seitenleiste angezeigt, während die Detailansicht rechts zu sehen ist."
+    },
+    "contactForm": {
+      "title": "Support kontaktieren",
+      "nameLabel": "Name",
+      "namePlaceholder": "Ihr Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Betreff",
+      "messageLabel": "Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihr Problem oder Ihre Frage...",
+      "submitBtn": "Nachricht senden",
+      "sendingBtn": "Wird gesendet…",
+      "bugReport": "Fehlermeldung",
+      "subscriptionIssue": "Problem beim Kauf",
+      "featureRequest": "Funktionswunsch",
+      "generalQuestion": "Allgemeine Frage",
+      "successMsg": "Ihre Nachricht wurde gesendet – wir melden uns innerhalb von 48 Stunden bei Ihnen.",
+      "errorMsg": "Es ist ein Fehler aufgetreten. Bitte senden Sie uns eine E-Mail direkt an support@tastyjam.ca"
+    }
   }
 }

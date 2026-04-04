@@ -198,19 +198,10 @@ function injectFooter(opts = {}) {
   const links = opts.links || [
     { href: '/spark/privacy.html', text: t('common.privacy', 'Privacy') },
     { href: '/', text: t('common.allApps', 'All Apps') },
-    { href: `mailto:${t('common.email', 'support@tastyjam.ca')}`, text: t('common.email', 'support@tastyjam.ca') }
+    { href: `mailto:${t('common.email', 'support@tastyjam.ca')}`, text: t('common.email', 'support@tastyjam.ca') },
   ];
   const linksHtml = links.map(l => `<a href="${l.href}">${l.text}</a>`).join('');
   const year = new Date().getFullYear();
-
-  // Language selector
-  const currentLang = window.tj?.currentLanguage || 'en';
-  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
-  const langLabels = { en: 'English', fr: 'Français', es: 'Español', de: 'Deutsch', ja: '日本語', pt: 'Português' };
-  const langSelector = `<div class="lang-selector"><label for="lang-select">Language:</label><select id="lang-select" onchange="setLanguage(this.value)">` +
-    langs.map(l => `<option value="${l}" ${l === currentLang ? 'selected' : ''}>${langLabels[l]}</option>`).join('') +
-    `</select></div>`;
-
   el.className = 'site-footer';
   el.innerHTML = `<span>${t('footer.copyright', '© {year} Tasty Jam').replace('{year}', year)}</span><div class="footer-links">${linksHtml}</div>`;
 }
@@ -295,14 +286,32 @@ function injectNav() {
   el.innerHTML = `<div class="nav-crumbs">${crumbs}</div>${pills}`;
 }
 
+// --- data-i18n translation pass ---
+// Walks all [data-i18n] elements and sets their textContent from the loaded translations.
+// Like a find-and-replace over the DOM — runs once after initI18n() resolves.
+function translateDataAttrs() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = t(el.dataset.i18n, el.textContent);
+    if (val) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const val = t(el.dataset.i18nPlaceholder, el.placeholder);
+    if (val) el.placeholder = val;
+  });
+}
+
 // --- Auto-init on DOMContentLoaded ---
 document.addEventListener('DOMContentLoaded', async () => {
   await initI18n();
+  translateDataAttrs();
   injectThemeToggle();
   injectLangSelector();
   injectNav();
-  injectFooter();
+  injectFooter(); // default footer — pages override via tj:ready with custom links
   // Auto-init contact form if present
   const form = document.getElementById('contact-form');
   if (form) initContactForm('contact-form', 'https://formspree.io/f/maqqlpre');
+  // Signal to page-specific scripts that i18n + shared UI is ready.
+  // Like a condition_variable broadcast — waiters can now safely call t().
+  document.dispatchEvent(new Event('tj:ready'));
 });
