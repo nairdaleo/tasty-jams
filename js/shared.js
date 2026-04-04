@@ -246,16 +246,18 @@ function injectNav() {
   const page = el.dataset.page;
 
   const apps = {
-    spark: { name: t('spark.name', 'Spark'), path: '/spark/' },
-    klick: { name: t('klick.name', 'Klick'), path: '/klick/' },
+    spark:           { name: t('spark.name', 'Spark'),                     path: '/spark/' },
+    klick:           { name: t('klick.name', 'Klick'),                     path: '/klick/' },
+    chlorophyll:     { name: 'Chlorophyll',                                path: '/chlorophyll/' },
     'fart-soundboard': { name: t('fartSoundboard.name', 'Fart Soundboard'), path: '/fart-soundboard/' }
   };
   const pageLabels = { support: null, privacy: t('common.privacy', 'Privacy'), terms: t('common.terms', 'Terms') };
 
   // Legal links available for this app
   const legalLinks = {
-    spark: [{ href: '/spark/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/spark/terms.html', text: t('common.terms', 'Terms') }],
-    klick: [{ href: '/klick/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/klick/terms.html', text: t('common.terms', 'Terms') }],
+    spark:           [{ href: '/spark/privacy.html',       text: t('common.privacy', 'Privacy') }, { href: '/spark/terms.html',       text: t('common.terms', 'Terms') }],
+    klick:           [{ href: '/klick/privacy.html',       text: t('common.privacy', 'Privacy') }, { href: '/klick/terms.html',       text: t('common.terms', 'Terms') }],
+    chlorophyll:     [{ href: '/chlorophyll/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/chlorophyll/terms.html', text: t('common.terms', 'Terms') }],
     'fart-soundboard': [{ href: '/fart-soundboard/privacy.html', text: t('common.privacy', 'Privacy') }]
   };
 
