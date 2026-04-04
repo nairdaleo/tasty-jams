@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chlorophyll – Plant Care Tracker · Tasty Jam</title>
+    <meta name="description" content="Chlorophyll is a simple, manual plant care tracker. No AI. No subscription. Log waterings, fertilizing, and more — with flexible reminders and iCloud sync." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/shared.css" />
+    <style>
+      /* Chlorophyll page — earth tone overrides */
+      :root {
+        --chl-clay:   #C4714A;
+        --chl-moss:   #6B7C4A;
+        --chl-bark:   #6B4C35;
+        --chl-soil:   #3B2A1A;
+        --chl-cream:  #F5EFE4;
+        --chl-linen:  #EDE5D8;
+        --chl-sage:   #A8B89A;
+        --chl-bloom:  #B87A8A;
+        --chl-petal:  #D4906E;
+      }
+
+      /* Icon composite — splits the squircle diagonally, light top-left / dark bottom-right */
+      .icon-composite {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        flex-shrink: 0;
+      }
+      .icon-composite img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .icon-composite .icon-light {
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        z-index: 1;
+      }
+      .icon-composite .icon-dark {
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        z-index: 2;
+      }
+      /* Diagonal seam line */
+      .icon-composite::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: linear-gradient(
+          135deg,
+          transparent calc(50% - 0.5px),
+          rgba(255,255,255,0.18) calc(50% - 0.5px),
+          rgba(255,255,255,0.18) calc(50% + 0.5px),
+          transparent calc(50% + 0.5px)
+        );
+        pointer-events: none;
+      }
+
+      /* Feature grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 8px;
+      }
+      .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .feature-card:hover {
+        background: var(--surface-hover);
+        border-color: var(--chl-clay);
+      }
+      .feature-icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .feature-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        color: var(--text);
+      }
+      .feature-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      .pro-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 20px;
+        background: var(--chl-clay);
+        color: #fff;
+        margin-left: 6px;
+        vertical-align: middle;
+        opacity: 0.9;
+      }
+      .free-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 20px;
+        background: var(--chl-moss);
+        color: #fff;
+        margin-left: 6px;
+        vertical-align: middle;
+        opacity: 0.9;
+      }
+
+      /* Pricing pill */
+      .pricing-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin-top: 16px;
+        color: var(--text);
+      }
+      .pricing-pill strong {
+        color: var(--chl-clay);
+      }
+
+      /* Accent overrides for this page */
+      .header-icon {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      a.app-store-badge-link {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav id="tj-nav" data-app="chlorophyll" data-page="support"></nav>
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-icon">
+          <div class="icon-composite">
+            <img class="icon-light" src="/assets/chlorophyll-icon-light.png" alt="Chlorophyll icon light" />
+            <img class="icon-dark"  src="/assets/chlorophyll-icon-dark.png"  alt="Chlorophyll icon dark" />
+          </div>
+        </div>
+        <h1>Chlorophyll</h1>
+        <p class="tagline">Plant Care Tracker — Manual-first. No AI. No subscription.</p>
+        <div style="margin-top: 24px">
+          <!-- App Store badge — will be live once the app is published -->
+          <a
+            href="https://apps.apple.com/app/chlorophyll-plant-care-log/id0000000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="app-store-badge-link"
+            id="appstore-link"
+          >
+            <img
+              src="/assets/app-store-badges/en.svg"
+              alt="Download on the App Store"
+              style="height: 40px"
+              id="appstore-badge"
+            />
+          </a>
+        </div>
+        <div class="pricing-pill">
+          <span>🌿 Free forever</span>
+          <span style="opacity:0.3">·</span>
+          <span><strong>$19.99</strong> one-time Pro unlock</span>
+          <span style="opacity:0.3">·</span>
+          <span>No subscription</span>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="section">
+        <h2 class="section-title">What Chlorophyll does</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">💧</span>
+            <div class="feature-title">Care tasks <span class="free-badge">Free</span></div>
+            <div class="feature-desc">Log waterings, fertilizing, repotting, pruning, and custom tasks. Set flexible schedules — every N days or on specific days of the week.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🔔</span>
+            <div class="feature-title">Smart reminders <span class="free-badge">Free</span></div>
+            <div class="feature-desc">Reminders at the time that works for you — morning, evening, or whenever. Day-of-week filters so you only get nudged on your schedule.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📋</span>
+            <div class="feature-title">Full care history <span class="free-badge">Free</span></div>
+            <div class="feature-desc">Every care event, grouped by day. Fertilizer product, amount, and notes all logged. Know exactly when you last did anything.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">☁️</span>
+            <div class="feature-title">iCloud sync <span class="free-badge">Free</span></div>
+            <div class="feature-desc">Your plants sync automatically across iPhone, iPad, and Mac. No account needed. Works offline, always.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📸</span>
+            <div class="feature-title">Photo timeline <span class="pro-badge">Pro</span></div>
+            <div class="feature-desc">Document your plants' growth with dated photos. Watch them change over months in a beautiful gallery view.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📊</span>
+            <div class="feature-title">Fertilizer stats <span class="pro-badge">Pro</span></div>
+            <div class="feature-desc">Track usage by product — total applications, total mL used, watering frequency chart. Know what's working.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📤</span>
+            <div class="feature-title">CSV &amp; PDF export <span class="pro-badge">Pro</span></div>
+            <div class="feature-desc">Export your full care history as a spreadsheet or formatted PDF report. Share with a botanist or just keep your own records.</div>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🎙</span>
+            <div class="feature-title">Siri shortcuts <span class="pro-badge">Pro</span></div>
+            <div class="feature-desc">"Water my Monstera in Chlorophyll." Log care and check what's due without opening the app.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="section">
+        <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+        <div id="faq-items">
+          <div class="faq-item">
+            <div class="faq-q">What is Chlorophyll Pro?</div>
+            <div class="faq-a">Chlorophyll Pro is a one-time purchase that unlocks the photo growth timeline, fertilizer stats, CSV &amp; PDF export, Siri shortcuts, and home screen widgets. The free tier is generous and stays free forever — unlimited plants, unlimited care tasks, full reminders, and complete care history.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does it work without an internet connection?</div>
+            <div class="faq-a">Yes. Chlorophyll works fully offline. iCloud syncs your data in the background when you're connected, but the app never requires a network connection to use.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does Chlorophyll identify plants or suggest care schedules?</div>
+            <div class="faq-a">No — intentionally. Chlorophyll is a manual tracker. You know your plants best. We give you the tools to log what you do and remind you when to do it again. No AI, no guesswork, no algorithm overriding your judgment.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How do I restore my Pro purchase?</div>
+            <div class="faq-a">Open Chlorophyll → tap the menu → Restore Purchase. Your purchase is tied to your Apple ID and works across all your devices. Pro also includes Family Sharing.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Is my data backed up?</div>
+            <div class="faq-a">Yes — via iCloud. Your plants, tasks, care logs, and photos sync automatically to iCloud and are available on all your devices. No data is stored on our servers.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does Chlorophyll work on Mac and iPad?</div>
+            <div class="faq-a">Yes. Chlorophyll is a universal app — iPhone, iPad, and Mac all use the same purchase. On iPad and Mac, the plant list appears in a sidebar with the detail view on the right.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="section">
+        <h2 class="section-title">Contact Support</h2>
+        <div id="msgOk" class="msg msg-ok"></div>
+        <div id="msgErr" class="msg msg-err"></div>
+        <form id="contact-form" method="POST">
+          <input type="hidden" name="app" value="Chlorophyll" />
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option>Bug report</option>
+              <option>Purchase issue</option>
+              <option>Feature request</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Describe your issue or question..."></textarea>
+          </div>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
+
+      <div id="tj-footer"></div>
+    </div>
+
+    <script src="/js/shared.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Update App Store badge language
+        const lang = localStorage.getItem('tj-language') || 'en';
+        document.getElementById('appstore-badge').src = `/assets/app-store-badges/${lang}.svg`;
+        window.addEventListener('languageChanged', () => {
+          const l = localStorage.getItem('tj-language') || 'en';
+          document.getElementById('appstore-badge').src = `/assets/app-store-badges/${l}.svg`;
+        });
+
+        injectFooter({
+          links: [
+            { href: "/chlorophyll/privacy.html", text: "Privacy Policy" },
+            { href: "/chlorophyll/terms.html",   text: "Terms of Use" },
+            { href: "/",                          text: "All Apps" },
+            { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -92,5 +92,44 @@
   },
   "appStore": {
     "alt": "Descargar en la App Store"
+  },
+  "chlorophyll": {
+    "badge": "Nuevo",
+    "name": "Chlorophyll",
+    "description": "Rastreador manual de cuidado de plantas. Sin IA, sin suscripción. Registra riegos, fertilizaciones y más — con recordatorios flexibles y sincronización por iCloud.",
+    "tagline": "Rastreador de plantas — Manual, sin IA, sin suscripción.",
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": "¿Qué es Chlorophyll Pro?",
+      "a1": "Chlorophyll Pro es una compra única que desbloquea la galería de fotos, estadísticas de fertilizantes, exportación CSV y PDF, atajos de Siri y widgets. El nivel gratuito es generoso y siempre será gratis.",
+      "q2": "¿Funciona sin conexión a internet?",
+      "a2": "Sí. Chlorophyll funciona completamente sin conexión. iCloud sincroniza tus datos en segundo plano cuando estás conectado.",
+      "q3": "¿Chlorophyll identifica plantas o sugiere horarios de cuidado?",
+      "a3": "No — intencionalmente. Chlorophyll es un rastreador manual. Tú conoces mejor a tus plantas. Nosotros te damos las herramientas para registrar lo que haces y recordarte cuándo hacerlo de nuevo.",
+      "q4": "¿Cómo restauro mi compra Pro?",
+      "a4": "Abre Chlorophyll → toca el menú → Restaurar compra. Tu compra está vinculada a tu Apple ID y funciona en todos tus dispositivos.",
+      "q5": "¿Están respaldados mis datos?",
+      "a5": "Sí — mediante iCloud. Tus plantas, tareas, registros de cuidado y fotos se sincronizan automáticamente.",
+      "q6": "¿Funciona en Mac y iPad?",
+      "a6": "Sí. Chlorophyll es una app universal — iPhone, iPad y Mac usan la misma compra."
+    },
+    "contactForm": {
+      "title": "Contactar soporte",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Correo",
+      "emailPlaceholder": "tu@correo.com",
+      "subjectLabel": "Asunto",
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Describe tu problema o pregunta...",
+      "submitBtn": "Enviar mensaje",
+      "sendingBtn": "Enviando…",
+      "bugReport": "Reporte de error",
+      "subscriptionIssue": "Problema con la compra",
+      "featureRequest": "Solicitud de función",
+      "generalQuestion": "Pregunta general",
+      "successMsg": "Mensaje enviado — te responderemos en 48 horas.",
+      "errorMsg": "Algo salió mal. Por favor escríbenos a support@tastyjam.ca"
+    }
   }
 }

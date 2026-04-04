@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chlorophyll – Privacy Policy · Tasty Jam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/shared.css" />
+  </head>
+  <body>
+    <div class="container privacy">
+      <nav id="tj-nav" data-app="chlorophyll" data-page="privacy"></nav>
+
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: April 4, 2026</p>
+
+      <h2>Overview</h2>
+      <p>Chlorophyll is a plant care tracker built with privacy by default. Your plant data — including care logs, photos, and reminders — stays on your device and in your personal iCloud account. We do not collect, store, or transmit your personal data to any server we operate.</p>
+
+      <h2>Data we collect</h2>
+      <p><strong>Nothing.</strong> Chlorophyll does not collect any personal information. There are no user accounts, no analytics SDKs, no advertising identifiers, and no crash reporting services that phone home with your data.</p>
+
+      <h2>Data stored on your device</h2>
+      <p>All data you enter in Chlorophyll — plant names, species, care tasks, care logs, fertilizer notes, and photos — is stored locally on your device using Apple's SwiftData framework. This data belongs entirely to you.</p>
+
+      <h2>iCloud sync</h2>
+      <p>If you have iCloud enabled on your device, Chlorophyll uses Apple's CloudKit to sync your plant data across your iPhone, iPad, and Mac. This sync is encrypted end-to-end by Apple and governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. Tasty Jam has no access to data stored in your private CloudKit container.</p>
+
+      <h2>Photos</h2>
+      <p>When you add plant photos, they are stored as compressed image data inside your local SwiftData store and synced via iCloud alongside your other plant data. Photos are never uploaded to any server operated by Tasty Jam.</p>
+
+      <h2>Notifications</h2>
+      <p>Chlorophyll uses Apple's notification system to send local care reminders. Notification scheduling happens entirely on your device — no data leaves your device to deliver notifications.</p>
+
+      <h2>Siri &amp; Shortcuts</h2>
+      <p>If you use Siri shortcuts (e.g. "Water my Monstera in Chlorophyll"), Apple's App Intents framework processes your voice request locally on-device where possible. No care data is sent to Tasty Jam's servers as a result of using Siri.</p>
+
+      <h2>In-app purchases</h2>
+      <p>Chlorophyll Pro is a one-time in-app purchase processed entirely by Apple. Tasty Jam receives only the anonymised aggregate sales information Apple provides to all developers. We do not receive your payment details, Apple ID, or any personally identifiable information from the purchase.</p>
+
+      <h2>Third-party services</h2>
+      <p>Chlorophyll does not integrate any third-party analytics, advertising, crash reporting, or tracking services. The only third-party service used is Apple's own CloudKit, governed by Apple's privacy policy.</p>
+
+      <h2>Children</h2>
+      <p>Chlorophyll does not knowingly collect data from children under 13. The app does not require an account and collects no personal information from any user of any age.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If we make material changes to this policy, we will update the date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this privacy policy? Email us at <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.</p>
+
+      <div id="tj-footer"></div>
+    </div>
+    <script src="/js/shared.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        injectFooter({
+          links: [
+            { href: "/chlorophyll/", text: "Support" },
+            { href: "/", text: "All Apps" },
+            { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>
