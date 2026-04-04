@@ -99,77 +99,95 @@ function injectLangSelector() {
 }
 
 // --- Currency widget (reusable component) ---
-// Usage: initCurrencyWidget({ selectId, outputId, noteId, prices })
+// Usage: initCurrencyWidget({ selectId, prices })
 //   prices: { month: 4.99, year: 29.99 }  — subscription (shows both tiers)
 //   prices: { once: 19.99 }               — one-time purchase
-const _TJ_FX_FORMAT = {
-  CAD: { symbol: 'CA$', dec: 2 }, EUR: { symbol: '€', dec: 2 }, GBP: { symbol: '£', dec: 2 },
-  AUD: { symbol: 'A$', dec: 2 }, JPY: { symbol: '¥', dec: 0 }, MXN: { symbol: 'MX$', dec: 2 },
-  BRL: { symbol: 'R$', dec: 2 }, INR: { symbol: '₹', dec: 0 }, KRW: { symbol: '₩', dec: 0 },
-  CHF: { symbol: 'CHF ', dec: 2 }, SEK: { symbol: 'kr', dec: 2, sfx: true },
-  NOK: { symbol: 'kr', dec: 2, sfx: true }, DKK: { symbol: 'kr', dec: 2, sfx: true },
-  NZD: { symbol: 'NZ$', dec: 2 }, SGD: { symbol: 'S$', dec: 2 }, HKD: { symbol: 'HK$', dec: 2 },
-  CNY: { symbol: '¥', dec: 2 }, PLN: { symbol: 'zł', dec: 2, sfx: true },
-  CZK: { symbol: 'Kč', dec: 2, sfx: true }, HUF: { symbol: 'Ft', dec: 0, sfx: true },
-};
+//
+// Strategy: one bulk fetch for ALL currencies on init, stored in localStorage
+// with a 4hr TTL so every page shares the same data — no per-selection fetches.
+// Each <option> is pre-populated with the converted price so the value is
+// visible as soon as the user opens the dropdown, no interaction required.
+
+const _TJ_CURRENCIES = [
+  { code: 'CAD', flag: '🇨🇦', symbol: 'CA$', dec: 2 },
+  { code: 'EUR', flag: '🇪🇺', symbol: '€', dec: 2 },
+  { code: 'GBP', flag: '🇬🇧', symbol: '£', dec: 2 },
+  { code: 'AUD', flag: '🇦🇺', symbol: 'A$', dec: 2 },
+  { code: 'JPY', flag: '🇯🇵', symbol: '¥', dec: 0 },
+  { code: 'MXN', flag: '🇲🇽', symbol: 'MX$', dec: 2 },
+  { code: 'BRL', flag: '🇧🇷', symbol: 'R$', dec: 2 },
+  { code: 'INR', flag: '🇮🇳', symbol: '₹', dec: 0 },
+  { code: 'KRW', flag: '🇰🇷', symbol: '₩', dec: 0 },
+  { code: 'CHF', flag: '🇨🇭', symbol: 'CHF ', dec: 2 },
+  { code: 'SEK', flag: '🇸🇪', symbol: 'kr', dec: 2, sfx: true },
+  { code: 'NOK', flag: '🇳🇴', symbol: 'kr', dec: 2, sfx: true },
+  { code: 'DKK', flag: '🇩🇰', symbol: 'kr', dec: 2, sfx: true },
+  { code: 'NZD', flag: '🇳🇿', symbol: 'NZ$', dec: 2 },
+  { code: 'SGD', flag: '🇸🇬', symbol: 'S$', dec: 2 },
+  { code: 'HKD', flag: '🇭🇰', symbol: 'HK$', dec: 2 },
+  { code: 'CNY', flag: '🇨🇳', symbol: '¥', dec: 2 },
+  { code: 'PLN', flag: '🇵🇱', symbol: 'zł', dec: 2, sfx: true },
+  { code: 'CZK', flag: '🇨🇿', symbol: 'Kč', dec: 2, sfx: true },
+  { code: 'HUF', flag: '🇭🇺', symbol: 'Ft', dec: 0, sfx: true },
+];
+
+const _TJ_FX_KEY = 'tj_fx_rates';
+const _TJ_FX_TTL = 4 * 60 * 60 * 1000; // 4 hours
 
 function _tjFmtPrice(amt, cur) {
-  const f = _TJ_FX_FORMAT[cur] || { symbol: cur + ' ', dec: 2 };
-  const n = amt.toFixed(f.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return f.sfx ? n + ' ' + f.symbol : f.symbol + n;
+  const c = _TJ_CURRENCIES.find(x => x.code === cur) || { symbol: cur + ' ', dec: 2 };
+  const n = amt.toFixed(c.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return c.sfx ? n + ' ' + c.symbol : c.symbol + n;
 }
 
-async function _tjGetRate(cur) {
-  const KEY = 'tj_fx_cache';
+// Fetches all rates in one request; returns the rates object or null on failure.
+// Shared across all pages via localStorage — like a process-wide singleton cache.
+async function _tjLoadRates() {
   try {
-    const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
-    if (c[cur] && Date.now() - c._ts < 4 * 3600 * 1000) return c[cur];
+    const stored = JSON.parse(localStorage.getItem(_TJ_FX_KEY) || 'null');
+    if (stored && Date.now() - stored._ts < _TJ_FX_TTL) return stored.rates;
   } catch { }
-  // api.frankfurter.app — free, open-source, CORS-enabled, no auth required
-  const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=' + cur);
-  if (!r.ok) throw new Error('FX fetch failed');
-  const d = await r.json();
-  const rate = d.rates[cur];
-  if (!rate) throw new Error('Rate not in response');
   try {
-    const c = JSON.parse(sessionStorage.getItem(KEY) || '{}');
-    c[cur] = rate;
-    c._ts = Date.now();
-    sessionStorage.setItem(KEY, JSON.stringify(c));
-  } catch { }
-  return rate;
+    const codes = _TJ_CURRENCIES.map(c => c.code).join(',');
+    const r = await fetch(`https://api.frankfurter.app/latest?from=USD&to=${codes}`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    localStorage.setItem(_TJ_FX_KEY, JSON.stringify({ rates: d.rates, _ts: Date.now() }));
+    return d.rates;
+  } catch {
+    return null;
+  }
 }
 
-function initCurrencyWidget({ selectId = 'currency-select', outputId = 'price-converted', noteId = 'price-note', prices = {} } = {}) {
+function _tjPriceLabel(prices, rate, code) {
+  if (prices.month && prices.year) {
+    return `≈ ${_tjFmtPrice(prices.month * rate, code)}/mo · ${_tjFmtPrice(prices.year * rate, code)}/yr`;
+  }
+  if (prices.once) return `≈ ${_tjFmtPrice(prices.once * rate, code)}`;
+  return '';
+}
+
+async function initCurrencyWidget({ selectId = 'currency-select', prices = {} } = {}) {
   const sel = document.getElementById(selectId);
-  const out = document.getElementById(outputId);
-  const note = document.getElementById(noteId);
-  if (!sel || !out) return;
+  if (!sel) return;
 
-  sel.addEventListener('change', async () => {
-    const cur = sel.value;
-    if (!cur) {
-      out.textContent = '';
-      if (note) note.style.display = 'none';
-      return;
-    }
-    out.textContent = '…';
-    if (note) note.style.display = 'none';
-    try {
-      const rate = await _tjGetRate(cur);
-      if (prices.month && prices.year) {
-        // Subscription: show both tiers
-        out.textContent = '≈ ' + _tjFmtPrice(prices.month * rate, cur) + '/mo · ' + _tjFmtPrice(prices.year * rate, cur) + '/yr';
-      } else if (prices.once) {
-        out.textContent = '≈ ' + _tjFmtPrice(prices.once * rate, cur);
-      } else {
-        out.textContent = 'unavailable';
-      }
-      if (note) note.style.display = 'block';
-    } catch {
-      out.textContent = 'unavailable';
-    }
-  });
+  // Render placeholder options immediately so the select isn't empty while fetching.
+  sel.innerHTML =
+    '<option value="">See price in…</option>' +
+    _TJ_CURRENCIES.map(c => `<option value="${c.code}">${c.flag} ${c.code}</option>`).join('');
+
+  const rates = await _tjLoadRates();
+  if (!rates) return; // leave plain options, no prices shown — better than 'unavailable'
+
+  // Rewrite every option with the converted price baked into the label.
+  // Like pre-computing a lookup table at startup rather than on every access.
+  sel.innerHTML =
+    '<option value="">See price in…</option>' +
+    _TJ_CURRENCIES.map(c => {
+      const rate = rates[c.code];
+      const label = rate ? ` — ${_tjPriceLabel(prices, rate, c.code)}` : '';
+      return `<option value="${c.code}">${c.flag} ${c.code}${label}</option>`;
+    }).join('');
 }
 
 // --- Footer ---

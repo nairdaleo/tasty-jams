@@ -72,19 +72,6 @@
         cursor: pointer;
       }
       .currency-widget select:hover { border-color: var(--accent); }
-      .price-converted {
-        font-weight: 700;
-        color: var(--text);
-        min-width: 80px;
-        font-variant-numeric: tabular-nums;
-      }
-      .price-note {
-        font-size: 0.72rem;
-        color: var(--text-dim);
-        text-align: center;
-        max-width: 340px;
-        line-height: 1.45;
-      }
     </style>
   </head>
   <body>
@@ -122,36 +109,8 @@
             <span>No subscription</span>
           </div>
           <div class="currency-widget">
-            <span>See price in</span>
-            <select id="currency-select" aria-label="Select currency">
-              <option value="">— select —</option>
-              <option value="CAD">🇨🇦 CAD</option>
-              <option value="EUR">🇪🇺 EUR</option>
-              <option value="GBP">🇬🇧 GBP</option>
-              <option value="AUD">🇦🇺 AUD</option>
-              <option value="JPY">🇯🇵 JPY</option>
-              <option value="MXN">🇲🇽 MXN</option>
-              <option value="BRL">🇧🇷 BRL</option>
-              <option value="INR">🇮🇳 INR</option>
-              <option value="KRW">🇰🇷 KRW</option>
-              <option value="CHF">🇨🇭 CHF</option>
-              <option value="SEK">🇸🇪 SEK</option>
-              <option value="NOK">🇳🇴 NOK</option>
-              <option value="DKK">🇩🇰 DKK</option>
-              <option value="NZD">🇳🇿 NZD</option>
-              <option value="SGD">🇸🇬 SGD</option>
-              <option value="HKD">🇭🇰 HKD</option>
-              <option value="CNY">🇨🇳 CNY</option>
-              <option value="PLN">🇵🇱 PLN</option>
-              <option value="CZK">🇨🇿 CZK</option>
-              <option value="HUF">🇭🇺 HUF</option>
-            </select>
-            <span class="price-converted" id="price-converted"></span>
+            <select id="currency-select" aria-label="Select currency"></select>
           </div>
-          <p class="price-note" id="price-note" style="display:none">
-            Approximate conversion via live exchange rate.
-            Actual App Store price may differ due to Apple's regional pricing and local taxes.
-          </p>
         </div>
       </div>
 
