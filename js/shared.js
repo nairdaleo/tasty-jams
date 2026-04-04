@@ -123,35 +123,47 @@ function _updateAppStoreBadge(lang) {
 // visible as soon as the user opens the dropdown, no interaction required.
 
 const _TJ_CURRENCIES = [
-  { code: 'CAD', flag: '🇨🇦', symbol: 'CA$', dec: 2 },
-  { code: 'EUR', flag: '🇪🇺', symbol: '€', dec: 2 },
-  { code: 'GBP', flag: '🇬🇧', symbol: '£', dec: 2 },
-  { code: 'AUD', flag: '🇦🇺', symbol: 'A$', dec: 2 },
-  { code: 'JPY', flag: '🇯🇵', symbol: '¥', dec: 0 },
-  { code: 'MXN', flag: '🇲🇽', symbol: 'MX$', dec: 2 },
-  { code: 'BRL', flag: '🇧🇷', symbol: 'R$', dec: 2 },
-  { code: 'INR', flag: '🇮🇳', symbol: '₹', dec: 0 },
-  { code: 'KRW', flag: '🇰🇷', symbol: '₩', dec: 0 },
-  { code: 'CHF', flag: '🇨🇭', symbol: 'CHF ', dec: 2 },
-  { code: 'SEK', flag: '🇸🇪', symbol: 'kr', dec: 2, sfx: true },
-  { code: 'NOK', flag: '🇳🇴', symbol: 'kr', dec: 2, sfx: true },
-  { code: 'DKK', flag: '🇩🇰', symbol: 'kr', dec: 2, sfx: true },
-  { code: 'NZD', flag: '🇳🇿', symbol: 'NZ$', dec: 2 },
-  { code: 'SGD', flag: '🇸🇬', symbol: 'S$', dec: 2 },
-  { code: 'HKD', flag: '🇭🇰', symbol: 'HK$', dec: 2 },
-  { code: 'CNY', flag: '🇨🇳', symbol: '¥', dec: 2 },
-  { code: 'PLN', flag: '🇵🇱', symbol: 'zł', dec: 2, sfx: true },
-  { code: 'CZK', flag: '🇨🇿', symbol: 'Kč', dec: 2, sfx: true },
-  { code: 'HUF', flag: '🇭🇺', symbol: 'Ft', dec: 0, sfx: true },
+  { code: 'CAD', flag: '🇨🇦' },
+  { code: 'EUR', flag: '🇪🇺' },
+  { code: 'GBP', flag: '🇬🇧' },
+  { code: 'AUD', flag: '🇦🇺' },
+  { code: 'JPY', flag: '🇯🇵' },
+  { code: 'MXN', flag: '🇲🇽' },
+  { code: 'BRL', flag: '🇧🇷' },
+  { code: 'INR', flag: '🇮🇳' },
+  { code: 'KRW', flag: '🇰🇷' },
+  { code: 'CHF', flag: '🇨🇭' },
+  { code: 'SEK', flag: '🇸🇪' },
+  { code: 'NOK', flag: '🇳🇴' },
+  { code: 'DKK', flag: '🇩🇰' },
+  { code: 'NZD', flag: '🇳🇿' },
+  { code: 'SGD', flag: '🇸🇬' },
+  { code: 'HKD', flag: '🇭🇰' },
+  { code: 'CNY', flag: '🇨🇳' },
+  { code: 'PLN', flag: '🇵🇱' },
+  { code: 'CZK', flag: '🇨🇿' },
+  { code: 'HUF', flag: '🇭🇺' },
 ];
 
 const _TJ_FX_KEY = 'tj_fx_rates_v2';
 const _TJ_FX_TTL = 4 * 60 * 60 * 1000; // 4 hours
 
+// Format a price using Intl.NumberFormat — handles decimal separators, thousands
+// grouping, currency symbols, and suffix-vs-prefix placement automatically per locale.
+// Like using printf with a locale-aware format string instead of building the string manually.
+// The browser locale drives formatting (e.g. "19,99 €" in de, "€19.99" in en).
 function _tjFmtPrice(amt, cur) {
-  const c = _TJ_CURRENCIES.find(x => x.code === cur) || { symbol: cur + ' ', dec: 2 };
-  const n = amt.toFixed(c.dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return c.sfx ? n + ' ' + c.symbol : c.symbol + n;
+  try {
+    return new Intl.NumberFormat(navigator.language || 'en', {
+      style: 'currency',
+      currency: cur,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(amt);
+  } catch {
+    // Fallback for very old browsers that don't support Intl.NumberFormat with currency
+    return `${cur} ${amt.toFixed(2)}`;
+  }
 }
 
 // Fetches all rates in one request; returns the rates object or null on failure.
