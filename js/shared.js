@@ -7,7 +7,7 @@
 async function initI18n() {
   try {
     const lng = localStorage.getItem('tj-language') || (navigator.language.split('-')[0] || 'en');
-    const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+    const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
     const language = supportedLangs.includes(lng) ? lng : 'en';
 
     // Load translation file
@@ -40,7 +40,7 @@ function t(key, fallback = '') {
 }
 
 function setLanguage(lang) {
-  const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+  const supportedLangs = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
   if (!supportedLangs.includes(lang)) return;
   localStorage.setItem('tj-language', lang);
   location.reload();
@@ -82,8 +82,8 @@ function injectThemeToggle() {
 // Also owns App Store badge language swapping — one place for all language-switch side effects.
 function injectLangSelector() {
   const currentLang = window.tj?.currentLanguage || 'en';
-  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
-  const langLabels = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ja: 'JP', pt: 'PT' };
+  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
+  const langLabels = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ja: 'JP', pt: 'PT', ko: 'KO' };
   const options = langs.map(l => `<option value="${l}"${l === currentLang ? ' selected' : ''}>${langLabels[l]}</option>`).join('');
 
   const wrap = document.createElement('div');
@@ -105,7 +105,7 @@ function injectLangSelector() {
 // Updates all .app-store-badge-link img src to the current language badge.
 // Falls back to 'en' if no badge exists for the language.
 function _updateAppStoreBadge(lang) {
-  const supported = ['en', 'fr', 'es', 'de', 'ja', 'pt'];
+  const supported = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
   const code = supported.includes(lang) ? lang : 'en';
   document.querySelectorAll('.app-store-badge-link img').forEach(img => {
     img.src = `/assets/app-store-badges/${code}.svg`;

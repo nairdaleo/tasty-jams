@@ -103,6 +103,8 @@ def main():
         "portuguese": "PT",
         "pt-br": "PT-BR",
         "brazilian": "PT-BR",
+        "ko": "KO",
+        "korean": "KO",
     }
 
     for lang_input in languages:
