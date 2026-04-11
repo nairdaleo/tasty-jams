@@ -224,6 +224,7 @@ function injectFooter(opts = {}) {
   const links = opts.links || [
     { href: '/spark/privacy.html', text: t('common.privacy', 'Privacy') },
     { href: '/', text: t('common.allApps', 'All Apps') },
+    { href: 'https://ko-fi.com/tastyjam', text: t('common.supportDev', 'Support the dev') },
     { href: `mailto:${t('common.email', 'support@tastyjam.ca')}`, text: t('common.email', 'support@tastyjam.ca') },
   ];
   const linksHtml = links.map(l => `<a href="${l.href}">${l.text}</a>`).join('');
