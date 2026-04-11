@@ -179,13 +179,55 @@ body {
   transform: translateX(0);
 }
 
-/* Ko-fi pill — brand tint on hover */
+/* Ko-fi icon — rendered via CSS mask so its colour is a CSS variable,
+   not baked into the image. The PNG is used as a shape stencil (alpha mask);
+   background-color is what you actually see. This gives full theme control. */
+.kofi-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background-color: var(--text-muted);
+  mask-image: url('https://storage.ko-fi.com/cdn/brandasset/v2/kofi_symbol.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('https://storage.ko-fi.com/cdn/brandasset/v2/kofi_symbol.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  transition: background-color 0.2s;
+}
+
+/* Ko-fi pill — tint to Ko-fi coral on hover; icon follows via background-color */
 .kofi-btn:hover {
-  background: rgba(255, 94, 91, 0.12);
-  border-color: rgba(255, 94, 91, 0.4);
+  background: var(--kofi-hover-bg);
+  border-color: var(--kofi-hover-border);
+}
+.kofi-btn:hover .kofi-icon {
+  background-color: var(--kofi-icon-hover);
 }
 .kofi-btn:hover .btn-label {
-  color: #ff6b6b;
+  color: var(--kofi-icon-hover);
+}
+
+/* Ko-fi theme tokens — coral adapts slightly between dark and light palettes */
+:root {
+  --kofi-hover-bg:     rgba(255, 94, 91, 0.13);
+  --kofi-hover-border: rgba(255, 94, 91, 0.42);
+  --kofi-icon-hover:   #ff6e6b;
+}
+:root.light {
+  --kofi-hover-bg:     rgba(200, 40, 40, 0.09);
+  --kofi-hover-border: rgba(200, 40, 40, 0.35);
+  --kofi-icon-hover:   #c0392b;
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --kofi-hover-bg:     rgba(200, 40, 40, 0.09);
+    --kofi-hover-border: rgba(200, 40, 40, 0.35);
+    --kofi-icon-hover:   #c0392b;
+  }
 }
 
 /* Language pill — invisible native <select> covers the full pill;

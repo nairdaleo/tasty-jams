@@ -97,9 +97,9 @@ function injectTopbar() {
        href="https://ko-fi.com/tastyjam"
        target="_blank"
        rel="noopener noreferrer"
-       aria-label="${t('common.supportDev', 'Support on Ko-fi')}">
-      <span class="btn-icon" aria-hidden="true">☕</span>
-      <span class="btn-label">${t('common.supportDev', 'Support on Ko-fi')}</span>
+       aria-label="Support me on Ko-fi">
+      <span class="btn-icon"><span class="kofi-icon" aria-hidden="true"></span></span>
+      <span class="btn-label">Support me on Ko-fi</span>
     </a>
     <div class="topbar-btn lang-btn" role="button" aria-label="Language">
       <span class="btn-icon lang-code" aria-hidden="true">${langCodes[currentLang]}</span>
@@ -124,6 +124,8 @@ function injectTopbar() {
     themeLabel.textContent = nowLight
       ? t('theme.switchDark', 'Dark mode')
       : t('theme.switchLight', 'Light mode');
+    // Re-init Ko-fi widget with updated theme color (affects popup header)
+    _initKofi(nowLight);
   });
 
   // Gradient backdrop (lives behind the topbar, masks scrolled content)
@@ -135,6 +137,31 @@ function injectTopbar() {
 
   // Swap App Store badge to match current language
   _updateAppStoreBadge(currentLang);
+
+  // Load Ko-fi Widget_2.js — gives the popup panel when clicking our pill.
+  // We don't call draw() (our pill IS the button); init() sets the popup colour.
+  _loadKofiWidget(isLight);
+}
+
+// Returns the hex background colour to pass to kofiwidget2.init() for the
+// current theme.  Must be a solid hex that keeps white text readable (Ko-fi
+// always uses white text in its popup header).
+function _kofiWidgetColor(isLight) {
+  return isLight ? '#5b21b6' : '#1e1530';
+}
+
+function _initKofi(isLight) {
+  if (typeof kofiwidget2 !== 'undefined') {
+    kofiwidget2.init('Support me on Ko-fi', _kofiWidgetColor(isLight), 'T6T81XNNN5');
+  }
+}
+
+function _loadKofiWidget(isLight) {
+  const s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src  = 'https://storage.ko-fi.com/cdn/widget/Widget_2.js';
+  s.onload = () => _initKofi(isLight);
+  document.head.appendChild(s);
 }
 
 // Updates all .app-store-badge-link img src to the current language badge.
