@@ -66,39 +66,74 @@ function toggleTheme() {
 const _initialTheme = getPreferredTheme();
 if (_initialTheme === 'light') applyTheme('light');
 
-// --- Theme toggle button ---
-// Call this to inject the toggle button into the page.
-function injectThemeToggle() {
-  const btn = document.createElement('button');
-  btn.className = 'theme-toggle';
-  btn.setAttribute('aria-label', t('theme.toggle', 'Toggle light/dark mode'));
-  btn.innerHTML = '<span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>';
-  btn.addEventListener('click', toggleTheme);
-  document.body.prepend(btn);
-}
-
-// --- Language selector (top of page) ---
-// Injects a compact language pill fixed to the top-right (left of theme toggle).
-// Also owns App Store badge language swapping — one place for all language-switch side effects.
-function injectLangSelector() {
+// --- Top-right control group: Ko-fi · Language · Theme ---
+// Single function that builds all three pill buttons as a flex container.
+// Each pill is a 40×40 circle that expands leftward on hover to reveal a label.
+// Also owns App Store badge language swapping (one place for all lang-switch side effects).
+function injectTopbar() {
   const currentLang = window.tj?.currentLanguage || 'en';
-  const langs = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
-  const langLabels = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ja: 'JP', pt: 'PT', ko: 'KO' };
-  const options = langs.map(l => `<option value="${l}"${l === currentLang ? ' selected' : ''}>${langLabels[l]}</option>`).join('');
+  const langs      = ['en', 'fr', 'es', 'de', 'ja', 'pt', 'ko'];
+  const langCodes  = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ja: 'JP', pt: 'PT', ko: 'KO' };
+  const langNames  = { en: 'English', fr: 'Français', es: 'Español', de: 'Deutsch', ja: '日本語', pt: 'Português', ko: '한국어' };
 
-  const wrap = document.createElement('div');
-  wrap.className = 'lang-selector-top';
-  wrap.innerHTML = `<select aria-label="Language" onchange="setLanguage(this.value)">${options}</select>`;
+  // Is the page currently in light mode?
+  const isLight = document.documentElement.classList.contains('light') ||
+    (!document.documentElement.classList.contains('dark') &&
+     window.matchMedia('(prefers-color-scheme: light)').matches);
 
-  // Insert before theme-toggle so both sit flush in the top-right corner.
-  const themeBtn = document.querySelector('.theme-toggle');
-  if (themeBtn) {
-    document.body.insertBefore(wrap, themeBtn);
-  } else {
-    document.body.prepend(wrap);
-  }
+  const options = langs.map(l =>
+    `<option value="${l}"${l === currentLang ? ' selected' : ''}>${langCodes[l]} — ${langNames[l]}</option>`
+  ).join('');
 
-  // Swap App Store badge to match the current language on every page load.
+  // Theme label describes the mode you'll switch TO (not the current mode).
+  const themeLabelText = isLight
+    ? t('theme.switchDark', 'Dark mode')
+    : t('theme.switchLight', 'Light mode');
+
+  const bar = document.createElement('div');
+  bar.className = 'tj-topbar';
+  bar.innerHTML = `
+    <a class="topbar-btn kofi-btn"
+       href="https://ko-fi.com/tastyjam"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="${t('common.supportDev', 'Support on Ko-fi')}">
+      <span class="btn-icon" aria-hidden="true">☕</span>
+      <span class="btn-label">${t('common.supportDev', 'Support on Ko-fi')}</span>
+    </a>
+    <div class="topbar-btn lang-btn" role="button" aria-label="Language">
+      <span class="btn-icon lang-code" aria-hidden="true">${langCodes[currentLang]}</span>
+      <span class="btn-label">${langNames[currentLang]}</span>
+      <select aria-label="Language" onchange="setLanguage(this.value)">${options}</select>
+    </div>
+    <button class="topbar-btn theme-btn" aria-label="${t('theme.toggle', 'Toggle light/dark mode')}">
+      <span class="btn-icon" aria-hidden="true">
+        <span class="icon-moon">🌙</span>
+        <span class="icon-sun">☀️</span>
+      </span>
+      <span class="btn-label theme-label">${themeLabelText}</span>
+    </button>
+  `;
+
+  // Wire up theme button (event listener keeps label in sync after toggle)
+  const themeBtn   = bar.querySelector('.theme-btn');
+  const themeLabel = bar.querySelector('.theme-label');
+  themeBtn.addEventListener('click', () => {
+    toggleTheme();
+    const nowLight = document.documentElement.classList.contains('light');
+    themeLabel.textContent = nowLight
+      ? t('theme.switchDark', 'Dark mode')
+      : t('theme.switchLight', 'Light mode');
+  });
+
+  // Gradient backdrop (lives behind the topbar, masks scrolled content)
+  const grad = document.createElement('div');
+  grad.className = 'tj-topbar-gradient';
+
+  document.body.prepend(grad);
+  document.body.prepend(bar);
+
+  // Swap App Store badge to match current language
   _updateAppStoreBadge(currentLang);
 }
 
@@ -331,8 +366,7 @@ function translateDataAttrs() {
 document.addEventListener('DOMContentLoaded', async () => {
   await initI18n();
   translateDataAttrs();
-  injectThemeToggle();
-  injectLangSelector();
+  injectTopbar();
   injectNav();
   injectFooter(); // default footer — pages override via tj:ready with custom links
   // Auto-init contact form if present
