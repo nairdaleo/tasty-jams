@@ -141,8 +141,7 @@ body {
 .topbar-btn:hover {
   background: var(--toggle-hover);
   border-color: var(--border-hover);
-  max-width: 220px;
-  transform: scale(1.04);
+  /* No expand or scale here — lang/theme stay as quiet circles */
 }
 .topbar-btn:focus-visible {
   outline: 2px solid var(--accent);
@@ -162,7 +161,7 @@ body {
   position: relative;
 }
 
-/* Expanded label — hidden until hover, slides in from the left */
+/* Expanded label — hidden by default; only .kofi-btn reveals it on hover */
 .topbar-btn .btn-label {
   padding: 0 14px 0 2px;
   font-size: 0.8rem;
@@ -173,10 +172,6 @@ body {
   transition: opacity 0.15s 0.06s, transform 0.15s 0.06s;
   pointer-events: none;
   user-select: none;
-}
-.topbar-btn:hover .btn-label {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* Ko-fi icon — rendered via CSS mask so its colour is a CSS variable,
@@ -199,8 +194,12 @@ body {
   transition: background-color 0.2s;
 }
 
-/* Ko-fi pill — tint to Ko-fi coral on hover; icon follows via background-color */
+/* Ko-fi pill — only this button expands and reveals its label on hover.
+   Colour tokens use a warm amber (close to Claude's brand orange) rather
+   than a jarring red, so it feels at home in both dark and light themes. */
 .kofi-btn:hover {
+  max-width: 220px;
+  transform: scale(1.04);
   background: var(--kofi-hover-bg);
   border-color: var(--kofi-hover-border);
 }
@@ -208,25 +207,27 @@ body {
   background-color: var(--kofi-icon-hover);
 }
 .kofi-btn:hover .btn-label {
+  opacity: 1;
+  transform: translateX(0);
   color: var(--kofi-icon-hover);
 }
 
-/* Ko-fi theme tokens — coral adapts slightly between dark and light palettes */
+/* Ko-fi colour tokens — warm amber, adapts per theme */
 :root {
-  --kofi-hover-bg:     rgba(255, 94, 91, 0.13);
-  --kofi-hover-border: rgba(255, 94, 91, 0.42);
-  --kofi-icon-hover:   #ff6e6b;
+  --kofi-hover-bg:     rgba(210, 130, 70, 0.13);
+  --kofi-hover-border: rgba(210, 130, 70, 0.40);
+  --kofi-icon-hover:   #d4875a;   /* warm amber, readable on dark bg */
 }
 :root.light {
-  --kofi-hover-bg:     rgba(200, 40, 40, 0.09);
-  --kofi-hover-border: rgba(200, 40, 40, 0.35);
-  --kofi-icon-hover:   #c0392b;
+  --kofi-hover-bg:     rgba(175, 95, 35, 0.10);
+  --kofi-hover-border: rgba(175, 95, 35, 0.35);
+  --kofi-icon-hover:   #a85c2a;   /* slightly deeper for contrast on light bg */
 }
 @media (prefers-color-scheme: light) {
   :root:not(.dark) {
-    --kofi-hover-bg:     rgba(200, 40, 40, 0.09);
-    --kofi-hover-border: rgba(200, 40, 40, 0.35);
-    --kofi-icon-hover:   #c0392b;
+    --kofi-hover-bg:     rgba(175, 95, 35, 0.10);
+    --kofi-hover-border: rgba(175, 95, 35, 0.35);
+    --kofi-icon-hover:   #a85c2a;
   }
 }
 
@@ -284,9 +285,9 @@ body {
   }
 }
 
-/* Touch devices — hover expand doesn't apply; keep circles, use active scale */
+/* Touch devices — kofi expand doesn't apply; tap gives a scale pulse */
 @media (hover: none) {
-  .topbar-btn:hover {
+  .kofi-btn:hover {
     max-width: 40px;
     transform: none;
   }
