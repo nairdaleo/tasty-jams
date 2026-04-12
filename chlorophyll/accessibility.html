@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility · Chlorophyll – Plant Care Tracker · Tasty Jam</title>
+    <meta name="description" content="How Chlorophyll supports VoiceOver, Voice Control, Dynamic Type, Reduce Motion, high-contrast themes, and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/shared.css?v=5" />
+    <style>
+      :root {
+        --app-accent: #C4714A;
+        --chl-clay:  #C4714A;
+        --chl-moss:  #6B7C4A;
+        --chl-bark:  #6B4C35;
+        --chl-soil:  #3B2A1A;
+        --chl-cream: #F5EFE4;
+        --chl-linen: #EDE5D8;
+        --chl-sage:  #A8B89A;
+        --chl-bloom: #B87A8A;
+      }
+
+      /* ── Feature grid ─────────────────────────────────────────────── */
+      .a11y-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .a11y-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .a11y-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .a11y-icon {
+        font-size: 1.8rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      .a11y-card h3 {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .a11y-card p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Placeholder for future graphics — highlighted in dev so it's obvious */
+      .graphic-placeholder {
+        background: var(--border);
+        border: 2px dashed var(--text-muted);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-style: italic;
+        margin-top: 6px;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ── N/A section ──────────────────────────────────────────────── */
+      .na-list {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .na-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .na-item .na-icon {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        opacity: 0.5;
+      }
+
+      .na-item p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .na-item strong {
+        color: var(--text);
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      /* ── Contrast swatch pair ─────────────────────────────────────── */
+      .contrast-pair {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+
+      .contrast-swatch {
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .swatch-nitido {
+        background: #FFFFFF;
+        color: #0D0D0D;
+        border: 1px solid #E0E0E0;
+      }
+
+      .swatch-onice {
+        background: #0A0A0A;
+        color: #F5F5F5;
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav id="tj-nav" data-app="chlorophyll" data-page="accessibility"></nav>
+
+      <!-- Header -->
+      <div class="header">
+        <h1>♿ Accessibility</h1>
+        <p class="tagline">How Chlorophyll supports iOS accessibility features</p>
+      </div>
+
+      <!-- Intro -->
+      <div class="section">
+        <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.7; max-width:640px; margin:0 auto; text-align:center;">
+          Chlorophyll is built to work well for everyone. The features below describe how the app
+          supports the accessibility settings built into iOS and iPadOS. If something doesn't work
+          for you, <a href="/chlorophyll/#contact" style="color:var(--chl-clay);">please get in touch</a> — every report helps.
+        </p>
+      </div>
+
+      <!-- ── Supported features ──────────────────────────────────────── -->
+      <div class="section">
+        <h2 class="section-title">Supported</h2>
+        <div class="a11y-grid">
+
+          <!-- VoiceOver -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">👁</span>
+              <h3>VoiceOver</h3>
+            </div>
+            <p>
+              All icon-only buttons have descriptive labels (Settings, Add plant, More options, etc.).
+              Interactive task rows announce their full state: plant name, task name, due date, and
+              whether they've been logged today. Quick-action buttons say "Water for Monstera — done
+              today" and hint "Double tap to undo" so VoiceOver users know exactly what will happen.
+            </p>
+            <!--
+              GRAPHIC: Side-by-side screenshot of VoiceOver highlight box on a quick-action button,
+              with the spoken label shown as a caption overlay.
+              File: assets/a11y-voiceover.png
+            -->
+            <div class="graphic-placeholder">📸 Screenshot — VoiceOver label on quick-action button</div>
+          </div>
+
+          <!-- Voice Control -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">🎙</span>
+              <h3>Voice Control</h3>
+            </div>
+            <p>
+              Voice Control identifies tap targets using the same accessibility labels as VoiceOver.
+              Every button and action in the app has a unique, descriptive label, so you can say
+              "Tap Add plant", "Tap Settings", or "Tap Water" and it will work.
+            </p>
+            <!--
+              GRAPHIC: Screenshot with Voice Control grid overlay showing numbered labels on buttons.
+              File: assets/a11y-voice-control.png
+            -->
+            <div class="graphic-placeholder">📸 Screenshot — Voice Control name grid on plant list</div>
+          </div>
+
+          <!-- Larger Text / Dynamic Type -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">Aa</span>
+              <h3>Larger Text</h3>
+            </div>
+            <p>
+              All text in Chlorophyll uses iOS Dynamic Type text styles (Body, Headline, Caption, etc.)
+              and scales automatically with the text size you've set in iOS Settings → Accessibility →
+              Display & Text Size. At large Accessibility sizes, plant names and collection names
+              wrap to multiple lines instead of clipping.
+            </p>
+            <!--
+              GRAPHIC: Two screenshots side by side — default text size vs. Accessibility XL size,
+              showing the same plant list card with the name wrapping correctly.
+              File: assets/a11y-dynamic-type.png
+            -->
+            <div class="graphic-placeholder">📸 Side-by-side — default text size vs. Accessibility XL</div>
+          </div>
+
+          <!-- Reduce Motion -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">🧘</span>
+              <h3>Reduce Motion</h3>
+            </div>
+            <p>
+              When Reduce Motion is enabled in iOS Settings → Accessibility → Motion, all
+              non-essential animations in the app are disabled: quick-action button scales, task
+              completion transitions, search bar slide-in/out, and filter chip toggles all become
+              instant. Haptic feedback is also lightened. Content and functionality are identical —
+              only the motion is removed.
+            </p>
+            <!--
+              GRAPHIC: Short screen recording (converted to still/gif) comparing the quick-action
+              tap with and without Reduce Motion enabled. Or just a toggle showing the iOS setting.
+              File: assets/a11y-reduce-motion.png
+            -->
+            <div class="graphic-placeholder">📸 Illustration — Reduce Motion on vs. off</div>
+          </div>
+
+          <!-- Dark Interface -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">🌙</span>
+              <h3>Dark Interface</h3>
+            </div>
+            <p>
+              Chlorophyll ships with seven dark themes: Noche, Yoru, Layl, Kaamos, Tlapalteotl,
+              Usiku, and Alebrije. Each one is a fully dark-mode experience with light text on dark
+              surfaces. The active theme forces the entire app — including system sheets and
+              navigation — into dark mode.
+            </p>
+            <!--
+              GRAPHIC: Mosaic of 3–4 dark theme screenshots (Noche, Yoru, Kaamos, Alebrije)
+              showing the plant list in each palette.
+              File: assets/a11y-dark-themes.png
+            -->
+            <div class="graphic-placeholder">📸 Mosaic — dark theme palette showcase</div>
+          </div>
+
+          <!-- Sufficient Contrast / High-Contrast Themes -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">◑</span>
+              <h3>Sufficient Contrast</h3>
+            </div>
+            <p>
+              Two themes are designed specifically for maximum contrast and verified against WCAG 2.1 AA
+              (4.5:1 minimum ratio for normal text). Every text colour, accent, and task-type colour in
+              these themes has been mathematically confirmed to pass.
+            </p>
+            <div class="contrast-pair">
+              <span class="contrast-swatch swatch-nitido">🔆 Nítido — Light · ≥6:1</span>
+              <span class="contrast-swatch swatch-onice">🖤 Ónice — Dark · ≥9:1</span>
+            </div>
+            <p style="margin-top:8px;">
+              Both themes are available in Settings → Appearance and are labelled
+              "WCAG AA · Accessibility" so they're easy to find.
+            </p>
+            <!--
+              GRAPHIC: Side-by-side of Nítido and Ónice themes showing the plant list,
+              with contrast ratio callouts (e.g. "20:1" arrow pointing to the plant name text).
+              File: assets/a11y-contrast-themes.png
+            -->
+            <div class="graphic-placeholder">📸 Nítido vs. Ónice with contrast ratio callouts</div>
+          </div>
+
+          <!-- Differentiate Without Colour -->
+          <div class="a11y-card">
+            <div class="a11y-card-header">
+              <span class="a11y-icon">◆</span>
+              <h3>Differentiate Without Colour</h3>
+            </div>
+            <p>
+              Task types (watering, fertilizing, repotting, pruning) are always identified by both
+              a colour <em>and</em> an SF Symbol icon. Colour is never the only signal — the icon
+              alone is sufficient to tell tasks apart. This means the app is usable even when colour
+              perception is limited.
+            </p>
+            <!--
+              GRAPHIC: Close-up of the task quick-action buttons with the SF Symbol icons visible,
+              and a simulated deuteranopia (red-green colourblind) filter overlay showing the icons
+              remain distinct.
+              File: assets/a11y-colour-differentiation.png
+            -->
+            <div class="graphic-placeholder">📸 Task icons — normal vs. simulated colourblind filter</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Not applicable ──────────────────────────────────────────── -->
+      <div class="section">
+        <h2 class="section-title">Not Applicable</h2>
+        <div class="na-list">
+
+          <div class="na-item">
+            <span class="na-icon">💬</span>
+            <p>
+              <strong>Captions</strong>
+              Chlorophyll contains no video content. There are no videos, video playback, or
+              video-based tutorials in the app, so closed captions are not applicable.
+            </p>
+          </div>
+
+          <div class="na-item">
+            <span class="na-icon">🔊</span>
+            <p>
+              <strong>Audio Descriptions</strong>
+              Audio descriptions are for videos that convey information visually without narration.
+              Chlorophyll has no video content, so audio descriptions are not applicable.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Contact ─────────────────────────────────────────────────── -->
+      <div class="section">
+        <h2 class="section-title">Something Not Working?</h2>
+        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6; text-align:center; margin-bottom:20px;">
+          If an accessibility feature isn't working as described — or if you use a feature not
+          listed here and Chlorophyll doesn't support it well — please reach out. Accessibility
+          feedback is treated as a bug report, not a feature request.
+        </p>
+        <div style="text-align:center;">
+          <a href="/chlorophyll/" style="
+            display: inline-block;
+            background: var(--chl-clay);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+          ">Contact Support →</a>
+        </div>
+      </div>
+
+      <div id="tj-footer"></div>
+    </div>
+
+    <script src="/js/shared.js?v=5"></script>
+    <script>
+      document.addEventListener('tj:ready', () => {
+        injectFooter({
+          links: [
+            { href: '/chlorophyll/', text: 'Support' },
+            { href: '/chlorophyll/privacy.html', text: 'Privacy Policy' },
+            { href: '/chlorophyll/terms.html', text: 'Terms of Use' },
+            { href: '/', text: 'All Apps' },
+            { href: 'mailto:support@tastyjam.ca', text: 'support@tastyjam.ca' },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>

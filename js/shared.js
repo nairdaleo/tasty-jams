@@ -331,8 +331,8 @@ function initContactForm(formId, endpoint) {
 // --- Nav ---
 // Builds breadcrumb + legal links from data attributes.
 // Usage: <nav id="tj-nav" data-app="spark" data-page="support"></nav>
-// data-app: spark | klick | fart-soundboard (omit for landing page)
-// data-page: support | privacy | terms (omit for landing page)
+// data-app: spark | klick | chlorophyll | fart-soundboard (omit for landing page)
+// data-page: support | privacy | terms | accessibility (omit for landing page)
 function injectNav() {
   const el = document.getElementById('tj-nav');
   if (!el) return;
@@ -345,13 +345,13 @@ function injectNav() {
     chlorophyll: { name: t('chlorophyll.name', 'Chlorophyll'), path: '/chlorophyll/' },
     'fart-soundboard': { name: t('fartSoundboard.name', 'Fart Soundboard'), path: '/fart-soundboard/' }
   };
-  const pageLabels = { support: null, privacy: t('common.privacy', 'Privacy'), terms: t('common.terms', 'Terms') };
+  const pageLabels = { support: null, privacy: t('common.privacy', 'Privacy'), terms: t('common.terms', 'Terms'), accessibility: 'Accessibility' };
 
   // Legal links available for this app
   const legalLinks = {
     spark: [{ href: '/spark/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/spark/terms.html', text: t('common.terms', 'Terms') }],
     klick: [{ href: '/klick/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/klick/terms.html', text: t('common.terms', 'Terms') }],
-    chlorophyll: [{ href: '/chlorophyll/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/chlorophyll/terms.html', text: t('common.terms', 'Terms') }],
+    chlorophyll: [{ href: '/chlorophyll/privacy.html', text: t('common.privacy', 'Privacy') }, { href: '/chlorophyll/terms.html', text: t('common.terms', 'Terms') }, { href: '/chlorophyll/accessibility.html', text: 'Accessibility' }],
     'fart-soundboard': [{ href: '/fart-soundboard/privacy.html', text: t('common.privacy', 'Privacy') }]
   };
 
