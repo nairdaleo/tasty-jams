@@ -150,50 +150,12 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-item">
-          <div class="faq-q">What is Klick?</div>
-          <div class="faq-a">
-            Klick is a simple multi-counter app. Create counters for anything —
-            reps at the gym, drinks of water, inventory counts, game scores. Tap
-            to increment, swipe to reset. Available on iPhone and Apple Watch.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Does Klick work on Apple Watch?</div>
-          <div class="faq-a">
-            Yes. Klick includes a Watch complication so you can see and update
-            your counters directly from your wrist without pulling out your
-            phone.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is Klick free?</div>
-          <div class="faq-a">
-            Klick will offer a free tier with basic counters. Pro features like
-            unlimited counters, custom icons, and Watch complications will be
-            available via a one-time purchase.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">When is Klick launching?</div>
-          <div class="faq-a">
-            Klick is currently in development. Follow us for updates — we'll
-            announce the launch date soon.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How is my data stored?</div>
-          <div class="faq-a">
-            Counter data syncs automatically via iCloud to all your devices. No
-            account creation needed — just sign in with your Apple ID. Keep
-            iCloud enabled to protect your data.
-          </div>
-        </div>
+        <h2 class="section-title" id="faq-title" data-i18n="klick.faq.title">Frequently Asked Questions</h2>
+        <div id="faq-items"></div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">Contact Support</h2>
+        <h2 class="section-title" id="contact-title" data-i18n="klick.contactForm.title">Contact Support</h2>
         <div id="msgOk" class="msg msg-ok">
           Message sent — we'll get back to you within 48 hours.
         </div>
@@ -203,45 +165,71 @@
         <form id="contact-form" method="POST">
           <input type="hidden" name="app" value="Klick" />
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name" id="label-name" data-i18n="klick.contactForm.nameLabel">Name</label>
             <input
               type="text"
               id="name"
               name="name"
               required
               placeholder="Your name"
+              data-i18n-placeholder="klick.contactForm.namePlaceholder"
             />
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" id="label-email" data-i18n="klick.contactForm.emailLabel">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               required
               placeholder="your@email.com"
+              data-i18n-placeholder="klick.contactForm.emailPlaceholder"
             />
           </div>
           <div class="form-group">
-            <label for="subject">Subject</label>
+            <label for="subject" id="label-subject" data-i18n="klick.contactForm.subjectLabel">Subject</label>
             <select id="subject" name="subject">
-              <option>Bug report</option>
-              <option>Feature request</option>
-              <option>General question</option>
+              <option id="opt-bug">Bug report</option>
+              <option id="opt-purchase">Purchase issue</option>
+              <option id="opt-feature">Feature request</option>
+              <option id="opt-general">General question</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
+            <label for="message" id="label-message" data-i18n="klick.contactForm.messageLabel">Message</label>
             <textarea
               id="message"
               name="message"
               required
               placeholder="Describe your issue or question..."
+              data-i18n-placeholder="klick.contactForm.messagePlaceholder"
             ></textarea>
           </div>
-          <button type="submit">Send message</button>
+          <button type="submit" data-i18n="klick.contactForm.submitBtn">Send message</button>
         </form>
       </div>
+
+      <script>
+        document.addEventListener('tj:ready', () => {
+          // FAQ — built dynamically from JSON so data-i18n can't be used here
+          const faqData = t('klick.faq');
+          let faqHtml = '';
+          for (let i = 1; i <= 5; i++) {
+            const q = faqData[`q${i}`];
+            const a = faqData[`a${i}`];
+            if (q && a) faqHtml += `<div class="faq-item"><div class="faq-q">${q}</div><div class="faq-a">${a}</div></div>`;
+          }
+          document.getElementById('faq-items').innerHTML = faqHtml;
+
+          // Contact form select options (not coverable by data-i18n)
+          document.getElementById('opt-bug').textContent = t('klick.contactForm.bugReport');
+          document.getElementById('opt-purchase').textContent = t('klick.contactForm.purchaseIssue');
+          document.getElementById('opt-feature').textContent = t('klick.contactForm.featureRequest');
+          document.getElementById('opt-general').textContent = t('klick.contactForm.generalQuestion');
+          document.getElementById('msgOk').textContent = t('klick.contactForm.successMsg');
+          document.getElementById('msgErr').textContent = t('klick.contactForm.errorMsg');
+        });
+      </script>
 
       <div id="tj-footer"></div>
     </div>

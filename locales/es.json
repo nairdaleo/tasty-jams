@@ -129,6 +129,36 @@
       "freeTier": "Hay un plan gratuito disponible",
       "proOnce": "Versión Pro: 4,99 $ (pago único)",
       "noSub": "Sin suscripción"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": "¿Qué es Klick?",
+      "a1": "Klick es una sencilla aplicación multicontador. Crea contadores para cualquier cosa: repeticiones en el gimnasio, tragos de agua, recuentos de inventario, puntuaciones de juegos. Toca para aumentar, desliza para restablecer. Disponible para iPhone y Apple Watch.",
+      "q2": "¿Funciona Klick en el Apple Watch?",
+      "a2": "Sí. Klick incluye una complicación de Reloj para que puedas ver y actualizar tus contadores directamente desde tu muñeca sin sacar el teléfono.",
+      "q3": "¿Klick es gratis?",
+      "a3": "Klick ofrece un nivel gratuito con contadores básicos. Las funciones Pro, como contadores ilimitados, iconos personalizados y complicaciones del Reloj, están disponibles mediante una compra única.",
+      "q4": "¿Cómo restauro mi compra Pro?",
+      "a4": "Abre Klick → pulsa el icono del engranaje → Restaurar compra. Tu compra está vinculada a tu ID de Apple y funciona en todos tus dispositivos. Pro también incluye Compartir en familia.",
+      "q5": "¿Cómo se almacenan mis datos?",
+      "a5": "Los datos del contador se sincronizan automáticamente a través de iCloud con todos tus dispositivos. No es necesario crear una cuenta: sólo tienes que iniciar sesión con tu ID de Apple. Mantén activado iCloud para proteger tus datos."
+    },
+    "contactForm": {
+      "title": "Contactar con el servicio de asistencia",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Asunto",
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Describe tu problema o pregunta...",
+      "submitBtn": "Enviar mensaje",
+      "bugReport": "Notificación de error",
+      "purchaseIssue": "Problema con la compra",
+      "featureRequest": "Solicitud de función",
+      "generalQuestion": "Pregunta general",
+      "successMsg": "Mensaje enviado. Nos pondremos en contacto contigo en un plazo de 48 horas.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "fartSoundboard": {

@@ -129,6 +129,36 @@
       "freeTier": "無料プランをご利用いただけます",
       "proOnce": "プロ版：4.99米ドル（一括払い）",
       "noSub": "定期購読なし"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": "Klickとは？",
+      "a1": "Klickはシンプルなマルチカウンターアプリです。ジムでのレップ数、飲料水、在庫数、ゲームのスコアなど、あらゆるもののカウンターを作成できます。タップでインクリメント、スワイプでリセット。iPhoneとApple Watchでご利用いただけます。",
+      "q2": "KlickはApple Watchで使えますか？",
+      "a2": "はい。Klickにはウォッチ・コンプリケーションが搭載されているので、携帯電話を取り出すことなく、手首から直接カウンターを確認し、更新することができます。",
+      "q3": "Klickは無料ですか？",
+      "a3": "Klickは、基本的なカウンターを備えた無料の階層を提供しています。無制限のカウンター、カスタムアイコン、複雑な時計のようなプロ機能は、1回限りの購入で利用可能です。",
+      "q4": "購入したProを復元するにはどうすればよいですか？",
+      "a4": "Klickを開く → 歯車アイコンをタップ → 購入履歴を復元。購入した製品はあなたのApple IDに関連付けられ、あなたのすべてのデバイスで使用できます。Proにはファミリー共有も含まれています。",
+      "q5": "私のデータはどのように保存されるのですか？",
+      "a5": "カウンターデータはiCloud経由ですべてのデバイスに自動的に同期されます。アカウントの作成は不要で、Apple IDでサインインするだけです。iCloudを有効にしてデータを保護しましょう。"
+    },
+    "contactForm": {
+      "title": "サポートへのお問い合わせ",
+      "nameLabel": "名前",
+      "namePlaceholder": "お名前",
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "件名",
+      "messageLabel": "メッセージ",
+      "messagePlaceholder": "お困りのことやご質問をご記入ください...",
+      "submitBtn": "メッセージを送信",
+      "bugReport": "不具合報告",
+      "purchaseIssue": "購入に関する問題",
+      "featureRequest": "機能リクエスト",
+      "generalQuestion": "一般的な質問",
+      "successMsg": "メッセージを送信しました。48時間以内にご連絡いたします。",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "fartSoundboard": {

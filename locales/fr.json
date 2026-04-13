@@ -129,6 +129,36 @@
       "freeTier": "Formule gratuite disponible",
       "proOnce": "Version Pro : 4,99 $ USD (paiement unique)",
       "noSub": "Pas d'abonnement"
+    },
+    "faq": {
+      "title": "Questions fréquemment posées",
+      "q1": "Qu'est-ce que Klick ?",
+      "a1": "Klick est une application simple de comptage multiple. Crée des compteurs pour n'importe quoi - des répétitions à la salle de sport, des verres d'eau, des comptes d'inventaire, des scores de jeu. Tape pour incrémenter, glisse pour réinitialiser. Disponible sur iPhone et Apple Watch.",
+      "q2": "Klick fonctionne-t-il sur l'Apple Watch ?",
+      "a2": "Oui. Klick inclut une complication de montre pour que tu puisses voir et mettre à jour tes compteurs directement à partir de ton poignet sans sortir ton téléphone.",
+      "q3": "Klick est-il gratuit ?",
+      "a3": "Klick propose une version gratuite avec des compteurs de base. Les fonctions pro comme les compteurs illimités, les icônes personnalisées et les complications de la montre sont disponibles moyennant un achat unique.",
+      "q4": "Comment puis-je restaurer mon achat Pro ?",
+      "a4": "Ouvre Klick → touche l'icône d'engrenage → Restaurer l'achat. Ton achat est lié à ton identifiant Apple et fonctionne sur tous tes appareils. Pro comprend également le partage familial.",
+      "q5": "Comment mes données sont-elles stockées ?",
+      "a5": "Les données du compteur se synchronisent automatiquement via iCloud sur tous tes appareils. Aucune création de compte n'est nécessaire - il suffit de se connecter avec ton identifiant Apple. Garde iCloud activé pour protéger tes données."
+    },
+    "contactForm": {
+      "title": "Contacter le service d'assistance",
+      "nameLabel": "Nom",
+      "namePlaceholder": "Votre nom",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Objet",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Décrivez votre problème ou votre question...",
+      "submitBtn": "Envoyer un message",
+      "bugReport": "Signaler un bug",
+      "purchaseIssue": "Problème lié à l'achat",
+      "featureRequest": "Demande de fonctionnalité",
+      "generalQuestion": "Question d'ordre général",
+      "successMsg": "Votre message a bien été envoyé. Nous vous répondrons dans les 48 heures.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "fartSoundboard": {

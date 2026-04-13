@@ -129,6 +129,36 @@
       "freeTier": "Kostenlose Version verfügbar",
       "proOnce": "Pro: 4,99 USD (einmalig)",
       "noSub": "Kein Abonnement"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Was ist Klick?",
+      "a1": "Klick ist eine einfache App für Mehrfachzähler. Erstelle Zähler für alles Mögliche - Wiederholungen im Fitnessstudio, Wassertrinken, Inventurzählungen, Spielstände. Zum Erhöhen tippen, zum Zurücksetzen wischen. Verfügbar für iPhone und Apple Watch.",
+      "q2": "Funktioniert Klick auf der Apple Watch?",
+      "a2": "Ja. Klick verfügt über eine Watch-Komplikation, mit der du deine Zählerstände direkt am Handgelenk sehen und aktualisieren kannst, ohne dein Handy herauszuholen.",
+      "q3": "Ist Klick kostenlos?",
+      "a3": "Klick bietet eine kostenlose Version mit einfachen Zählern an. Pro-Funktionen wie unbegrenzte Zähler, benutzerdefinierte Symbole und Uhrenkomplikationen sind über einen einmaligen Kauf erhältlich.",
+      "q4": "Wie kann ich meinen Pro-Kauf wiederherstellen?",
+      "a4": "Öffne Klick → tippe auf das Zahnradsymbol → Kauf wiederherstellen. Dein Kauf ist an deine Apple ID gebunden und funktioniert auf all deinen Geräten. Pro beinhaltet auch Family Sharing.",
+      "q5": "Wie werden meine Daten gespeichert?",
+      "a5": "Die Zählerdaten werden automatisch über iCloud mit allen deinen Geräten synchronisiert. Du musst keinen Account erstellen - melde dich einfach mit deiner Apple ID an. Lass iCloud aktiviert, um deine Daten zu schützen."
+    },
+    "contactForm": {
+      "title": "Support kontaktieren",
+      "nameLabel": "Name",
+      "namePlaceholder": "Ihr Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Betreff",
+      "messageLabel": "Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihr Problem oder Ihre Frage...",
+      "submitBtn": "Nachricht senden",
+      "bugReport": "Fehlermeldung",
+      "purchaseIssue": "Problem beim Kauf",
+      "featureRequest": "Funktionswunsch",
+      "generalQuestion": "Allgemeine Frage",
+      "successMsg": "Ihre Nachricht wurde gesendet – wir melden uns innerhalb von 48 Stunden bei Ihnen.",
+      "errorMsg": "Something went wrong. Please email us directly at support@tastyjam.ca"
     }
   },
   "fartSoundboard": {
