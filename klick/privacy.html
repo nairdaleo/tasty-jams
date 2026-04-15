@@ -25,60 +25,82 @@
       <nav id="tj-nav" data-app="klick" data-page="privacy"></nav>
 
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: March 29, 2026</p>
+      <p class="updated">Last updated: April 15, 2026</p>
 
       <h2>Overview</h2>
       <p>
         Klick ("the App") is developed by Tasty Jam ("we", "us"). We take your
         privacy seriously. This policy explains what data the App collects and
-        how it is used.
+        how it is used. The same policy applies to Klick on both iOS and
+        Android.
       </p>
 
       <h2>Data collection</h2>
       <p>
-        Klick does <strong>not</strong> collect or transmit any personal data to
-        third-party servers. Counter data is synced via iCloud CloudKit, Apple's
-        secure cloud infrastructure. This data is encrypted end-to-end and
-        stored only in your iCloud account.
+        Klick does <strong>not</strong> collect or transmit any personal data
+        to third-party servers. All counter data — names, values, history,
+        and settings — stays on your device.
+      </p>
+      <p>
+        On iOS, counter data is optionally synced across your Apple devices
+        via iCloud CloudKit, Apple's end-to-end encrypted cloud infrastructure.
+        On Android, counter data is stored locally in an on-device database
+        (Android Room) and a private preferences store (Android DataStore).
+        No cloud sync is performed on Android.
       </p>
 
       <h2>What we don't collect</h2>
       <ul>
         <li>No personal information (name, email, phone number)</li>
         <li>No usage analytics or tracking</li>
-        <li>No advertising identifiers</li>
+        <li>No advertising identifiers (no ads, ever)</li>
         <li>No location data</li>
         <li>No health or fitness data</li>
+        <li>No crash-reporting SDK in v1</li>
       </ul>
 
       <h2>Apple Watch</h2>
       <p>
-        Counter data syncs between your iPhone and Apple Watch through iCloud
-        CloudKit. All sync data is encrypted end-to-end and does not pass
-        through any third-party servers.
+        On iOS, counter data syncs between your iPhone and Apple Watch
+        through iCloud CloudKit. All sync data is encrypted end-to-end and
+        does not pass through any third-party servers.
       </p>
 
       <h2>In-app purchases</h2>
       <p>
         If you purchase Klick Pro, the transaction is processed entirely by
-        Apple through the App Store. We do not receive or store your payment
-        information.
+        the platform store — Apple App Store on iOS, Google Play Billing on
+        Android. We do not receive or store your payment information. The
+        only data we receive from the store is an anonymous entitlement flag
+        saying "this user owns Pro"; that flag is cached on-device in your
+        preferences store.
       </p>
 
       <h2>Third-party services</h2>
       <p>
-        The App does not integrate any third-party analytics, advertising, or
-        tracking services.
+        The App does not integrate any third-party analytics, advertising,
+        or tracking services on either platform. The only third-party code
+        we call into is the platform's own billing API (StoreKit on iOS,
+        Google Play Billing on Android) to handle in-app purchases, and the
+        platform's in-app review API to optionally prompt you for a rating
+        at milestones.
       </p>
 
       <h2>Data retention</h2>
       <p>
-        Counter data is synced via iCloud and persists across your devices as
-        long as your iCloud account is active. Deleting the App removes it from
-        a device, but data remains in your iCloud account. To permanently delete
-        your data, you must delete it from all devices and manage your iCloud
-        storage settings. iCloud storage is governed by Apple's privacy and data
+        <strong>On iOS:</strong> Counter data is synced via iCloud and
+        persists across your devices as long as your iCloud account is
+        active. Deleting the App removes it from a device, but data
+        remains in your iCloud account. To permanently delete your data,
+        you must delete it from all devices and manage your iCloud storage
+        settings. iCloud storage is governed by Apple's privacy and data
         retention policies.
+      </p>
+      <p>
+        <strong>On Android:</strong> Counter data lives only on the device
+        where you created it. Uninstalling the App removes all data. You
+        can also wipe data at any time from Android's Settings → Apps →
+        Klick → Storage → Clear Storage.
       </p>
 
       <h2>Children's privacy</h2>
