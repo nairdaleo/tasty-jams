@@ -247,7 +247,7 @@
 
       <section class="apps">
         <div class="card" role="link" data-app="chlorophyll" onclick="if(!event.target.closest('a'))window.location='/chlorophyll/'">
-          <span class="badge coming" data-i18n="chlorophyll.badge"></span>
+          <span class="badge" data-i18n="chlorophyll.badge"></span>
           <div class="card-icon">
             <div class="icon-split">
               <img src="/assets/chlorophyll-icon-light.png" alt="Chlorophyll icon" class="icon-split-light" />
@@ -260,7 +260,23 @@
             <a class="pill" href="/chlorophyll/" onclick="event.stopPropagation()" data-i18n="common.support">Support</a>
             <a class="pill" href="/chlorophyll/privacy.html" onclick="event.stopPropagation()" data-i18n="common.privacy">Privacy</a>
           </div>
-          <span class="android-soon" data-i18n="common.androidComingSoon">Android · Coming soon</span>
+          <div class="card-links">
+            <a
+              href="https://apps.apple.com/app/chlorophyll-plant-care-log/id6761600079"
+              rel="noopener noreferrer"
+              class="app-store-badge-link"
+              data-app="chlorophyll"
+              style="margin-top: 20px"
+              onclick="event.stopPropagation()"
+            >
+              <img
+                src="/assets/app-store-badges/en.svg"
+                alt="Download on the App Store"
+                style="height: 40px; display: block"
+              />
+            </a>
+            <span class="android-soon" data-i18n="common.androidComingSoon">Android · Coming soon</span>
+          </div>
         </div>
 
         <div class="card" role="link" data-app="spark">
