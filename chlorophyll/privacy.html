@@ -17,37 +17,81 @@
       <nav id="tj-nav" data-app="chlorophyll" data-page="privacy"></nav>
 
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: April 4, 2026</p>
+      <p class="updated">Last updated: April 18, 2026</p>
 
       <h2>Overview</h2>
-      <p>Chlorophyll is a plant care tracker built with privacy by default. Your plant data — including care logs, photos, and reminders — stays on your device and in your personal iCloud account. We do not collect, store, or transmit your personal data to any server we operate.</p>
+      <p>Chlorophyll is a plant care tracker built with privacy by default, developed by Tasty Jam ("we", "us"), a sole proprietorship based in British Columbia, Canada. This policy applies to Chlorophyll on both iOS and Android. Your plant data — care logs, photos, and reminders — is stored on your device and optionally synced to the cloud. We do not sell your data or use it for advertising.</p>
 
       <h2>Data we collect</h2>
-      <p><strong>Nothing.</strong> Chlorophyll does not collect any personal information. There are no user accounts, no analytics SDKs, no advertising identifiers, and no crash reporting services that phone home with your data.</p>
+      <p>Chlorophyll does not collect any personal information for advertising or analytics purposes. There are no user accounts, no analytics SDKs, and no advertising identifiers. The data we handle includes:</p>
+      <ul>
+        <li>
+          <strong>Plant data</strong> — plant names, species, care tasks, care logs, fertilizer notes, and photos you enter in the App. This data is stored locally and optionally synced to the cloud (see Cloud Sync below).
+        </li>
+        <li>
+          <strong>Purchase data</strong> — handled entirely by the platform store (Apple App Store on iOS, Google Play on Android). We receive only an anonymised entitlement flag confirming your Pro status; we never receive your payment details.
+        </li>
+        <li>
+          <strong>Support contact</strong> — if you contact us via the support form, we collect the name, email, and message you provide solely to respond to your inquiry.
+        </li>
+      </ul>
 
       <h2>Data stored on your device</h2>
-      <p>All data you enter in Chlorophyll — plant names, species, care tasks, care logs, fertilizer notes, and photos — is stored locally on your device using Apple's SwiftData framework. This data belongs entirely to you.</p>
+      <p>All plant data you enter is stored locally on your device — using SwiftData on iOS, and Room (SQLite) on Android. This data belongs entirely to you.</p>
 
-      <h2>iCloud sync</h2>
-      <p>If you have iCloud enabled on your device, Chlorophyll uses Apple's CloudKit to sync your plant data across your iPhone, iPad, and Mac. This sync is encrypted end-to-end by Apple and governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. Tasty Jam has no access to data stored in your private CloudKit container.</p>
+      <h2>Cloud sync</h2>
+      <p>
+        <strong>iOS:</strong> If you have iCloud enabled, Chlorophyll uses Apple's CloudKit to sync your plant data across your iPhone, iPad, and Mac. This sync is encrypted end-to-end by Apple and governed by
+        <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.
+        Tasty Jam has no access to data stored in your private CloudKit container.
+      </p>
+      <p>
+        <strong>Android:</strong> Chlorophyll uses Firebase (a Google Cloud service) to sync your plant data across your Android devices. Data is transmitted securely and stored in your private Firebase database, governed by
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+        Tasty Jam accesses this data only as needed to deliver the sync feature and does not use it for any other purpose.
+      </p>
+      <p>
+        You can disable cloud sync at any time from the app's Settings. When disabled, data is stored locally on-device only.
+      </p>
 
       <h2>Photos</h2>
-      <p>When you add plant photos, they are stored as compressed image data inside your local SwiftData store and synced via iCloud alongside your other plant data. Photos are never uploaded to any server operated by Tasty Jam.</p>
+      <p>When you add plant photos, they are stored as compressed image data in your local on-device store and synced via the cloud infrastructure described above (iCloud on iOS, Firebase on Android). Photos are never uploaded to any server operated by Tasty Jam.</p>
 
       <h2>Notifications</h2>
-      <p>Chlorophyll uses Apple's notification system to send local care reminders. Notification scheduling happens entirely on your device — no data leaves your device to deliver notifications.</p>
+      <p>Chlorophyll schedules care reminders as local notifications on your device. On iOS they use Apple's notification framework; on Android they use AlarmManager. No plant data is sent to any server to deliver notifications.</p>
 
-      <h2>Siri &amp; Shortcuts</h2>
-      <p>If you use Siri shortcuts (e.g. "Water my Monstera in Chlorophyll"), Apple's App Intents framework processes your voice request locally on-device where possible. No care data is sent to Tasty Jam's servers as a result of using Siri.</p>
+      <h2>Siri &amp; Shortcuts (iOS only)</h2>
+      <p>On iOS, if you use Siri shortcuts with Chlorophyll, Apple's App Intents framework processes your request locally on-device where possible. No plant data is sent to Tasty Jam's servers as a result of using Siri.</p>
 
       <h2>In-app purchases</h2>
-      <p>Chlorophyll Pro is a one-time in-app purchase processed entirely by Apple. Tasty Jam receives only the anonymised aggregate sales information Apple provides to all developers. We do not receive your payment details, Apple ID, or any personally identifiable information from the purchase.</p>
+      <p>Chlorophyll Pro is a one-time in-app purchase processed entirely by Apple (iOS) or Google Play (Android). Tasty Jam receives only the anonymised aggregate sales information the platform provides to all developers. We do not receive your payment details or any personally identifiable information from the purchase.</p>
 
       <h2>Third-party services</h2>
-      <p>Chlorophyll does not integrate any third-party analytics, advertising, crash reporting, or tracking services. The only third-party service used is Apple's own CloudKit, governed by Apple's privacy policy.</p>
+      <p>The third-party services Chlorophyll uses are:</p>
+      <ul>
+        <li>
+          <strong>Apple iCloud / CloudKit (iOS)</strong> — cloud sync, governed by Apple's Privacy Policy.
+        </li>
+        <li>
+          <strong>Firebase (Android)</strong> — cloud sync, governed by Google's Privacy Policy.
+        </li>
+        <li>
+          <strong>StoreKit / Google Play Billing</strong> — in-app purchase processing, governed by the respective platform's policies.
+        </li>
+      </ul>
+      <p>No third-party analytics, advertising, or crash-reporting services are integrated.</p>
+
+      <h2>Data retention &amp; deletion</h2>
+      <p>
+        <strong>On iOS:</strong> Plant data persists in your iCloud account across your devices as long as your iCloud account is active. Deleting the App removes local data, but iCloud data remains until you manage it from your iCloud settings.
+      </p>
+      <p>
+        <strong>On Android:</strong> Plant data is stored on-device and synced to your private Firebase database. Uninstalling the App removes local data. To delete your cloud data, use Settings → Delete My Data inside the App, or contact us at
+        <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a> and we will delete it within 30 days.
+      </p>
 
       <h2>Children</h2>
-      <p>Chlorophyll does not knowingly collect data from children under 13. The app does not require an account and collects no personal information from any user of any age.</p>
+      <p>Chlorophyll does not knowingly collect data from children under 13. The app does not require an account and collects no personal information from any user of any age beyond the plant names and care notes you choose to enter.</p>
 
       <h2>Changes to this policy</h2>
       <p>If we make material changes to this policy, we will update the date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>

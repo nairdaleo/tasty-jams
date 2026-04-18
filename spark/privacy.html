@@ -25,43 +25,72 @@
       <nav id="tj-nav" data-app="spark" data-page="privacy"></nav>
 
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: March 28, 2026</p>
+      <p class="updated">Last updated: April 18, 2026</p>
 
       <h2>Overview</h2>
       <p>
         Spark: ADHD Habit Tracker ("the App") is developed by Tasty Jam ("we",
-        "us"), a sole proprietorship based in British Columbia, Canada.
+        "us"), a sole proprietorship based in British Columbia, Canada. This
+        policy applies to Spark on both iOS and Android.
       </p>
 
       <h2>Data we collect</h2>
       <p>
-        All habit data — habits, completions, streaks, and reminders — is stored
-        <strong>locally on your device only</strong>. We do not collect,
-        transmit, or store your personal habit data on any server.
+        Your habit data — habits, completions, streaks, and reminders — is
+        stored locally on your device and optionally synced to the cloud so your
+        data is available across all your devices. We do not sell your data or
+        use it for advertising.
       </p>
-      <p>
-        The only data we collect is through Apple's standard infrastructure:
-      </p>
+      <p>The data we collect or handle includes:</p>
       <ul>
         <li>
-          Purchase and subscription data — handled entirely by Apple. We receive
-          anonymised purchase confirmation but never your payment details.
+          <strong>Habit data</strong> — habit names, completion records, and
+          streak history. On iOS this is synced via Apple iCloud (CloudKit). On
+          Android this is synced via Firebase (Google Cloud). See the Cloud Sync
+          section below.
         </li>
         <li>
-          Crash reports — if you opt in to share diagnostics with Apple,
-          anonymised crash data may be shared with us via App Store Connect.
+          <strong>Purchase data</strong> — handled entirely by the platform
+          store (Apple App Store on iOS, Google Play on Android). We receive
+          only an anonymised entitlement flag confirming your subscription
+          status; we never receive your payment details.
         </li>
         <li>
-          Support contact — if you contact us via the support form, we collect
-          the name, email, and message you provide solely to respond to your
-          inquiry.
+          <strong>Crash reports</strong> — if you opt in to share diagnostics
+          with Apple (iOS) or Google (Android), anonymised crash data may be
+          shared with us via App Store Connect or Google Play Console.
+        </li>
+        <li>
+          <strong>Support contact</strong> — if you contact us via the support
+          form, we collect the name, email, and message you provide solely to
+          respond to your inquiry.
         </li>
       </ul>
 
+      <h2>Cloud sync</h2>
+      <p>
+        <strong>iOS:</strong> Habit data is synced across your Apple devices
+        using Apple's iCloud CloudKit. This sync is end-to-end encrypted and
+        governed by
+        <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.
+        Tasty Jam has no access to data stored in your private iCloud container.
+      </p>
+      <p>
+        <strong>Android:</strong> Habit data is synced across your Android
+        devices using Firebase (a Google Cloud service). Data is transmitted
+        securely and stored in your private Firebase database, governed by
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+        Tasty Jam accesses this data only as needed to deliver the sync
+        feature and does not use it for any other purpose.
+      </p>
+      <p>
+        You can disable cloud sync at any time from the app's Settings. When
+        disabled, data is stored locally on-device only.
+      </p>
+
       <h2>What we don't collect</h2>
       <ul>
-        <li>No remote tracking of habits, completions, or streaks</li>
-        <li>No advertising SDKs or analytics trackers</li>
+        <li>No advertising SDKs or third-party analytics trackers</li>
         <li>No sale of data to third parties</li>
         <li>No access to contacts, camera, photos, or location</li>
         <li>No user profiling or advertising data</li>
@@ -69,29 +98,49 @@
 
       <h2>Notifications</h2>
       <p>
-        Reminders are scheduled as local notifications on your device. No data
-        is sent to any server — they are handled entirely by iOS.
+        Reminders are scheduled as local notifications on your device. On iOS
+        they are handled by the system notification framework; on Android they
+        use AlarmManager. No habit data is sent to any server to deliver
+        notifications.
       </p>
 
       <h2>Subscriptions</h2>
       <p>
-        Spark Pro subscriptions are processed by Apple. We never see or store
-        your payment information. Management, cancellation, and refunds are
-        handled through your Apple ID settings.
+        Spark Pro subscriptions are processed by Apple (iOS) or Google Play
+        (Android). We never see or store your payment information. On iOS,
+        management and cancellation are handled through your Apple ID settings.
+        On Android, they are handled through your Google Play account.
       </p>
 
-      <h2>Apple Watch &amp; widgets</h2>
+      <h2>Apple Watch &amp; widgets (iOS only)</h2>
       <p>
-        Habit data shared with the Apple Watch app and home screen widget is
-        transferred via iOS App Groups — a secure local communication mechanism
-        on your device. No internet connection is used.
+        On iOS, habit data shared with the Apple Watch app and home screen
+        widget is transferred via iCloud and iOS App Groups — secure mechanisms
+        on your device and iCloud account. No additional data is transmitted
+        beyond the standard iCloud sync described above.
+      </p>
+
+      <h2>Data retention &amp; deletion</h2>
+      <p>
+        <strong>On iOS:</strong> Habit data persists in your iCloud account
+        across your devices. Deleting the App removes local data, but iCloud
+        data remains until you delete it from your iCloud settings.
+      </p>
+      <p>
+        <strong>On Android:</strong> Habit data is stored on-device and synced
+        to your private Firebase database. Uninstalling the App removes local
+        data. To delete your cloud data, use Settings → Delete My Data inside
+        the App, or contact us at
+        <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a> and we
+        will delete it within 30 days.
       </p>
 
       <h2>Children's privacy</h2>
       <p>
         Spark does not knowingly collect personal information from children
-        under 13. Since no personal data is collected from any user, the App is
-        safe for users of all ages.
+        under 13. The App does not require an account and does not collect
+        any personally identifiable information beyond what you explicitly
+        enter as habit names.
       </p>
 
       <h2>Changes to this policy</h2>

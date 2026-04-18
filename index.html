@@ -197,6 +197,21 @@
         animation: fadeUp 0.8s ease 0.3s both;
       }
 
+      .android-soon {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        padding: 5px 11px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        margin-top: 10px;
+        opacity: 0.75;
+        letter-spacing: 0.01em;
+      }
+
       @media (max-width: 480px) {
         header {
           padding-top: 56px;
@@ -245,6 +260,7 @@
             <a class="pill" href="/chlorophyll/" onclick="event.stopPropagation()" data-i18n="common.support">Support</a>
             <a class="pill" href="/chlorophyll/privacy.html" onclick="event.stopPropagation()" data-i18n="common.privacy">Privacy</a>
           </div>
+          <span class="android-soon" data-i18n="common.androidComingSoon">Android · Coming soon</span>
         </div>
 
         <div class="card" role="link" data-app="spark">
@@ -285,6 +301,7 @@
                 style="height: 40px; display: block"
               />
             </a>
+            <span class="android-soon" data-i18n="common.androidComingSoon">Android · Coming soon</span>
           </div>
         </div>
         <script>
@@ -341,6 +358,7 @@
                 style="height: 40px; display: block"
               />
             </a>
+            <span class="android-soon" data-i18n="common.androidComingSoon">Android · Coming soon</span>
           </div>
         </div>
         <script>
