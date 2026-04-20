@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete My Data – Spark · Tasty Jam</title>
+    <meta name="description" content="Request deletion of your Spark cloud data." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/shared.css?v=5" />
+    <style>
+      :root { --app-accent: #8e00ff; }
+
+      .delete-page { max-width: 560px; margin: 0 auto; padding: 0 20px 60px; }
+      .delete-page h1 { margin-top: 48px; }
+
+      .steps { counter-reset: step; list-style: none; padding: 0; margin: 28px 0; }
+      .steps li {
+        counter-increment: step;
+        display: flex; gap: 16px; align-items: flex-start;
+        padding: 16px 0; border-bottom: 1px solid var(--border, #e5e7eb);
+      }
+      .steps li::before {
+        content: counter(step);
+        flex-shrink: 0; width: 28px; height: 28px;
+        background: var(--app-accent); color: #fff;
+        border-radius: 50%; display: flex; align-items: center;
+        justify-content: center; font-size: 0.82rem; font-weight: 700;
+        margin-top: 2px;
+      }
+
+      .uid-form { margin: 32px 0; }
+      .uid-form label {
+        display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;
+      }
+      .uid-form input {
+        width: 100%; box-sizing: border-box;
+        padding: 12px 14px; border: 1.5px solid var(--border, #d1d5db);
+        border-radius: 10px; font-size: 0.9rem; font-family: monospace;
+        background: var(--surface, #fff); color: var(--text, #111);
+        transition: border-color .15s;
+      }
+      .uid-form input:focus { outline: none; border-color: var(--app-accent); }
+      .uid-form input.error { border-color: #ef4444; }
+
+      .btn-danger {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 13px 24px; border-radius: 10px;
+        background: #ef4444; color: #fff; border: none;
+        font-size: 0.95rem; font-weight: 600; cursor: pointer;
+        transition: background .15s, opacity .15s;
+      }
+      .btn-danger:hover { background: #dc2626; }
+      .btn-danger:disabled { opacity: .5; cursor: not-allowed; }
+
+      .notice {
+        padding: 14px 18px; border-radius: 10px;
+        font-size: 0.88rem; margin: 20px 0; line-height: 1.6;
+      }
+      .notice.warn { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+      .notice.success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+      .notice.fail { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+      #confirm-step { display: none; margin: 24px 0; }
+      #confirm-step .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+      .btn-secondary {
+        padding: 13px 24px; border-radius: 10px; border: 1.5px solid var(--border, #d1d5db);
+        background: transparent; color: var(--text, #111); font-size: 0.95rem;
+        font-weight: 600; cursor: pointer; transition: background .15s;
+      }
+      .btn-secondary:hover { background: var(--surface-raised, #f3f4f6); }
+
+      #result { display: none; }
+      .spinner {
+        display: inline-block; width: 16px; height: 16px;
+        border: 2px solid rgba(255,255,255,.4);
+        border-top-color: #fff; border-radius: 50%;
+        animation: spin .7s linear infinite; vertical-align: middle;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div class="container delete-page">
+      <nav id="tj-nav" data-app="spark" data-page="delete"></nav>
+
+      <h1>Delete My Data</h1>
+      <p>
+        Use this page to permanently delete all your Spark habit data from
+        our cloud servers. Your local data on your device is not affected.
+      </p>
+
+      <div class="notice warn">
+        <strong>This action is irreversible.</strong> Once deleted, your cloud
+        data cannot be recovered.
+      </div>
+
+      <h2>How to find your User ID</h2>
+      <ol class="steps">
+        <li>
+          <div>
+            Open <strong>Spark</strong> on your Android device and go to
+            <strong>Settings</strong> (tap the gear icon).
+          </div>
+        </li>
+        <li>
+          <div>
+            Scroll to the <strong>Cloud Sync</strong> section. Make sure
+            cloud sync is enabled — your User ID is only assigned when
+            sync is turned on.
+          </div>
+        </li>
+        <li>
+          <div>
+            Tap <strong>Copy User ID</strong>. A unique identifier will be
+            copied to your clipboard.
+          </div>
+        </li>
+        <li>
+          <div>Paste it in the field below and request deletion.</div>
+        </li>
+      </ol>
+
+      <div class="uid-form">
+        <label for="uid-input">Your User ID</label>
+        <input
+          id="uid-input"
+          type="text"
+          placeholder="Paste your User ID here…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+
+      <button class="btn-danger" id="request-btn" onclick="onRequestClick()">
+        Request data deletion
+      </button>
+
+      <!-- Confirmation step -->
+      <div id="confirm-step">
+        <p>
+          You're about to permanently delete all cloud data associated with
+          User ID <strong id="uid-display"></strong>. This includes all
+          habits and their completion history.
+        </p>
+        <p>Data stored locally on your device will <strong>not</strong> be deleted.</p>
+        <div class="btn-row">
+          <button class="btn-danger" id="confirm-btn" onclick="onConfirmClick()">
+            Yes, delete permanently
+          </button>
+          <button class="btn-secondary" onclick="onCancelClick()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="result"></div>
+
+      <hr style="margin: 48px 0; border: none; border-top: 1px solid var(--border, #e5e7eb);" />
+
+      <h2>Data that is deleted</h2>
+      <ul>
+        <li>All habits and their settings</li>
+        <li>All completion history</li>
+        <li>Your anonymous account record</li>
+      </ul>
+
+      <h2>Data that is <em>not</em> deleted by this page</h2>
+      <ul>
+        <li>
+          Habit data stored locally on your device — to remove this,
+          uninstall Spark.
+        </li>
+        <li>
+          In-app purchase records — these are managed by Google Play and
+          are not stored on our servers.
+        </li>
+      </ul>
+
+      <p>
+        Questions? Contact us at
+        <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.
+      </p>
+
+      <div id="tj-footer"></div>
+    </div>
+
+    <script src="/js/shared.js?v=5"></script>
+    <script>
+      // Update FUNCTION_URL after deploying:
+      //   cd SparkAndroid && firebase deploy --only functions
+      // The URL will look like:
+      //   https://deleteuserdata-HASH-uc.a.run.app
+      const FUNCTION_URL = "https://deleteuserdata-pexo2ubwwq-uc.a.run.app";
+
+      const UID_RE = /^[A-Za-z0-9_\-]{20,128}$/;
+
+      function uid() {
+        return document.getElementById("uid-input").value.trim();
+      }
+
+      function showResult(html, type) {
+        const el = document.getElementById("result");
+        el.style.display = "block";
+        el.innerHTML = `<div class="notice ${type}">${html}</div>`;
+      }
+
+      function onRequestClick() {
+        const input = document.getElementById("uid-input");
+        input.classList.remove("error");
+
+        if (!UID_RE.test(uid())) {
+          input.classList.add("error");
+          input.focus();
+          return;
+        }
+
+        document.getElementById("uid-display").textContent = uid();
+        document.getElementById("confirm-step").style.display = "block";
+        document.getElementById("request-btn").style.display = "none";
+        document.getElementById("result").style.display = "none";
+        document.getElementById("confirm-step").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function onCancelClick() {
+        document.getElementById("confirm-step").style.display = "none";
+        document.getElementById("request-btn").style.display = "inline-flex";
+      }
+
+      async function onConfirmClick() {
+        const btn = document.getElementById("confirm-btn");
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Deleting…';
+
+        try {
+          const resp = await fetch(FUNCTION_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ uid: uid() }),
+          });
+          const data = await resp.json();
+
+          if (resp.ok && data.success) {
+            document.getElementById("confirm-step").style.display = "none";
+            document.getElementById("uid-input").disabled = true;
+            showResult(
+              `<strong>Done.</strong> Your cloud data has been permanently deleted ` +
+              `(${data.habitsDeleted} habit(s), ${data.completionsDeleted} completion(s) removed). ` +
+              `You can now turn off Cloud Sync in the Spark app.`,
+              "success"
+            );
+          } else {
+            throw new Error(data.error || "Unknown error");
+          }
+        } catch (err) {
+          showResult(
+            `<strong>Something went wrong.</strong> ${err.message}. ` +
+            `Please try again or contact <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.`,
+            "fail"
+          );
+          btn.disabled = false;
+          btn.innerHTML = "Yes, delete permanently";
+        }
+      }
+    </script>
+  </body>
+</html>
