@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="/css/shared.css?v=5" />
     <style>
-      :root { --app-accent: #8e00ff; }
+      :root { --app-accent: #8E00FF; }
 
       .delete-page { max-width: 560px; margin: 0 auto; padding: 0 20px 60px; }
       .delete-page h1 { margin-top: 48px; }
@@ -76,7 +76,7 @@
         background: transparent; color: var(--text, #111); font-size: 0.95rem;
         font-weight: 600; cursor: pointer; transition: background .15s;
       }
-      .btn-secondary:hover { background: var(--surface-raised, #f3f4f6); }
+      .btn-secondary:hover { background: var(--surface-hover, #f3f4f6); }
 
       #result { display: none; }
       .spinner {
@@ -100,7 +100,8 @@
 
       <div class="notice warn">
         <strong>This action is irreversible.</strong> Once deleted, your cloud
-        data cannot be recovered.
+        data cannot be recovered. Export a backup first from
+        <strong>Settings → Export</strong> if you want to keep your habits.
       </div>
 
       <h2>How to find your User ID</h2>
@@ -149,7 +150,7 @@
         <p>
           You're about to permanently delete all cloud data associated with
           User ID <strong id="uid-display"></strong>. This includes all
-          habits and their completion history.
+          habits, completions, and streak history.
         </p>
         <p>Data stored locally on your device will <strong>not</strong> be deleted.</p>
         <div class="btn-row">
@@ -166,25 +167,25 @@
       <hr style="margin: 48px 0; border: none; border-top: 1px solid var(--border, #e5e7eb);" />
 
       <h2>Data that is deleted</h2>
-      <ul>
-        <li>All habits and their settings</li>
-        <li>All completion history</li>
+      <ul style="list-style: disc; padding-left: 1.4em; line-height: 2;">
+        <li>All habit names and completion records</li>
+        <li>Streak history</li>
         <li>Your anonymous account record</li>
       </ul>
 
-      <h2>Data that is <em>not</em> deleted by this page</h2>
-      <ul>
+      <h2 style="margin-top: 24px;">Data that is <em>not</em> deleted by this page</h2>
+      <ul style="list-style: disc; padding-left: 1.4em; line-height: 2;">
         <li>
           Habit data stored locally on your device — to remove this,
           uninstall Spark.
         </li>
         <li>
-          In-app purchase records — these are managed by Google Play and
+          Subscription records — these are managed by Google Play and
           are not stored on our servers.
         </li>
       </ul>
 
-      <p>
+      <p style="margin-top: 24px;">
         Questions? Contact us at
         <a href="mailto:support@tastyjam.ca">support@tastyjam.ca</a>.
       </p>
@@ -194,10 +195,11 @@
 
     <script src="/js/shared.js?v=5"></script>
     <script>
-      // Update FUNCTION_URL after deploying:
-      //   cd SparkAndroid && firebase deploy --only functions
-      // The URL will look like:
-      //   https://deleteuserdata-HASH-uc.a.run.app
+      // ── Configuration ─────────────────────────────────────────────────────
+      // Replace with your deployed Cloud Function URL after running:
+      //   firebase deploy --only functions
+      // The URL looks like:
+      //   https://deletesparkuserdata-HASH-uc.a.run.app
       const FUNCTION_URL = "https://deleteuserdata-pexo2ubwwq-uc.a.run.app";
 
       const UID_RE = /^[A-Za-z0-9_\-]{20,128}$/;
@@ -206,7 +208,7 @@
         return document.getElementById("uid-input").value.trim();
       }
 
-      function showResult(html, type) {
+      function showResult(html, type /* "success" | "fail" */) {
         const el = document.getElementById("result");
         el.style.display = "block";
         el.innerHTML = `<div class="notice ${type}">${html}</div>`;
@@ -252,7 +254,7 @@
             document.getElementById("uid-input").disabled = true;
             showResult(
               `<strong>Done.</strong> Your cloud data has been permanently deleted ` +
-              `(${data.habitsDeleted} habit(s), ${data.completionsDeleted} completion(s) removed). ` +
+              `(${data.habitsDeleted} habit(s) and all completion records removed). ` +
               `You can now turn off Cloud Sync in the Spark app.`,
               "success"
             );
@@ -269,6 +271,17 @@
           btn.innerHTML = "Yes, delete permanently";
         }
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        injectFooter({
+          links: [
+            { href: "/spark/", text: "Spark Support" },
+            { href: "/spark/privacy.html", text: "Privacy Policy" },
+            { href: "/", text: "All Apps" },
+            { href: "mailto:support@tastyjam.ca", text: "support@tastyjam.ca" },
+          ],
+        });
+      });
     </script>
   </body>
 </html>

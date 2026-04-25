@@ -66,6 +66,12 @@ ul, ol {
 html {
   scroll-behavior: smooth;
 }
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent-solid);
+}
 body {
   font-family: var(--font-body);
   background: var(--bg);
